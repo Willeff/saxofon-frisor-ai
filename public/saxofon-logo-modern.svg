@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-labelledby="title desc">
+  <title id="title">Saxoføn Frisør</title>
+  <desc id="desc">Minimal transparent SVG logo for Saxoføn Frisør with scissors icon and refined wordmark.</desc>
+  <defs>
+    <style>
+      .word { fill: #fff; font-family: Georgia, 'Times New Roman', serif; }
+      .brand { font-size: 70px; font-style: italic; font-weight: 600; letter-spacing: 1px; }
+      .sub { font-size: 26px; letter-spacing: 8px; }
+      .line { fill: none; stroke: #fff; stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+      .thin { stroke-width: 4; }
+    </style>
+  </defs>
+
+  <g transform="translate(38 28)">
+    <!-- scissors -->
+    <g transform="translate(220 0)">
+      <circle class="line" cx="18" cy="118" r="15"/>
+      <circle class="line" cx="58" cy="118" r="15"/>
+      <path class="line" d="M33 108 L77 24"/>
+      <path class="line" d="M43 108 L8 34"/>
+      <path class="line thin" d="M71 36 L122 13"/>
+      <path class="line thin" d="M14 45 L-18 19"/>
+      <path class="line thin" d="M32 56 L48 56"/>
+    </g>
+
+    <!-- wordmark -->
+    <text class="word brand" x="0" y="110">Saxoføn</text>
+    <text class="word sub" x="398" y="115">FRISØR</text>
+
+    <!-- underline -->
+    <path class="line" d="M10 155 C150 128, 360 128, 640 154"/>
+  </g>
+</svg>
