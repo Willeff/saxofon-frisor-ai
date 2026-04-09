@@ -218,16 +218,15 @@ export default function HeroSection() {
             <div className="mt-12 flex flex-col gap-8">
 
               {/* Spør assistenten */}
-              <a
-                href="#assistent"
-                onClick={() => setMenuOpen(false)}
+              <button
+                onClick={() => { setMenuOpen(false); window.dispatchEvent(new CustomEvent("open-chat")); }}
                 className="flex items-center justify-center gap-2 w-full text-center px-8 py-4 border border-white/20 text-white/75 text-[12px] tracking-[0.18em] uppercase hover:border-white/40 hover:text-white transition-all"
               >
                 <svg className="w-3.5 h-3.5 flex-none" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
                 {t.hero.findTreatment}
-              </a>
+              </button>
 
               {/* Language */}
               <div>
@@ -313,15 +312,15 @@ export default function HeroSection() {
           >
             {t.hero.book}
           </a>
-          <a
-            href="#assistent"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-chat"))}
             className="flex items-center justify-center gap-2 px-8 md:px-10 py-4 border border-white/20 text-white/75 text-[12px] tracking-[0.18em] uppercase hover:border-white/40 hover:text-white transition-all"
           >
             <svg className="w-3.5 h-3.5 flex-none" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
             {t.hero.findTreatment}
-          </a>
+          </button>
         </div>
 
         {/* Microcopy */}
