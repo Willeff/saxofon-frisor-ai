@@ -45,7 +45,7 @@ export default function FloatingChat() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="hidden md:flex fixed bottom-6 right-6 z-50 flex-col items-end gap-3">
 
       {/* Chat panel */}
       <div
@@ -59,14 +59,14 @@ export default function FloatingChat() {
         {/* Panel header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.07]">
           <div className="flex items-center gap-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C4A882] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
             <span className="text-[12px] tracking-[0.18em] uppercase text-white/65 font-normal">
               {t.floating.header}
             </span>
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            aria-label="Lukk chat"
+            aria-label={t.floating.close}
             className="text-white/25 hover:text-white/60 transition-colors text-lg leading-none"
           >
             ×
@@ -81,7 +81,7 @@ export default function FloatingChat() {
               className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
             >
               <div
-                className={`max-w-[85%] px-3.5 py-2.5 text-[14px] font-normal leading-relaxed ${
+                className={`max-w-[85%] px-3.5 py-2.5 text-[14px] font-normal leading-relaxed whitespace-pre-line ${
                   msg.role === "user"
                     ? "bg-[#C4A882] text-[#0F0F0F]"
                     : "bg-white/[0.07] text-white/75"

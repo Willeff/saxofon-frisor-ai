@@ -1,28 +1,52 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { SERVICES, FILTER_TAGS, type FilterTag } from "../data/services";
+import { useState, useMemo, useRef } from "react";
+import { getServices, DISPLAY_FILTERS, DISPLAY_FILTER_LABELS, CATEGORY_LABELS, filterServices, type DisplayFilter } from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
 
-const CATEGORY_COLORS: Record<string, string> = {
-  "Herrer": "bg-[#1A1A1A] text-white",
-  "Damer": "bg-[#F2EDE5] text-[#7A746E]",
-  "Farge og klipp": "bg-[#C4A882]/15 text-[#8B6B42]",
-  "Striper og balayage": "bg-[#C4A882]/15 text-[#8B6B42]",
+const CATEGORY_STYLE_MAP: Record<string, string> = {
+  men: "bg-[#1A1A1A] text-white",
+  women: "bg-[#F2EDE5] text-[#7A746E]",
+  "colour-cut": "bg-[#C4A882]/15 text-[#8B6B42]",
+  "highlights-balayage": "bg-[#C4A882]/15 text-[#8B6B42]",
+  treatment: "bg-emerald-50 text-emerald-700",
 };
 
-function getCategoryStyle(category: string): string {
-  return CATEGORY_COLORS[category] ?? "bg-[#F2EDE5] text-[#7A746E]";
+function getCategoryStyle(categoryLabel: string, lang: Parameters<typeof getServices>[0]): string {
+  const labels = CATEGORY_LABELS[lang];
+  for (const [id, label] of Object.entries(labels)) {
+    if (label === categoryLabel) return CATEGORY_STYLE_MAP[id] ?? "bg-[#F2EDE5] text-[#7A746E]";
+  }
+  return "bg-[#F2EDE5] text-[#7A746E]";
 }
 
-export default function ServicesSection() {
-  const { t } = useLanguage();
-  const [activeFilter, setActiveFilter] = useState<FilterTag>("Vis alle");
+const DEFAULT_VISIBLE = 6;
 
-  const filtered = useMemo(() => {
-    if (activeFilter === "Vis alle") return SERVICES;
-    return SERVICES.filter((s) => s.tags.includes(activeFilter));
-  }, [activeFilter]);
+export default function ServicesSection() {
+  const { t, lang } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState<DisplayFilter>("all");
+  const [showAll, setShowAll] = useState(false);
+  const filterRef = useRef<HTMLDivElement>(null);
+
+  const services = useMemo(() => getServices(lang), [lang]);
+  const filterLabels = DISPLAY_FILTER_LABELS[lang];
+
+  const filtered = useMemo(() => filterServices(services, activeFilter), [activeFilter, services]);
+
+  const displayedServices = activeFilter === "all" && !showAll
+    ? filtered.slice(0, DEFAULT_VISIBLE)
+    : filtered;
+
+  const hasMore = activeFilter === "all" && !showAll && filtered.length > DEFAULT_VISIBLE;
+
+  function handleFilterClick(filter: DisplayFilter) {
+    setActiveFilter(filter);
+    setShowAll(false);
+  }
+
+  function scrollToFilters() {
+    filterRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   return (
     <section id="tjenester" className="bg-[#FAFAF8] py-16 md:py-24 px-6">
@@ -36,33 +60,31 @@ export default function ServicesSection() {
           <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-light tracking-wide text-[#1A1A1A] mb-4 md:mb-5">
             {t.services.heading}
           </h2>
-          <p className="text-[16px] md:text-[17px] text-[#4A4540] font-normal max-w-2xl leading-relaxed">
+          <p className="text-[15px] text-[#4A4540] font-normal max-w-2xl leading-relaxed">
             {t.services.intro}
           </p>
         </div>
 
         {/* Filter chips */}
-        <div className="mb-8 md:mb-10">
+        <div ref={filterRef} className="mb-8 md:mb-10 scroll-mt-24">
           <div className="flex flex-wrap gap-2">
-            {FILTER_TAGS.map((tag) => {
-              const isActive = activeFilter === tag;
-              const count =
-                tag === "Vis alle"
-                  ? SERVICES.length
-                  : SERVICES.filter((s) => s.tags.includes(tag)).length;
-              const displayLabel = tag === "Vis alle" ? t.services.visAlle : tag;
+            {DISPLAY_FILTERS.map((filter) => {
+              const isActive = activeFilter === filter;
+              const count = filter === "all"
+                ? services.length
+                : filterServices(services, filter).length;
 
               return (
                 <button
-                  key={tag}
-                  onClick={() => setActiveFilter(tag)}
+                  key={filter}
+                  onClick={() => handleFilterClick(filter)}
                   className={`flex-none flex items-center gap-1.5 px-4 py-2.5 text-[13px] tracking-wide border transition-all whitespace-nowrap font-normal ${
                     isActive
                       ? "bg-[#1A1A1A] text-white border-[#1A1A1A]"
                       : "bg-white text-[#7A746E] border-[#E5DDD4] hover:border-[#C4A882] hover:text-[#1A1A1A]"
                   }`}
                 >
-                  {displayLabel}
+                  {filterLabels[filter]}
                   <span className="text-[11px] tabular-nums text-[#C4A882]">
                     {count}
                   </span>
@@ -72,13 +94,13 @@ export default function ServicesSection() {
           </div>
 
           {/* Active filter summary */}
-          {activeFilter !== "Vis alle" && (
+          {activeFilter !== "all" && (
             <div className="mt-4 flex items-center gap-3 flex-wrap">
               <span className="text-[15px] text-[#5C5650] font-normal">
-                {t.services.activeFilterText(filtered.length, activeFilter)}
+                {t.services.activeFilterText(filtered.length, filterLabels[activeFilter])}
               </span>
               <button
-                onClick={() => setActiveFilter("Vis alle")}
+                onClick={() => { setActiveFilter("all"); setShowAll(false); }}
                 className="text-[13px] text-[#C4A882] underline underline-offset-2 hover:text-[#1A1A1A] transition-colors font-normal"
               >
                 {t.services.reset}
@@ -88,16 +110,16 @@ export default function ServicesSection() {
         </div>
 
         {/* Service cards */}
-        {filtered.length > 0 ? (
+        {displayedServices.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-            {filtered.map((service, i) => (
+            {displayedServices.map((service, i) => (
               <div
                 key={`${service.title}-${i}`}
                 className="bg-white border border-[#E5DDD4] flex flex-col hover:border-[#C4A882] hover:shadow-sm transition-all group"
               >
                 <div className="px-5 pt-5 pb-4 md:px-6 md:pt-6 flex-1">
                   <span
-                    className={`inline-block text-[11px] tracking-[0.15em] uppercase px-2 py-1 mb-3 font-normal ${getCategoryStyle(service.category)}`}
+                    className={`inline-block text-[11px] tracking-[0.15em] uppercase px-2 py-1 mb-3 font-normal ${getCategoryStyle(service.category, lang)}`}
                   >
                     {service.category}
                   </span>
@@ -130,8 +152,36 @@ export default function ServicesSection() {
           </div>
         )}
 
+        {/* Show more / Back to filters */}
+        {hasMore && (
+          <div className="mt-6 text-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="px-8 py-3 text-[13px] tracking-[0.15em] uppercase border border-[#E5DDD4] text-[#5C5650] hover:border-[#C4A882] hover:text-[#1A1A1A] transition-all font-normal"
+            >
+              {t.services.visAlle} ({filtered.length})
+            </button>
+          </div>
+        )}
+
+        {(showAll || activeFilter !== "all") && displayedServices.length > DEFAULT_VISIBLE && (
+          <div className="mt-6 text-center">
+            <button
+              onClick={scrollToFilters}
+              className="text-[13px] text-[#C4A882] underline underline-offset-2 hover:text-[#1A1A1A] transition-colors font-normal"
+            >
+              {t.services.backToFilters}
+            </button>
+          </div>
+        )}
+
+        {/* Price note */}
+        <p className="mt-6 text-[13px] text-[#5C5650]/70 font-normal text-center">
+          {t.services.priceNote}
+        </p>
+
         {/* Bottom CTA */}
-        <div className="mt-10 md:mt-12 pt-8 md:pt-10 border-t border-[#E5DDD4] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 md:gap-6">
+        <div className="mt-8 md:mt-10 pt-8 md:pt-10 border-t border-[#E5DDD4] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 md:gap-6">
           <div>
             <p className="text-[15px] font-normal text-[#1A1A1A] mb-1">
               {t.services.unsureHeading}

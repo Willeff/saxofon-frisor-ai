@@ -1,12 +1,9 @@
 import HeroSection from "./components/HeroSection";
-import AssistantChat from "./components/AssistantChat";
-import TrustSection from "./components/TrustSection";
-import WhySection from "./components/WhySection";
-import ServicesSection from "./components/ServicesSection";
-import AboutSection from "./components/AboutSection";
-import BrandsSection from "./components/BrandsSection";
-import ReviewsSection from "./components/ReviewsSection";
-import ContactSection from "./components/ContactSection";
+import TrustPreview from "./components/TrustPreview";
+import ServicesPreview from "./components/ServicesPreview";
+import ReviewsPreview from "./components/ReviewsPreview";
+import MiniFAQ from "./components/MiniFAQ";
+import ContactPreview from "./components/ContactPreview";
 import FooterSection from "./components/FooterSection";
 import FloatingChat from "./components/FloatingChat";
 
@@ -14,14 +11,11 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <AssistantChat />
-      <TrustSection />
-      <WhySection />
-      <ServicesSection />
-      <AboutSection />
-      <BrandsSection />
-      <ReviewsSection />
-      <ContactSection />
+      <TrustPreview />
+      <ServicesPreview />
+      <ReviewsPreview />
+      <MiniFAQ />
+      <ContactPreview />
       <FooterSection />
       <FloatingChat />
     </main>

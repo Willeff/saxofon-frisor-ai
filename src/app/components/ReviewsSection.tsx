@@ -1,27 +1,6 @@
 "use client";
 
-const REVIEWS = [
-  {
-    name: "Maria S.",
-    location: "Oslo",
-    text: "Beste frisørsalong jeg har vært hos. Har brukt dem i over 10 år og er alltid fornøyd med resultatet.",
-  },
-  {
-    name: "Lena H.",
-    location: "Grünerløkka",
-    text: "Imponerende kompetanse med balayage. Min frisør forsto nøyaktig hva jeg ønsket – og leverte.",
-  },
-  {
-    name: "Kristoffer M.",
-    location: "Majorstuen",
-    text: "Rask og presis herreklipp. Hyggelig atmosfære og et veldig profesjonelt team.",
-  },
-  {
-    name: "Anne-Lise W.",
-    location: "Frogner",
-    text: "Alltid imøtekommende og dyktige. Har aldri vært misfornøyd. Anbefales på det sterkeste.",
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 const StarIcon = ({ className }: { className?: string }) => (
   <svg className={className ?? "w-3.5 h-3.5 text-[#C4A882]"} fill="currentColor" viewBox="0 0 20 20">
@@ -39,6 +18,9 @@ const GoogleG = ({ size = 14 }: { size?: number }) => (
 );
 
 export default function ReviewsSection() {
+  const { t } = useLanguage();
+  const r = t.reviews;
+
   return (
     <section className="bg-[#F7F4EF] border-t border-[#E5DDD4] py-16 md:py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -49,11 +31,11 @@ export default function ReviewsSection() {
             <div className="flex items-center gap-4 mb-4">
               <span className="block w-10 h-px bg-[#C4A882]/50" />
               <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] font-light">
-                Anmeldelser
+                {r.eyebrow}
               </p>
             </div>
             <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-light tracking-[0.02em] leading-[1.18] text-[#1A1A1A]">
-              Det kundene sier.
+              {r.heading}
             </h2>
           </div>
 
@@ -72,14 +54,14 @@ export default function ReviewsSection() {
             <div className="flex items-center gap-1.5">
               <GoogleG size={14} />
               <span className="text-[#1A1A1A] font-medium text-[15px]">4.9</span>
-              <span className="text-[#5C5650] text-[15px] font-normal">· 681 anmeldelser</span>
+              <span className="text-[#5C5650] text-[15px] font-normal">· {r.reviewCount}</span>
             </div>
           </a>
         </div>
 
         {/* Review cards */}
         <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
-          {REVIEWS.map((review) => (
+          {r.items.map((review) => (
             <div
               key={review.name}
               className="bg-white border border-[#E5DDD4] px-6 py-6 md:px-7 md:py-7 flex flex-col gap-4"
@@ -93,7 +75,7 @@ export default function ReviewsSection() {
 
               {/* Quote */}
               <p className="text-[16px] text-[#2A2520] font-normal leading-relaxed flex-1">
-                «{review.text}»
+                &laquo;{review.text}&raquo;
               </p>
 
               {/* Attribution */}

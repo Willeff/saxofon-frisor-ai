@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 
 const GoogleG = ({ size = 14 }: { size?: number }) => (
@@ -42,20 +43,45 @@ export default function AboutSection() {
       />
 
       <div className="relative max-w-5xl mx-auto">
-        {/* Header */}
-        <div className="mb-14 md:mb-20 max-w-xl">
-          <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-4">
-            {a.eyebrow}
-          </p>
-          <h2 className="text-[clamp(1.75rem,4vw,2.9rem)] font-light tracking-wide text-white leading-[1.2] mb-6 whitespace-pre-line">
-            {a.heading}
-          </h2>
-          <p className="text-[16px] md:text-[17px] text-white/65 font-normal leading-[1.8] mb-4">
-            {a.body}
-          </p>
-          <p className="text-[16px] md:text-[17px] text-white/65 font-normal leading-[1.8]">
-            {a.body2}
-          </p>
+        {/* Header + Image */}
+        <div className="mb-14 md:mb-20 flex flex-col lg:flex-row lg:items-start lg:gap-14">
+          {/* Text – left */}
+          <div className="lg:flex-1 max-w-xl">
+            <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-4">
+              {a.eyebrow}
+            </p>
+            <h2 className="text-[clamp(1.75rem,4vw,2.9rem)] font-light tracking-wide text-white leading-[1.2] mb-6 whitespace-pre-line">
+              {a.heading}
+            </h2>
+            <p className="text-[16px] md:text-[17px] text-white/65 font-normal leading-[1.8] mb-4">
+              {a.body}
+            </p>
+            <p className="text-[16px] md:text-[17px] text-white/65 font-normal leading-[1.8]">
+              {a.body2}
+            </p>
+          </div>
+
+          {/* Image – right */}
+          <div className="mt-10 lg:mt-0 lg:w-[480px] flex-none">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden ring-1 ring-white/[0.06]">
+              <Image
+                src="/saxofon-hero.jpg"
+                alt="Saxofon Frisør salong"
+                fill
+                className="object-cover object-center brightness-[0.85] contrast-[1.05]"
+                sizes="(max-width: 1024px) 100vw, 480px"
+              />
+              {/* Subtle warm overlay */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(15,15,15,0.45) 0%, transparent 40%)",
+                }}
+              />
+            </div>
+          </div>
         </div>
 
         {/* Stats grid */}

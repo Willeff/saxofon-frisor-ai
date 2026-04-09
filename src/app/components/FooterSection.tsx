@@ -31,7 +31,7 @@ export default function FooterSection() {
                 alt="Saxoføn Frisør"
                 width={190}
                 height={124}
-                className="h-[48px] md:h-[58px] w-auto"
+                className="h-[58px] md:h-[72px] w-auto"
               />
             </div>
 
@@ -59,49 +59,17 @@ export default function FooterSection() {
 
             {/* Social icons */}
             <div className="flex items-center gap-5">
-              <a
-                href="https://www.facebook.com/saxofonfrisor"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="text-white/40 hover:text-white transition-colors"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-                </svg>
+              <a href="https://www.facebook.com/saxofonfrisor" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="transition-transform hover:scale-110">
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#1877F2" /><path d="M16.5 12.75h-2.25V18h-3v-5.25H9.75v-2.5h1.5V8.5c0-1.66 1-3 3.25-3H16v2.5h-1.25c-.55 0-.75.28-.75.7v1.55h2.25l-.75 2.5z" fill="#fff" /></svg>
               </a>
-              <a
-                href="https://www.instagram.com/saxofonfrisoer?igsh=eG1uNndzazUydGF5"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-white/40 hover:text-white transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                  <rect x="2" y="2" width="20" height="20" rx="5"/>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" strokeWidth="2.5"/>
-                </svg>
+              <a href="https://www.instagram.com/saxofonfrisoer?igsh=eG1uNndzazUydGF5" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-transform hover:scale-110">
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none"><defs><radialGradient id="ig-grad-footer" cx="30%" cy="107%" r="150%"><stop offset="0%" stopColor="#fdf497" /><stop offset="5%" stopColor="#fdf497" /><stop offset="45%" stopColor="#fd5949" /><stop offset="60%" stopColor="#d6249f" /><stop offset="90%" stopColor="#285AEB" /></radialGradient></defs><rect width="24" height="24" rx="5" fill="url(#ig-grad-footer)" /><rect x="4.5" y="4.5" width="15" height="15" rx="4" stroke="#fff" strokeWidth="1.5" fill="none" /><circle cx="12" cy="12" r="3.5" stroke="#fff" strokeWidth="1.5" fill="none" /><circle cx="16.5" cy="7.5" r="1" fill="#fff" /></svg>
               </a>
-              <a
-                href="https://www.tiktok.com/@saxfoon"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="TikTok"
-                className="text-white/40 hover:text-white transition-colors"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/>
-                </svg>
+              <a href="https://www.tiktok.com/@saxfoon" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="transition-transform hover:scale-110">
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#010101" stroke="white" strokeWidth="0.5" /><path d="M16.5 5.5h-1.2v8.2a2.8 2.8 0 11-2.8-2.8c.2 0 .4 0 .6.1v1.6c-.2-.1-.4-.1-.6-.1a1.2 1.2 0 100 2.4c.7 0 1.3-.5 1.3-1.3V5.5h1.3c.1 1.4 1.2 2.5 2.6 2.6v1.6c-1-.1-1.9-.5-2.6-1.1v5.1A4.4 4.4 0 0111 18a4.4 4.4 0 01-4.3-4.3A4.4 4.4 0 0111 9.4v1.7a2.8 2.8 0 00-2.7 2.7 2.8 2.8 0 002.8 2.8c1.5 0 2.8-1.2 2.8-2.8V5.5h2.6z" fill="#fff" /><path d="M16.5 5.5c.1 1.4 1.2 2.5 2.6 2.6v1.6c-1-.1-1.9-.5-2.6-1.1" stroke="#25F4EE" strokeWidth="0.3" fill="none" /><path d="M13.9 13.7a2.8 2.8 0 01-2.8 2.5 2.8 2.8 0 01-2.8-2.8" stroke="#FE2C55" strokeWidth="0.3" fill="none" /></svg>
               </a>
-              <a
-                href="https://g.page/saxofonfrisor"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google"
-                className="opacity-50 hover:opacity-100 transition-opacity"
-              >
-                <GoogleG size={18} />
+              <a href="https://g.page/saxofonfrisor" target="_blank" rel="noopener noreferrer" aria-label="Google" className="transition-transform hover:scale-110">
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#222" stroke="white/20" strokeWidth="0.5" /><path d="M18.82 12.1c0-.46-.04-.9-.12-1.33H12v2.51h3.84a3.28 3.28 0 01-1.42 2.15v1.79h2.3c1.35-1.24 2.1-3.07 2.1-5.12z" fill="#4285F4" /><path d="M12 19.5c1.93 0 3.54-.64 4.72-1.73l-2.3-1.79c-.64.43-1.46.68-2.42.68-1.86 0-3.43-1.26-3.99-2.94H5.63v1.85A7.13 7.13 0 0012 19.5z" fill="#34A853" /><path d="M8.01 13.72A4.28 4.28 0 017.78 12c0-.6.1-.93.23-1.36V8.79H5.63A7.13 7.13 0 004.87 12c0 1.15.28 2.24.76 3.21l2.38-1.49z" fill="#FBBC05" /><path d="M12 7.7c1.05 0 1.99.36 2.73 1.07l2.05-2.05A7.06 7.06 0 0012 4.5a7.13 7.13 0 00-6.37 3.93l2.38 1.85C8.57 8.96 10.14 7.7 12 7.7z" fill="#EA4335" /></svg>
               </a>
             </div>
           </div>
@@ -161,7 +129,7 @@ export default function FooterSection() {
               © {new Date().getFullYear()} Saxoføn Frisør. {t.footer.rights}
             </p>
             <p className="text-[13px] text-white/35 font-normal">
-              Utviklet av{" "}
+              {t.footer.developedBy}{" "}
               <a
                 href="https://eleviad.no"
                 target="_blank"

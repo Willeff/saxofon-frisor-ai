@@ -52,7 +52,7 @@ export default function ContactSection() {
             <h2 className="text-[clamp(1.75rem,4vw,2.9rem)] font-light tracking-wide text-white leading-[1.2] mb-6 whitespace-pre-line">
               {c.heading}
             </h2>
-            <p className="text-[16px] md:text-[17px] text-white/65 font-normal leading-[1.8] max-w-md">
+            <p className="text-[16px] md:text-[17px] text-white/85 font-normal leading-[1.8] max-w-md">
               {c.body}
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function ContactSection() {
               <p className="text-[12px] tracking-[0.25em] uppercase text-[#C4A882] mb-3">
                 {c.book}
               </p>
-              <p className="text-[15px] text-white/50 font-normal mb-6 leading-relaxed">
+              <p className="text-[15px] text-white/75 font-normal mb-6 leading-relaxed">
                 {c.bookSub}
               </p>
               <a
@@ -88,7 +88,7 @@ export default function ContactSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                 </svg>
               </div>
-              <p className="text-[12px] tracking-[0.2em] uppercase text-white/40 font-normal">
+              <p className="text-[12px] tracking-[0.2em] uppercase text-white/60 font-normal">
                 {c.phone}
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function ContactSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
               </div>
-              <p className="text-[12px] tracking-[0.2em] uppercase text-white/40 font-normal">
+              <p className="text-[12px] tracking-[0.2em] uppercase text-white/60 font-normal">
                 {c.email}
               </p>
             </div>
@@ -129,7 +129,7 @@ export default function ContactSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                 </svg>
               </div>
-              <p className="text-[12px] tracking-[0.2em] uppercase text-white/40 font-normal">
+              <p className="text-[12px] tracking-[0.2em] uppercase text-white/60 font-normal">
                 {c.address}
               </p>
             </div>
@@ -151,15 +151,15 @@ export default function ContactSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <p className="text-[12px] tracking-[0.2em] uppercase text-white/40 font-normal">
+              <p className="text-[12px] tracking-[0.2em] uppercase text-white/60 font-normal">
                 {c.hours}
               </p>
             </div>
             <ul className="space-y-1.5">
               {c.days.map(({ day, time }) => (
                 <li key={day} className="flex justify-between gap-4 text-[15px]">
-                  <span className="text-white/70 font-normal">{day}</span>
-                  <span className="text-white/40 font-normal">{time}</span>
+                  <span className="text-white/85 font-normal">{day}</span>
+                  <span className="text-white/60 font-normal">{time}</span>
                 </li>
               ))}
             </ul>
@@ -176,7 +176,7 @@ export default function ContactSection() {
             ))}
           </div>
           <GoogleG size={13} />
-          <span className="text-white/50 text-[14px] font-normal">
+          <span className="text-white/75 text-[14px] font-normal">
             {c.trustLine}
           </span>
         </div>

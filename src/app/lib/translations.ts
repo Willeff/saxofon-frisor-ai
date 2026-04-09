@@ -17,7 +17,7 @@ export const translations = {
       book: "Bestill time",
     },
     hero: {
-      eyebrow: "Frisørsalong · Sentrale Oslo",
+      eyebrow: "Frisør i Oslo",
       headlineL1: "En av Oslos best vurderte",
       headlineL2: "frisørsalonger.",
       subtitle:
@@ -41,25 +41,25 @@ export const translations = {
       greeting:
         "Hei! Spør meg om tjenester, priser, åpningstider eller hva som passer best for ditt hår og dine ønsker.",
       suggestions: [
-        "Hva er åpningstidene?",
         "Tilbyr dere balayage?",
-        "Har dere behandlinger for menn?",
+        "Hva anbefaler dere for skadet hår?",
+        "Hva koster det?",
+        "Har dere keratin-behandling?",
+        "Hva har dere for menn?",
         "Hva passer for tynt hår?",
-        "Hvor ligger dere?",
-        "Hva bør jeg velge hvis jeg vil ha lite vedlikehold?",
       ],
     },
     trust: {
       eyebrow: "Om salongen",
-      heading: "Over 15 år med erfaring\nog fornøyde kunder.",
+      heading: "Over 17 år med erfaring\nog fornøyde kunder.",
       body1:
-        "Saxoføn Frisør er en etablert salong med høy faglig standard, personlig service og et oppriktig øre for det du ønsker. Vi er godkjent lærebedrift i Oslo og Akershus, og holder oss kontinuerlig oppdatert på teknikk og trender.",
+        "Saxoføn Frisør er en etablert salong med høy faglig standard og personlig service. Vi er godkjent lærebedrift og holder oss oppdatert på teknikk og trender.",
       body2:
-        "Hver kunde behandles individuelt. Resultatet tilpasses ditt hår, din livsstil og din stil – ikke omvendt.",
+        "Resultatet tilpasses ditt hår, din livsstil og din stil – ikke omvendt.",
       stats: [
         { value: "4.9", unit: "/ 5", label: "på Google", sub: "Gjennomsnittlig rating" },
         { value: "681", unit: "+", label: "anmeldelser", sub: "Verifiserte Google-vurderinger" },
-        { value: "15", unit: " år", label: "erfaring", sub: "Etablert i sentrale Oslo" },
+        { value: "17", unit: " år", label: "erfaring", sub: "Etablert i sentrale Oslo" },
       ],
     },
     why: {
@@ -94,7 +94,7 @@ export const translations = {
       eyebrow: "Tjenester",
       heading: "Våre tjenester",
       intro:
-        "Våre tjenester dekker alt fra klassiske dame- og herreklipp til moderne teknikker som balayage og styling. Våre erfarne frisører skreddersyr behandlingen etter din personlige stil, slik at du alltid får et resultat du elsker.",
+        "Fra klassiske klipp til balayage og keratin – velg kategori for å se priser og bestill direkte.",
       viewPriceList: "Se full prisliste",
       visAlle: "Vis alle",
       unsureHeading: "Usikker på hva du trenger?",
@@ -107,6 +107,7 @@ export const translations = {
       noResults: "Ingen tjenester funnet for dette filteret.",
       bookCard: "Bestill",
       priceNote: "Alle priser er veiledende. Endelig pris avklares under konsultasjon.",
+      backToFilters: "Tilbake til filtre",
     },
     recommendation: {
       eyebrow: "Finn din behandling",
@@ -138,7 +139,18 @@ export const translations = {
     brands: {
       eyebrow: "Profesjonelle merker",
       heading: "Merker vi jobber med",
-      body: "Vi bruker kun profesjonelle produkter valgt for kvalitet, sikkerhet og resultater. Merkene vi jobber med er anerkjente i bransjen og gir oss verktøyene vi trenger for å levere det beste til hvert hår.",
+      body: "Vi bruker kun profesjonelle produkter valgt for kvalitet og resultater.",
+    },
+    reviews: {
+      eyebrow: "Anmeldelser",
+      heading: "Det kundene sier.",
+      reviewCount: "681 anmeldelser",
+      items: [
+        { name: "Maria S.", location: "Oslo", text: "Beste frisørsalong jeg har vært hos. Har brukt dem i over 10 år og er alltid fornøyd med resultatet." },
+        { name: "Lena H.", location: "Grünerløkka", text: "Imponerende kompetanse med balayage. Min frisør forsto nøyaktig hva jeg ønsket – og leverte." },
+        { name: "Kristoffer M.", location: "Majorstuen", text: "Rask og presis herreklipp. Hyggelig atmosfære og et veldig profesjonelt team." },
+        { name: "Anne-Lise W.", location: "Frogner", text: "Alltid imøtekommende og dyktige. Har aldri vært misfornøyd. Anbefales på det sterkeste." },
+      ],
     },
     about: {
       eyebrow: "Om oss",
@@ -146,7 +158,7 @@ export const translations = {
       body: "Saxoføn Frisør er en salong i sentrale Oslo bygget på godt håndverk og personlig service. Vi tilbyr dameklipp, herreklipp, balayage, hårfarge og styling – tilpasset ditt hår og din stil.",
       body2: "Som godkjent lærebedrift investerer vi i faglig utvikling og nye teknikker, slik at du alltid møter frisører som holder høy standard.",
       stats: [
-        { value: "15+", label: "års erfaring" },
+        { value: "17+", label: "års erfaring" },
         { value: "4.9", label: "på Google" },
         { value: "681", label: "anmeldelser" },
         { value: "✓", label: "Godkjent lærebedrift" },
@@ -156,7 +168,7 @@ export const translations = {
     contactSection: {
       eyebrow: "Kontakt oss",
       heading: "Vi ser frem til\nå høre fra deg.",
-      body: "Bestill time online, ring oss direkte eller stikk innom salongen i Fredensborgveien. Vi hjelper deg gjerne med å finne riktig behandling – enten det gjelder dameklipp, herreklipp, balayage eller hårfarge.",
+      body: "Bestill time online, ring oss direkte eller stikk innom salongen. Vi hjelper deg med å finne riktig behandling.",
       book: "Bestill time",
       bookSub: "Velg tid og behandling direkte i kalenderen vår.",
       phone: "Ring oss",
@@ -177,7 +189,7 @@ export const translations = {
     },
     footer: {
       tagline: "Moderne frisørsalong i hjertet av Oslo.\nFor kvinner og menn som verdsetter kvalitet.",
-      seoText: "Saxoføn Frisør er en frisørsalong i Oslo som tilbyr dameklipp, herreklipp, balayage, hårfarge og hårbehandlinger. Salongen ligger sentralt på Fredensborgveien 22 og bygger på over 15 års erfaring, med 4.9 i Google-rating og 681 anmeldelser.",
+      seoText: "Saxoføn Frisør er en frisørsalong i Oslo som tilbyr dameklipp, herreklipp, balayage, hårfarge og hårbehandlinger. Salongen ligger sentralt på Fredensborgveien 22 og bygger på over 17 års erfaring, med 4.9 i Google-rating og 681 anmeldelser.",
       contact: "Kontakt",
       hours: "Åpningstider",
       address: "Fredensborgveien 22, Oslo",
@@ -186,8 +198,29 @@ export const translations = {
         { day: "Søndag", time: "Stengt" },
       ],
       rights: "Alle rettigheter forbeholdt.",
+      developedBy: "Utviklet av",
       book: "Bestill time",
       reviews: "anmeldelser",
+    },
+    preview: {
+      readMore: "Les mer om oss",
+      allServices: "Se alle tjenester",
+      allReviews: "Se alle anmeldelser",
+      contactUs: "Kontakt oss",
+    },
+    faq: {
+      eyebrow: "Vanlige spørsmål",
+      heading: "Har du spørsmål?",
+      book: "Bestill time",
+      cta: "Finner du ikke svar? Ta kontakt – vi hjelper gjerne.",
+      items: [
+        { q: "Må jeg bestille time på forhånd?", a: "Vi anbefaler å bestille time for å sikre deg en plass, men drop-in er velkommen hvis vi har ledig kapasitet. Bestill enkelt via nettsiden vår." },
+        { q: "Hva er forskjellen på balayage og striper?", a: "Striper gir en jevn lyshet med kontrast, mens balayage gir en mykere, solkysst effekt som vokser naturlig ut. Balayage krever sjeldnere vedlikehold. Vi hjelper deg gjerne med å velge." },
+        { q: "Hvordan vet jeg hvilken behandling jeg skal velge?", a: "Vi tilbyr gratis konsultasjon der vi vurderer håret ditt og anbefaler behandling basert på dine ønsker, hårtype og livsstil." },
+        { q: "Tilbyr dere behandlinger for både kvinner og menn?", a: "Ja! Vi har et bredt utvalg for begge – fra klassiske klipp og styling til farge, balayage og keratin-behandling." },
+        { q: "Hva gjør jeg hvis håret er skadet etter bleking?", a: "Vi anbefaler en proteinbehandling eller keratin-behandling som gjenoppbygger hårstrukturen. Bestill en konsultasjon så vi kan vurdere tilstanden og anbefale riktig pleie." },
+        { q: "Kan jeg kontakte dere hvis jeg er usikker på hva jeg skal bestille?", a: "Absolutt! Ring oss på 455 55 898 eller bruk chat-assistenten her på siden. Vi hjelper deg med å finne riktig behandling." },
+      ],
     },
     floating: {
       open: "Spør assistenten",
@@ -208,7 +241,7 @@ export const translations = {
       book: "Book now",
     },
     hero: {
-      eyebrow: "Hair Salon · Central Oslo",
+      eyebrow: "Hairdresser in Oslo",
       headlineL1: "Among Oslo's highest-rated",
       headlineL2: "hair salons.",
       subtitle:
@@ -232,25 +265,25 @@ export const translations = {
       greeting:
         "Hi! Ask me about services, prices, opening hours or what suits your hair best.",
       suggestions: [
-        "What are your opening hours?",
         "Do you offer balayage?",
-        "Do you have treatments for men?",
+        "What do you recommend for damaged hair?",
+        "How much does it cost?",
+        "Do you offer keratin treatment?",
+        "What do you have for men?",
         "What suits thin hair?",
-        "Where are you located?",
-        "What should I choose for low maintenance?",
       ],
     },
     trust: {
       eyebrow: "About the salon",
-      heading: "Over 15 years of experience\nand satisfied customers.",
+      heading: "Over 17 years of experience\nand satisfied customers.",
       body1:
-        "Saxoføn Frisør is an established salon with high professional standards, personal service and a genuine ear for what you want. We are an approved apprenticeship centre in Oslo and Akershus, and continuously stay up to date on techniques and trends.",
+        "Saxoføn Frisør is an established salon with high professional standards and personal service. We are an approved apprenticeship centre and stay up to date on techniques and trends.",
       body2:
-        "Every customer is treated individually. The result is tailored to your hair, your lifestyle and your style – not the other way around.",
+        "The result is tailored to your hair, your lifestyle and your style – not the other way around.",
       stats: [
         { value: "4.9", unit: "/ 5", label: "on Google", sub: "Average rating" },
         { value: "681", unit: "+", label: "reviews", sub: "Verified Google reviews" },
-        { value: "15", unit: " yrs", label: "experience", sub: "Established in central Oslo" },
+        { value: "17", unit: " yrs", label: "experience", sub: "Established in central Oslo" },
       ],
     },
     why: {
@@ -285,7 +318,7 @@ export const translations = {
       eyebrow: "Services",
       heading: "Our services",
       intro:
-        "Our services range from classic women's and men's cuts to modern techniques such as balayage and styling. Our experienced stylists tailor every treatment to your personal style, so you always leave with a result you love.",
+        "From classic cuts to balayage and keratin – choose a category to see prices and book directly.",
       viewPriceList: "View full price list",
       visAlle: "Show all",
       unsureHeading: "Not sure what you need?",
@@ -298,6 +331,7 @@ export const translations = {
       noResults: "No services found for this filter.",
       bookCard: "Book",
       priceNote: "All prices are indicative. Final price confirmed during consultation.",
+      backToFilters: "Back to filters",
     },
     recommendation: {
       eyebrow: "Find your treatment",
@@ -329,7 +363,18 @@ export const translations = {
     brands: {
       eyebrow: "Professional brands",
       heading: "Brands we work with",
-      body: "We use only professional products selected for quality, safety and results. The brands we work with are recognised across the industry and give us the tools to deliver the best for every hair type.",
+      body: "We use only professional products selected for quality and results.",
+    },
+    reviews: {
+      eyebrow: "Reviews",
+      heading: "What our clients say.",
+      reviewCount: "681 reviews",
+      items: [
+        { name: "Maria S.", location: "Oslo", text: "The best hair salon I've been to. I've been coming here for over 10 years and I'm always happy with the result." },
+        { name: "Lena H.", location: "Grünerløkka", text: "Impressive expertise with balayage. My stylist understood exactly what I wanted – and delivered." },
+        { name: "Kristoffer M.", location: "Majorstuen", text: "Quick and precise men's cut. Great atmosphere and a very professional team." },
+        { name: "Anne-Lise W.", location: "Frogner", text: "Always welcoming and skilled. I've never been disappointed. Highly recommended." },
+      ],
     },
     about: {
       eyebrow: "About us",
@@ -337,7 +382,7 @@ export const translations = {
       body: "Saxoføn Frisør is a salon in central Oslo built on skilled craftsmanship and personal service. We offer women's cuts, men's cuts, balayage, hair colour and styling – tailored to your hair and your style.",
       body2: "As an approved apprenticeship centre we invest in professional development and new techniques, so you always meet stylists who hold a high standard.",
       stats: [
-        { value: "15+", label: "years of experience" },
+        { value: "17+", label: "years of experience" },
         { value: "4.9", label: "on Google" },
         { value: "681", label: "reviews" },
         { value: "✓", label: "Approved training centre" },
@@ -347,7 +392,7 @@ export const translations = {
     contactSection: {
       eyebrow: "Contact us",
       heading: "We look forward to\nhearing from you.",
-      body: "Book an appointment online, call us directly or drop by our salon on Fredensborgveien. We're happy to help you find the right treatment – whether it's a women's cut, men's cut, balayage or colour.",
+      body: "Book an appointment online, call us directly or drop by the salon. We'll help you find the right treatment.",
       book: "Book now",
       bookSub: "Choose a time and treatment directly in our calendar.",
       phone: "Call us",
@@ -368,7 +413,7 @@ export const translations = {
     },
     footer: {
       tagline: "Modern hair salon in the heart of Oslo.\nFor women and men who value quality.",
-      seoText: "Hair salon in Oslo – women's cuts, men's cuts, balayage, hair colour and treatments. Centrally located with over 15 years of experience.",
+      seoText: "Hair salon in Oslo – women's cuts, men's cuts, balayage, hair colour and treatments. Centrally located with over 17 years of experience.",
       contact: "Contact",
       hours: "Opening hours",
       address: "Fredensborgveien 22, Oslo",
@@ -377,8 +422,29 @@ export const translations = {
         { day: "Sunday", time: "Closed" },
       ],
       rights: "All rights reserved.",
+      developedBy: "Developed by",
       book: "Book now",
       reviews: "reviews",
+    },
+    preview: {
+      readMore: "Read more about us",
+      allServices: "See all services",
+      allReviews: "See all reviews",
+      contactUs: "Contact us",
+    },
+    faq: {
+      eyebrow: "FAQ",
+      heading: "Got questions?",
+      book: "Book now",
+      cta: "Can't find your answer? Get in touch – we're happy to help.",
+      items: [
+        { q: "Do I need to book in advance?", a: "We recommend booking to secure your slot, but walk-ins are welcome if we have availability. Book easily via our website." },
+        { q: "What's the difference between balayage and highlights?", a: "Highlights give an even brightness with contrast, while balayage creates a softer, sun-kissed effect that grows out naturally. Balayage requires less frequent touch-ups." },
+        { q: "How do I know which treatment to choose?", a: "We offer free consultations where we assess your hair and recommend a treatment based on your wishes, hair type and lifestyle." },
+        { q: "Do you offer treatments for both women and men?", a: "Yes! We have a wide range for everyone – from classic cuts and styling to colour, balayage and keratin treatments." },
+        { q: "What should I do if my hair is damaged after bleaching?", a: "We recommend a protein or keratin treatment that rebuilds hair structure. Book a consultation so we can assess the condition and recommend the right care." },
+        { q: "Can I contact you if I'm unsure what to book?", a: "Absolutely! Call us on +47 455 55 898 or use the chat assistant on this page. We'll help you find the right treatment." },
+      ],
     },
     floating: {
       open: "Ask the assistant",
@@ -399,7 +465,7 @@ export const translations = {
       book: "احجز موعداً",
     },
     hero: {
-      eyebrow: "صالون تجميل · وسط أوسلو",
+      eyebrow: "صالون في أوسلو",
       headlineL1: "من أعلى صالونات أوسلو",
       headlineL2: "تقييماً.",
       subtitle:
@@ -423,25 +489,25 @@ export const translations = {
       greeting:
         "مرحباً! اسألني عن الخدمات أو الأسعار أو مواعيد العمل أو ما يناسب شعرك.",
       suggestions: [
-        "ما هي مواعيد العمل؟",
-        "هل تقدمون خدمة البالياج؟",
-        "هل تقدمون خدمات للرجال؟",
+        "هل تقدمون البالياج؟",
+        "ماذا تنصحون للشعر التالف؟",
+        "كم التكلفة؟",
+        "هل تقدمون علاج الكيراتين؟",
+        "ماذا لديكم للرجال؟",
         "ما المناسب للشعر الخفيف؟",
-        "أين يقع الصالون؟",
-        "ما الأفضل للشعر الذي يحتاج صيانة قليلة؟",
       ],
     },
     trust: {
       eyebrow: "عن الصالون",
-      heading: "أكثر من 15 عاماً من الخبرة\nوالعملاء الراضين.",
+      heading: "أكثر من 17 عاماً من الخبرة\nوالعملاء الراضين.",
       body1:
-        "صالون Saxoføn Frisør صالون متميز بمعايير مهنية عالية، وخدمة شخصية، واهتمام حقيقي بما تريده. نحن مركز تدريب معتمد في أوسلو وأكرسهوس، ونحرص دائماً على مواكبة أحدث التقنيات والاتجاهات.",
+        "صالون Saxoføn Frisør متميز بمعايير مهنية عالية وخدمة شخصية. نحن مركز تدريب معتمد ونحرص على مواكبة أحدث التقنيات.",
       body2:
-        "كل عميل يُعامَل بشكل فردي. النتيجة تُصمَّم وفق شعرك وأسلوب حياتك وذوقك الخاص.",
+        "النتيجة تُصمَّم وفق شعرك وأسلوب حياتك وذوقك الخاص.",
       stats: [
         { value: "4.9", unit: "/ 5", label: "على Google", sub: "متوسط التقييم" },
         { value: "681", unit: "+", label: "تقييم", sub: "تقييمات Google الموثقة" },
-        { value: "15", unit: " عاماً", label: "خبرة", sub: "متأسس في وسط أوسلو" },
+        { value: "17", unit: " عاماً", label: "خبرة", sub: "متأسس في وسط أوسلو" },
       ],
     },
     why: {
@@ -476,7 +542,7 @@ export const translations = {
       eyebrow: "الخدمات",
       heading: "خدماتنا",
       intro:
-        "تشمل خدماتنا كل شيء من قصات الشعر الكلاسيكية للنساء والرجال إلى التقنيات الحديثة كالبالياج والتصفيف. يُخصص حلاقونا ذوو الخبرة كل علاج وفق أسلوبك الشخصي.",
+        "من القصات الكلاسيكية إلى البالياج والكيراتين – اختر فئة لعرض الأسعار والحجز مباشرة.",
       viewPriceList: "عرض قائمة الأسعار",
       visAlle: "عرض الكل",
       unsureHeading: "لست متأكداً من احتياجاتك؟",
@@ -488,6 +554,7 @@ export const translations = {
       noResults: "لم يتم العثور على خدمات لهذا الفلتر.",
       bookCard: "احجز",
       priceNote: "جميع الأسعار استرشادية. يتم تأكيد السعر النهائي خلال الاستشارة.",
+      backToFilters: "العودة إلى الفلاتر",
     },
     recommendation: {
       eyebrow: "ابحث عن علاجك",
@@ -519,7 +586,18 @@ export const translations = {
     brands: {
       eyebrow: "العلامات التجارية المهنية",
       heading: "العلامات التي نعمل معها",
-      body: "نستخدم فقط منتجات مهنية مختارة للجودة والسلامة والنتائج. العلامات التجارية التي نعمل معها معترف بها في الصناعة وتمنحنا الأدوات اللازمة لتقديم الأفضل لكل نوع شعر.",
+      body: "نستخدم فقط منتجات مهنية مختارة للجودة والنتائج.",
+    },
+    reviews: {
+      eyebrow: "التقييمات",
+      heading: "ماذا يقول عملاؤنا.",
+      reviewCount: "681 تقييم",
+      items: [
+        { name: "Maria S.", location: "أوسلو", text: "أفضل صالون تجميل زرته. أتردد عليه منذ أكثر من 10 سنوات وأنا دائماً راضية بالنتيجة." },
+        { name: "Lena H.", location: "غرونرلوكا", text: "كفاءة مذهلة في البالياج. فهم مصفف شعري بالضبط ما أريد – وحقق ذلك." },
+        { name: "Kristoffer M.", location: "ماجورستوين", text: "قصة رجالية سريعة ودقيقة. أجواء ممتعة وفريق محترف جداً." },
+        { name: "Anne-Lise W.", location: "فروغنر", text: "دائماً مرحبون وماهرون. لم أكن أبداً غير راضية. أنصح بهم بشدة." },
+      ],
     },
     about: {
       eyebrow: "عن الصالون",
@@ -527,7 +605,7 @@ export const translations = {
       body: "صالون Saxoføn Frisør هو صالون في وسط أوسلو مبني على الحرفية المتقنة والخدمة الشخصية. نقدم قصات نسائية ورجالية وبالياج وصبغة شعر وتصفيف – مصمم خصيصاً لشعرك وأسلوبك.",
       body2: "كمركز تدريب معتمد نستثمر في التطوير المهني والتقنيات الجديدة، لتلتقي دائماً بحلاقين يحافظون على أعلى المعايير.",
       stats: [
-        { value: "15+", label: "عاماً من الخبرة" },
+        { value: "17+", label: "عاماً من الخبرة" },
         { value: "4.9", label: "على Google" },
         { value: "681", label: "تقييم" },
         { value: "✓", label: "مركز تدريب معتمد" },
@@ -537,7 +615,7 @@ export const translations = {
     contactSection: {
       eyebrow: "اتصل بنا",
       heading: "نتطلع إلى\nالتواصل معك.",
-      body: "احجز موعداً عبر الإنترنت، اتصل بنا مباشرة أو قم بزيارة صالوننا في Fredensborgveien. يسعدنا مساعدتك في إيجاد العلاج المناسب – سواء كان قص شعر للنساء أو الرجال أو بالياج أو صبغة.",
+      body: "احجز موعداً عبر الإنترنت، اتصل بنا مباشرة أو قم بزيارة صالوننا. سنساعدك في إيجاد العلاج المناسب.",
       book: "احجز موعداً",
       bookSub: "اختر الوقت والعلاج مباشرة في تقويمنا.",
       phone: "اتصل بنا",
@@ -558,7 +636,7 @@ export const translations = {
     },
     footer: {
       tagline: "صالون تجميل عصري في قلب أوسلو.\nللنساء والرجال الذين يُقدّرون الجودة.",
-      seoText: "صالون تجميل في أوسلو – قصات النساء والرجال، بالياج، صباغة الشعر والعلاجات. موقع مركزي مع أكثر من 15 عاماً من الخبرة.",
+      seoText: "صالون تجميل في أوسلو – قصات النساء والرجال، بالياج، صباغة الشعر والعلاجات. موقع مركزي مع أكثر من 17 عاماً من الخبرة.",
       contact: "اتصل بنا",
       hours: "ساعات العمل",
       address: "Fredensborgveien 22, Oslo",
@@ -567,8 +645,29 @@ export const translations = {
         { day: "الأحد", time: "مغلق" },
       ],
       rights: "جميع الحقوق محفوظة.",
+      developedBy: "تم التطوير بواسطة",
       book: "احجز موعداً",
       reviews: "تقييم",
+    },
+    preview: {
+      readMore: "اقرأ المزيد عنا",
+      allServices: "عرض جميع الخدمات",
+      allReviews: "عرض جميع التقييمات",
+      contactUs: "اتصل بنا",
+    },
+    faq: {
+      eyebrow: "أسئلة شائعة",
+      heading: "هل لديك أسئلة؟",
+      book: "احجز موعداً",
+      cta: "لم تجد إجابتك؟ تواصل معنا – نحن سعداء بمساعدتك.",
+      items: [
+        { q: "هل أحتاج إلى حجز موعد مسبقاً؟", a: "ننصح بالحجز لضمان مكانك، لكن الزيارة بدون موعد مرحب بها إذا كانت لدينا أماكن متاحة." },
+        { q: "ما الفرق بين البالياج والخصلات؟", a: "الخصلات تعطي إضاءة متساوية بتباين واضح، بينما البالياج يعطي تأثيراً أنعم وأكثر طبيعية. البالياج يحتاج صيانة أقل." },
+        { q: "كيف أعرف أي علاج أختار؟", a: "نقدم استشارات مجانية نقيّم فيها شعرك ونوصي بالعلاج المناسب لرغباتك ونوع شعرك." },
+        { q: "هل تقدمون علاجات للنساء والرجال؟", a: "نعم! لدينا مجموعة واسعة للجميع – من القصات الكلاسيكية إلى الصبغة والبالياج والكيراتين." },
+        { q: "ماذا أفعل إذا تضرر شعري بعد التبييض؟", a: "نوصي بعلاج البروتين أو الكيراتين الذي يعيد بناء بنية الشعر. احجز استشارة لتقييم الحالة." },
+        { q: "هل يمكنني التواصل معكم إذا لم أكن متأكداً مما أحجز؟", a: "بالتأكيد! اتصل بنا على 455 55 898 أو استخدم مساعد الدردشة. سنساعدك في إيجاد العلاج المناسب." },
+      ],
     },
     floating: {
       open: "اسأل المساعد",
@@ -588,7 +687,7 @@ export const translations = {
       book: "Reservar cita",
     },
     hero: {
-      eyebrow: "Salón de peluquería · Centro de Oslo",
+      eyebrow: "Peluquería en Oslo",
       headlineL1: "Uno de los salones mejor",
       headlineL2: "valorados de Oslo.",
       subtitle:
@@ -612,25 +711,25 @@ export const translations = {
       greeting:
         "¡Hola! Pregúntame sobre servicios, precios, horarios o qué se adapta mejor a tu cabello.",
       suggestions: [
-        "¿Cuáles son los horarios?",
         "¿Ofrecéis balayage?",
-        "¿Tenéis tratamientos para hombres?",
+        "¿Qué recomendáis para cabello dañado?",
+        "¿Cuánto cuesta?",
+        "¿Ofrecéis tratamiento de keratina?",
+        "¿Qué tenéis para hombres?",
         "¿Qué va bien para el cabello fino?",
-        "¿Dónde estáis ubicados?",
-        "¿Qué recomendáis para poco mantenimiento?",
       ],
     },
     trust: {
       eyebrow: "Sobre el salón",
-      heading: "Más de 15 años de experiencia\ny clientes satisfechos.",
+      heading: "Más de 17 años de experiencia\ny clientes satisfechos.",
       body1:
-        "Saxoføn Frisør es un salón consolidado con altos estándares profesionales, servicio personalizado y atención genuina a lo que deseas. Somos centro de aprendizaje homologado en Oslo y Akershus, y nos mantenemos continuamente al día en técnicas y tendencias.",
+        "Saxoføn Frisør es un salón consolidado con altos estándares profesionales y servicio personalizado. Somos centro de aprendizaje homologado y nos mantenemos al día en técnicas y tendencias.",
       body2:
-        "Cada cliente recibe un trato individual. El resultado se adapta a tu cabello, tu estilo de vida y tus preferencias – no al revés.",
+        "El resultado se adapta a tu cabello, tu estilo de vida y tus preferencias – no al revés.",
       stats: [
         { value: "4,9", unit: "/ 5", label: "en Google", sub: "Valoración media" },
         { value: "681", unit: "+", label: "reseñas", sub: "Valoraciones verificadas de Google" },
-        { value: "15", unit: " años", label: "experiencia", sub: "Establecido en el centro de Oslo" },
+        { value: "17", unit: " años", label: "experiencia", sub: "Establecido en el centro de Oslo" },
       ],
     },
     why: {
@@ -665,7 +764,7 @@ export const translations = {
       eyebrow: "Servicios",
       heading: "Nuestros servicios",
       intro:
-        "Nuestros servicios abarcan desde cortes clásicos para mujeres y hombres hasta técnicas modernas como el balayage y el peinado. Nuestros estilistas con experiencia adaptan cada tratamiento a tu estilo personal para que siempre salgas con un resultado que te encante.",
+        "Desde cortes clásicos hasta balayage y keratina – elige una categoría para ver precios y reservar directamente.",
       viewPriceList: "Ver lista de precios completa",
       visAlle: "Ver todos",
       unsureHeading: "¿No sabes qué necesitas?",
@@ -678,6 +777,7 @@ export const translations = {
       noResults: "No se encontraron servicios para este filtro.",
       bookCard: "Reservar",
       priceNote: "Todos los precios son orientativos. El precio final se confirma durante la consulta.",
+      backToFilters: "Volver a los filtros",
     },
     recommendation: {
       eyebrow: "Encuentra tu tratamiento",
@@ -709,7 +809,18 @@ export const translations = {
     brands: {
       eyebrow: "Marcas profesionales",
       heading: "Las marcas con las que trabajamos",
-      body: "Utilizamos únicamente productos profesionales seleccionados por su calidad, seguridad y resultados. Las marcas con las que trabajamos son reconocidas en el sector y nos dan las herramientas para ofrecer lo mejor a cada tipo de cabello.",
+      body: "Utilizamos únicamente productos profesionales seleccionados por su calidad y resultados.",
+    },
+    reviews: {
+      eyebrow: "Reseñas",
+      heading: "Lo que dicen nuestros clientes.",
+      reviewCount: "681 reseñas",
+      items: [
+        { name: "Maria S.", location: "Oslo", text: "El mejor salón de peluquería en el que he estado. Llevo más de 10 años viniendo y siempre estoy contenta con el resultado." },
+        { name: "Lena H.", location: "Grünerløkka", text: "Competencia impresionante con el balayage. Mi estilista entendió exactamente lo que quería – y lo logró." },
+        { name: "Kristoffer M.", location: "Majorstuen", text: "Corte de caballero rápido y preciso. Ambiente agradable y un equipo muy profesional." },
+        { name: "Anne-Lise W.", location: "Frogner", text: "Siempre amables y competentes. Nunca he quedado insatisfecha. Muy recomendable." },
+      ],
     },
     about: {
       eyebrow: "Sobre nosotros",
@@ -717,7 +828,7 @@ export const translations = {
       body: "Saxoføn Frisør es un salón en el centro de Oslo construido sobre la artesanía y el servicio personalizado. Ofrecemos cortes de mujer, cortes de hombre, balayage, coloración y peinado – adaptado a tu cabello y a tu estilo.",
       body2: "Como centro de aprendizaje homologado invertimos en desarrollo profesional y nuevas técnicas, para que siempre encuentres estilistas que mantienen los más altos estándares.",
       stats: [
-        { value: "15+", label: "años de experiencia" },
+        { value: "17+", label: "años de experiencia" },
         { value: "4.9", label: "en Google" },
         { value: "681", label: "reseñas" },
         { value: "✓", label: "Centro de formación homologado" },
@@ -727,7 +838,7 @@ export const translations = {
     contactSection: {
       eyebrow: "Contacto",
       heading: "Estamos deseando\nsaber de ti.",
-      body: "Reserva una cita online, llámanos directamente o pásate por nuestro salón en Fredensborgveien. Estaremos encantados de ayudarte a encontrar el tratamiento adecuado – ya sea corte de mujer, corte de hombre, balayage o coloración.",
+      body: "Reserva una cita online, llámanos directamente o pásate por el salón. Te ayudaremos a encontrar el tratamiento adecuado.",
       book: "Reservar cita",
       bookSub: "Elige hora y tratamiento directamente en nuestro calendario.",
       phone: "Llámanos",
@@ -748,7 +859,7 @@ export const translations = {
     },
     footer: {
       tagline: "Salón de peluquería moderno en el corazón de Oslo.\nPara mujeres y hombres que valoran la calidad.",
-      seoText: "Peluquería en Oslo – cortes de mujer, cortes de hombre, balayage, coloración y tratamientos capilares. Ubicación céntrica con más de 15 años de experiencia.",
+      seoText: "Peluquería en Oslo – cortes de mujer, cortes de hombre, balayage, coloración y tratamientos capilares. Ubicación céntrica con más de 17 años de experiencia.",
       contact: "Contacto",
       hours: "Horario",
       address: "Fredensborgveien 22, Oslo",
@@ -757,8 +868,29 @@ export const translations = {
         { day: "Domingo", time: "Cerrado" },
       ],
       rights: "Todos los derechos reservados.",
+      developedBy: "Desarrollado por",
       book: "Reservar cita",
       reviews: "reseñas",
+    },
+    preview: {
+      readMore: "Más sobre nosotros",
+      allServices: "Ver todos los servicios",
+      allReviews: "Ver todas las reseñas",
+      contactUs: "Contacto",
+    },
+    faq: {
+      eyebrow: "Preguntas frecuentes",
+      heading: "¿Tienes preguntas?",
+      book: "Reservar cita",
+      cta: "¿No encuentras respuesta? Contáctanos – estaremos encantados de ayudarte.",
+      items: [
+        { q: "¿Necesito reservar con antelación?", a: "Recomendamos reservar para asegurar tu plaza, pero aceptamos visitas sin cita si hay disponibilidad." },
+        { q: "¿Cuál es la diferencia entre balayage y mechas?", a: "Las mechas dan un brillo uniforme con contraste, mientras el balayage crea un efecto más suave y natural. El balayage requiere menos retoques." },
+        { q: "¿Cómo sé qué tratamiento elegir?", a: "Ofrecemos consultas gratuitas donde evaluamos tu cabello y recomendamos un tratamiento según tus deseos y tipo de cabello." },
+        { q: "¿Ofrecéis tratamientos para mujeres y hombres?", a: "¡Sí! Tenemos una amplia gama para todos – desde cortes clásicos hasta color, balayage y keratina." },
+        { q: "¿Qué hago si mi cabello está dañado tras la decoloración?", a: "Recomendamos un tratamiento de proteínas o keratina que reconstruye la estructura capilar. Reserva una consulta para evaluar la condición." },
+        { q: "¿Puedo contactaros si no sé qué reservar?", a: "¡Por supuesto! Llámanos al +47 455 55 898 o usa el asistente del chat. Te ayudaremos a encontrar el tratamiento adecuado." },
+      ],
     },
     floating: {
       open: "Pregunta al asistente",

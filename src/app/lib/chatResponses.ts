@@ -1,159 +1,413 @@
 import { Lang } from "./translations";
+import { getServices } from "../data/services";
 
 export type Message = {
   role: "assistant" | "user";
   content: string;
 };
 
-// Kept for legacy use — prefer translations.ts assistant.suggestions
-export const SUGGESTIONS = [
-  "Hva er åpningstidene?",
-  "Tilbyr dere balayage?",
-  "Har dere behandlinger for menn?",
-  "Hva passer for tynt hår?",
-  "Hvor ligger dere?",
-  "Hva bør jeg velge hvis jeg vil ha lite vedlikehold?",
-];
+/* ─── helpers ─── */
 
-type ResponseMap = Record<string, string>;
+function listServices(lang: Lang, tagFilter: (tags: string[]) => boolean, max = 10): string {
+  const all = getServices(lang);
+  const matches = all.filter((s) => tagFilter(s.tags));
+  if (matches.length === 0) return "";
+  return matches
+    .slice(0, max)
+    .map((s) => `• ${s.title} – ${s.price}`)
+    .join("\n");
+}
 
-const responses: Record<Lang, ResponseMap[]> = {
+/* ─── response builders ─── */
+
+type ResponseEntry = {
+  keys: string;
+  build: (lang: Lang) => string;
+};
+
+const ENTRIES: Record<Lang, ResponseEntry[]> = {
+  /* ═══════════ NORSK ═══════════ */
   no: [
     {
-      keys: "åpning,åpent,åpnings,tid,klokkeslett",
-      text: "Vi holder åpent mandag–lørdag 10:00–18:00. Søndag er vi stengt. Du kan bestille time direkte via nettstedet eller ringe oss.",
+      keys: "åpning,åpent,åpnings,tid,klokkeslett,stengt,søndag,lørdag",
+      build: () =>
+        "Vi holder åpent mandag–lørdag kl. 10–18. Søndag er vi stengt.\n\nDu kan bestille time direkte på nettsiden, eller ring oss på 455 55 898.",
     },
     {
-      keys: "balayage",
-      text: "Absolutt – balayage er en av våre spesialiteter. Vi skaper naturlige, solkyssede resultater som vokser fint ut. Pris fra kr 1 800. Vi anbefaler en konsultasjon for å finne riktig tone.",
+      keys: "balayage,striper,forskjell,highlights,lysning",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("highlights") || t.includes("balayage"));
+        return `Ja, vi tilbyr både balayage og striper!\n\nBalayage gir en myk, solkysst effekt som vokser naturlig ut – perfekt om du ønsker lite vedlikehold. Striper gir en jevnere lyshet med tydeligere kontrast.\n\nHer er tjenestene vi tilbyr innenfor striper og balayage:\n${list}\n\nØnsker du et naturlig resultat, eller noe lysere og tydeligere?`;
+      },
     },
     {
-      keys: "menn,herre,mann,gutt",
-      text: "Ja, vi jobber med både kvinner og menn. Vi tilbyr herreklipp, moderne styling og skjeggpleie. Mange av våre mannlige kunder er faste gjester – fra klassiske klipp til moderne frisyrer.",
+      keys: "menn,herre,mann,gutt,herreklipp,skjegg,fade,skin",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("men"));
+        return `Ja, vi har et bredt utvalg for menn!\n\nHer er våre herretjenester:\n${list}\n\nHva slags klipp er du ute etter?`;
+      },
     },
     {
-      keys: "tynt,fint hår,lite hår",
-      text: "For tynt hår anbefaler vi et klipp med lag som gir illusjon av volum, kombinert med lette stylingprodukter. En kur-behandling kan også styrke hårstrukturen over tid.",
+      keys: "dameklipp,dame,kvinne,kvinner,jente",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("women") && !t.includes("colour") && !t.includes("highlights") && !t.includes("balayage") && !t.includes("keratin"));
+        return `Her er våre dameklipp-tjenester:\n${list}\n\nTrenger du bare et klipp, eller vurderer du farge eller behandling i tillegg?`;
+      },
     },
     {
-      keys: "hvor,adresse,oslo,beliggenhet,finne",
-      text: "Du finner oss i Fredensborgveien 22 i Oslo, lett tilgjengelig med kollektivtransport. Ring oss på +47 455 55 898 eller send e-post til saxofon@hotmail.no.",
+      keys: "velge,usikker,hjelp,vet ikke,anbefal,råd,hvilken,hvordan vet",
+      build: () =>
+        "Det hjelper å vite litt om hva du er ute etter. Her er noen spørsmål som kan gjøre det enklere:\n\n• Ønsker du bare klipp, eller vurderer du farge/behandling?\n• Foretrekker du noe lettstelt, eller er du klar for litt vedlikehold?\n• Har du noen utfordringer med håret (tørt, tynt, skadet)?\n\nFortell meg litt om hva du tenker, så hjelper jeg deg videre.",
     },
     {
-      keys: "vedlikehold,lettstelt,enkel,lite stell",
-      text: "Da anbefaler vi balayage eller en 'lived-in' farge – disse vokser naturlig ut uten synlig rot og krever sjeldnere besøk. Et klipp med riktig form krever også minimalt av styling i hverdagen.",
+      keys: "tynt,fint hår,lite hår,volum,tynnere,tynner",
+      build: (lang) => {
+        const protein = getServices(lang).find((s) => s.tags.includes("keratin") && s.title.toLowerCase().includes("protein"));
+        const proteinInfo = protein ? `\n\nVi tilbyr også ${protein.title} (${protein.price}) som styrker hårstrukturen innenfra.` : "";
+        return `For tynt eller fint hår anbefaler vi et klipp med lag og bevegelse – det gir illusjon av fylde uten å tynge håret. Lette stylingprodukter som volumspray eller mousse hjelper også mye.${proteinInfo}\n\nEr håret ditt naturlig fint, eller har det blitt tynnere over tid?`;
+      },
     },
     {
-      keys: "pris,koster,kr,kroner",
-      text: "Priser varierer etter tjeneste: dameklipp fra kr 650, herreklipp fra kr 450, farge fra kr 950 og balayage fra kr 1 800. Ta kontakt for et nøyaktig tilbud.",
+      keys: "adresse,oslo,beliggenhet,kart,veibeskrivelse,ligger,hvor ligger,hvor er dere,hvor finner",
+      build: () =>
+        "Vi ligger i Fredensborgveien 22 i Oslo sentrum, rett ved Bislett. Lett tilgjengelig med trikk, buss og t-bane.\n\nRing oss på 455 55 898 eller send e-post til saxofon@hotmail.no.",
+    },
+    {
+      keys: "vedlikehold,lettstelt,enkel,lite stell,lav,grodd,vokse ut",
+      build: (lang) => {
+        const balayageService = getServices(lang).find((s) => s.tags.includes("balayage") && s.title.toLowerCase().includes("halvt"));
+        const balayagePrice = balayageService ? ` (fra ${balayageService.price})` : "";
+        return `Balayage${balayagePrice} er det beste valget for lite vedlikehold – fargen vokser naturlig ut uten synlig rotlinje, og du trenger sjeldnere oppfriskning.\n\nEt godt klipp med riktig form gjør også mye – da trenger du minimalt med styling i hverdagen.\n\nØnsker du noe med farge, eller er du mest ute etter et lettstelt klipp?`;
+      },
+    },
+    {
+      keys: "pris,koster,kr,kroner,billig,dyr,hva koster",
+      build: (lang) => {
+        const services = getServices(lang);
+        const menCut = services.find((s) => s.tags.includes("men") && s.tags.includes("cut") && s.price === "399 kr");
+        const womenCut = services.find((s) => s.tags.includes("women") && s.tags.includes("cut") && s.price === "649 kr");
+        const colour = services.find((s) => s.title.toLowerCase().includes("ettervekst") && !s.title.toLowerCase().includes("klipp"));
+        const balayage = services.find((s) => s.tags.includes("balayage") && s.price.includes("1 790"));
+        const keratin = services.find((s) => s.tags.includes("keratin") && s.title.toLowerCase().includes("protein"));
+
+        return `Her er et utvalg av prisene våre:\n\n• Herreklipp – fra ${menCut?.price ?? "399 kr"}\n• Dameklipp med vask – fra ${womenCut?.price ?? "649 kr"}\n• Farge ettervekst – ${colour?.price ?? "889 kr"}\n• Balayage (halvt hode) – ${balayage?.price ?? "1 790 kr"}\n• Proteinbehandling – ${keratin?.price ?? "fra 800 kr"}\n\nEndelig pris avhenger av hårlengde og behandling. Hvilken type behandling er du interessert i?`;
+      },
+    },
+    {
+      keys: "skadet,ødelagt,tørt,slitt,etter farge,reparere,friskere,friskt,etter bleking,bleket",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("keratin"));
+        return `For skadet eller slitt hår har vi to behandlinger som gjør stor forskjell:\n\n${list}\n\nProteinbehandling bygger opp hårstrukturen innenfra og er spesielt bra etter farging eller bleking. Keratin-behandling gir i tillegg en glattende effekt og reduserer krøll.\n\nMellom salonbesøk anbefaler vi sulfatfri sjampo og en fuktighetgivende hårmaske.\n\nEr håret ditt skadet av bleking, eller er det generelt tørt og slitt?`;
+      },
+    },
+    {
+      keys: "keratin,protein,glatt,glatting,krøll,frizz",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("keratin"));
+        return `Vi tilbyr to typer behandlinger i denne kategorien:\n\n${list}\n\nKeratin-behandling gir glattere, mer håndterbart hår og reduserer krøll og frizz. Proteinbehandling styrker og reparerer hårstrukturen – spesielt anbefalt hvis håret er skadet etter farging eller bleking.\n\nEr målet ditt å reparere håret, eller ønsker du først og fremst et glattere resultat?`;
+      },
+    },
+    {
+      keys: "farge,farging,ettervekst,rot,røtter,hårfarge,ombre",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("colour"));
+        return `Vi har flere fargetjenester:\n\n${list}\n\nVær oppmerksom på at bleking prises separat fra vanlig farging.\n\nTrenger du bare oppfriskning av røttene, eller vurderer du helfarging?`;
+      },
+    },
+    {
+      keys: "barn,barneflipp,barneklipp,unge,kid,sønn,datter",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("children"));
+        return `Ja, vi klipper barn fra 6 år!\n\n${list}\n\nVi sørger for en trygg og hyggelig opplevelse. Vil du bestille time for gutt eller jente?`;
+      },
+    },
+    {
+      keys: "bestill,bestille,time,booking,ledig,kalender,book",
+      build: () =>
+        "Du kan bestille time direkte på bestill.timma.no/saxofon – velg behandling og finn en ledig tid som passer.\n\nDu kan også ringe oss på 455 55 898.\n\nVet du hvilken behandling du vil bestille?",
     },
   ],
+
+  /* ═══════════ ENGLISH ═══════════ */
   en: [
     {
-      keys: "open,hours,opening,time,schedule",
-      text: "We're open Monday–Saturday 10:00–18:00. We're closed on Sundays. You can book an appointment online or call us.",
+      keys: "open,hours,opening,time,schedule,closed,sunday",
+      build: () =>
+        "We're open Monday–Saturday 10:00–18:00. Closed on Sundays.\n\nYou can book directly on our website or call us on +47 455 55 898.",
     },
     {
-      keys: "balayage",
-      text: "Absolutely – balayage is one of our specialties. We create natural, sun-kissed results that grow out beautifully. Starting from NOK 1,800. We recommend a consultation to find the right tone.",
+      keys: "balayage,highlights,difference,streaks",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("highlights") || t.includes("balayage"));
+        return `Yes, we offer both balayage and highlights!\n\nBalayage gives a soft, sun-kissed effect that grows out naturally – great for low maintenance. Highlights give a more even brightness with defined contrast.\n\nHere are our highlight & balayage services:\n${list}\n\nAre you looking for a natural result, or something brighter and more defined?`;
+      },
     },
     {
-      keys: "men,male,guy,gentleman",
-      text: "Yes, we work with both women and men. We offer men's cuts, modern styling, and beard grooming. Many of our male clients are regulars – from classic cuts to modern styles.",
+      keys: "men,male,guy,gentleman,beard,fade,skin",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("men"));
+        return `Yes, we have a wide range for men!\n\nHere are our men's services:\n${list}\n\nWhat kind of cut are you looking for?`;
+      },
     },
     {
-      keys: "thin,fine hair,little hair",
-      text: "For thin hair we recommend a layered cut that creates the illusion of volume, combined with lightweight styling products. A treatment can also strengthen the hair structure over time.",
+      keys: "women,woman,ladies,lady,girl",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("women") && !t.includes("colour") && !t.includes("highlights") && !t.includes("balayage") && !t.includes("keratin"));
+        return `Here are our women's cut services:\n${list}\n\nDo you just need a cut, or are you considering colour or a treatment as well?`;
+      },
+    },
+    {
+      keys: "thin,fine hair,little hair,volume,thinner",
+      build: (lang) => {
+        const protein = getServices(lang).find((s) => s.tags.includes("keratin") && s.title.toLowerCase().includes("protein"));
+        const proteinInfo = protein ? `\n\nWe also offer ${protein.title} (${protein.price}) which strengthens hair structure from within.` : "";
+        return `For thin or fine hair, we recommend a layered cut that adds movement and the illusion of volume. Lightweight products like volumising spray or mousse also help a lot.${proteinInfo}\n\nIs your hair naturally fine, or has it become thinner over time?`;
+      },
     },
     {
       keys: "where,address,location,find,directions",
-      text: "You'll find us at Fredensborgveien 22 in Oslo, easily accessible by public transport. Call us on +47 455 55 898 or email saxofon@hotmail.no.",
+      build: () =>
+        "We're at Fredensborgveien 22 in central Oslo, near Bislett. Easy to reach by tram, bus and metro.\n\nCall us on +47 455 55 898 or email saxofon@hotmail.no.",
     },
     {
-      keys: "maintenance,low-maintenance,easy,simple",
-      text: "We'd recommend balayage or a 'lived-in' colour – these grow out naturally without a visible root line and require fewer visits. A well-shaped cut also needs minimal daily styling.",
+      keys: "maintenance,low-maintenance,easy,simple,grow out",
+      build: (lang) => {
+        const b = getServices(lang).find((s) => s.tags.includes("balayage") && s.title.toLowerCase().includes("half"));
+        const price = b ? ` (from ${b.price})` : "";
+        return `Balayage${price} is the best choice for low maintenance – the colour grows out naturally without a visible root line, so you need fewer touch-ups.\n\nA well-shaped cut also goes a long way – you'll need minimal styling day to day.\n\nAre you looking for a colour option, or mainly a low-maintenance cut?`;
+      },
     },
     {
-      keys: "price,cost,nok,fee",
-      text: "Prices vary by service: women's cut from NOK 650, men's cut from NOK 450, colour from NOK 950, and balayage from NOK 1,800. Contact us for an exact quote.",
+      keys: "price,cost,nok,fee,how much,expensive",
+      build: () =>
+        "Here's a selection of our prices:\n\n• Men's cut – from 399 kr\n• Women's cut with wash – from 649 kr\n• Root colour – 889 kr\n• Balayage (half head) – 1 790 kr\n• Protein treatment – from 800 kr\n\nFinal price depends on hair length and treatment. Which type of treatment are you interested in?",
+    },
+    {
+      keys: "damaged,dry,brittle,bleach,repair,after colour,healthier,after bleach",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("keratin"));
+        return `For damaged or worn hair, we have two treatments that make a real difference:\n\n${list}\n\nProtein treatment rebuilds hair structure from within – especially good after colouring or bleaching. Keratin treatment also smooths and reduces frizz.\n\nBetween visits we recommend sulphate-free shampoo and a hydrating hair mask.\n\nIs your hair damaged from bleaching, or is it generally dry and worn?`;
+      },
+    },
+    {
+      keys: "keratin,protein,smooth,frizz,curly",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("keratin"));
+        return `We offer two types of treatment in this category:\n\n${list}\n\nKeratin treatment smooths hair and reduces frizz. Protein treatment strengthens and repairs – especially recommended after colouring or bleaching.\n\nIs your goal to repair the hair, or mainly to get a smoother result?`;
+      },
+    },
+    {
+      keys: "colour,color,root,roots,dye",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("colour"));
+        return `We offer a range of colour services:\n\n${list}\n\nNote that bleaching is priced separately from regular colour.\n\nDo you just need a root touch-up, or are you considering a full colour?`;
+      },
+    },
+    {
+      keys: "child,children,kid,boy,girl,son,daughter",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("children"));
+        return `Yes, we cut children's hair from age 6!\n\n${list}\n\nWe make sure it's a safe and comfortable experience. Would you like to book for a boy or girl?`;
+      },
+    },
+    {
+      keys: "book,appointment,available,calendar",
+      build: () =>
+        "You can book directly at bestill.timma.no/saxofon – choose a treatment and find available times.\n\nYou can also call us on +47 455 55 898.\n\nDo you know which treatment you'd like to book?",
+    },
+    {
+      keys: "choose,unsure,help,don't know,recommend,advice,which",
+      build: () =>
+        "It helps to know a bit about what you're after. Here are some questions to make it easier:\n\n• Do you just want a cut, or are you considering colour/treatment?\n• Do you prefer something low-maintenance?\n• Do you have any hair challenges (dry, thin, damaged)?\n\nTell me a bit about what you're thinking and I'll help you narrow it down.",
     },
   ],
+
+  /* ═══════════ ARABIC ═══════════ */
   ar: [
     {
-      keys: "فتح,ساعات,وقت,جدول,مواعيد",
-      text: "نحن مفتوحون من الاثنين إلى السبت من 10:00 إلى 18:00. نحن مغلقون أيام الأحد. يمكنك حجز موعد عبر الإنترنت أو الاتصال بنا.",
+      keys: "فتح,ساعات,وقت,جدول,مواعيد,مغلق",
+      build: () =>
+        "نحن مفتوحون من الاثنين إلى السبت من 10:00 إلى 18:00. مغلقون أيام الأحد.\n\nيمكنك الحجز عبر الموقع أو الاتصال على 455 55 898.",
     },
     {
-      keys: "بالياج,balayage",
-      text: "بالتأكيد – البالياج من تخصصاتنا. نحن نخلق نتائج طبيعية وجميلة تنمو بشكل رائع. السعر يبدأ من 1800 كرون. نوصي بالتشاور لإيجاد الدرجة المناسبة.",
+      keys: "بالياج,خصلات,فرق,balayage",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("highlights") || t.includes("balayage"));
+        return `نعم، نقدم البالياج والخصلات!\n\nالبالياج يعطي تأثيراً طبيعياً ناعماً ينمو بشكل جميل. الخصلات تعطي إضاءة أكثر تحديداً.\n\nخدماتنا في هذا المجال:\n${list}\n\nهل تفضلين نتيجة طبيعية أم شيء أكثر وضوحاً؟`;
+      },
     },
     {
-      keys: "رجال,رجل,شعر الرجال",
-      text: "نعم، نعمل مع كل من النساء والرجال. نقدم قصات للرجال وتصفيف عصري وعناية باللحية. كثير من عملائنا الذكور عملاء منتظمون.",
+      keys: "رجال,رجل,لحية,فيد",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("men"));
+        return `نعم، لدينا مجموعة واسعة للرجال!\n\nخدماتنا للرجال:\n${list}\n\nما نوع القصة التي تبحث عنها؟`;
+      },
     },
     {
-      keys: "رفيع,خفيف,شعر رفيع",
-      text: "للشعر الرفيع نوصي بقصة طبقية تعطي وهم الحجم مع منتجات تصفيف خفيفة. يمكن أن تقوي العلاجات بنية الشعر بمرور الوقت أيضاً.",
+      keys: "نساء,نسائ,سيدات",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("women") && !t.includes("colour") && !t.includes("highlights") && !t.includes("keratin"));
+        return `قصاتنا النسائية:\n${list}\n\nهل تحتاجين قصة فقط، أم تفكرين في صبغة أو علاج أيضاً؟`;
+      },
+    },
+    {
+      keys: "رفيع,خفيف,شعر رفيع,حجم",
+      build: () =>
+        "للشعر الرفيع نوصي بقصة طبقية تعطي حركة ووهم الكثافة. منتجات التصفيف الخفيفة مثل بخاخ الحجم تساعد كثيراً.\n\nكما نقدم علاج البروتين (من 800 كرونة) الذي يقوي بنية الشعر.\n\nهل شعرك رفيع طبيعياً، أم أصبح أرفع مع الوقت؟",
     },
     {
       keys: "أين,عنوان,موقع,اتجاهات",
-      text: "ستجدنا في Fredensborgveien 22 في أوسلو، يمكن الوصول إلينا بسهولة بوسائل النقل العام. اتصل بنا على +47 455 55 898 أو راسلنا على saxofon@hotmail.no.",
+      build: () =>
+        "نحن في Fredensborgveien 22 في وسط أوسلو، بالقرب من Bislett. سهل الوصول بالمواصلات العامة.\n\nاتصل على 455 55 898 أو راسلنا على saxofon@hotmail.no.",
+    },
+    {
+      keys: "سعر,تكلفة,كرون,رسوم,كم",
+      build: () =>
+        "مجموعة من أسعارنا:\n\n• قصة رجالية – من 399 كرونة\n• قصة نسائية مع غسل – من 649 كرونة\n• صبغة الجذور – 889 كرونة\n• بالياج (نصف الرأس) – 1790 كرونة\n• علاج البروتين – من 800 كرونة\n\nالسعر النهائي يعتمد على طول الشعر. ما العلاج الذي يهمك؟",
+    },
+    {
+      keys: "تالف,جاف,هش,تبييض,إصلاح,بعد الصبغة,علاج",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("keratin"));
+        return `للشعر التالف لدينا علاجان فعّالان:\n\n${list}\n\nعلاج البروتين يعيد بناء بنية الشعر – ممتاز بعد الصبغة أو التبييض. الكيراتين ينعم الشعر ويقلل التجعد.\n\nهل شعرك متضرر من التبييض، أم أنه جاف بشكل عام؟`;
+      },
+    },
+    {
+      keys: "كيراتين,بروتين,تنعيم,تجعد",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("keratin"));
+        return `نقدم نوعين من العلاج:\n\n${list}\n\nالكيراتين ينعم الشعر ويقلل التجعد. البروتين يقوي ويصلح الشعر التالف.\n\nهل هدفك إصلاح الشعر أم الحصول على نتيجة أكثر نعومة؟`;
+      },
+    },
+    {
+      keys: "صبغة,لون,جذور",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("colour"));
+        return `خدمات الصبغة لدينا:\n\n${list}\n\nملاحظة: التبييض يسعّر بشكل منفصل.\n\nهل تحتاجين تجديد الجذور فقط، أم صبغة كاملة؟`;
+      },
+    },
+    {
+      keys: "أطفال,طفل,ولد,بنت",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("children"));
+        return `نعم، نقص شعر الأطفال من سن 6 سنوات!\n\n${list}\n\nنحرص على أن تكون التجربة مريحة وآمنة. هل تريد الحجز لولد أم بنت؟`;
+      },
+    },
+    {
+      keys: "حجز,موعد,متاح",
+      build: () =>
+        "يمكنك الحجز مباشرة على bestill.timma.no/saxofon.\n\nأو اتصل على 455 55 898.\n\nهل تعرف أي علاج تريد حجزه؟",
     },
     {
       keys: "صيانة,سهل,بسيط,عناية",
-      text: "نوصي بالبالياج أو اللون 'المعاش فيه' – ينمو هذا بشكل طبيعي دون خط جذر مرئي ويتطلب زيارات أقل. القصة المشكّلة جيداً تحتاج أيضاً إلى حد أدنى من التصفيف اليومي.",
-    },
-    {
-      keys: "سعر,تكلفة,كرون,رسوم",
-      text: "تتفاوت الأسعار حسب الخدمة: قصة نساء من 650 كرون، قصة رجال من 450 كرون، لون من 950 كرون، وبالياج من 1800 كرون. تواصل معنا للحصول على عرض سعر دقيق.",
+      build: () =>
+        "البالياج (من 1790 كرونة) هو الخيار الأفضل للعناية القليلة – ينمو بشكل طبيعي دون خط جذر واضح.\n\nقصة جيدة الشكل أيضاً تقلل الحاجة للتصفيف اليومي.\n\nهل تبحثين عن خيار لون أم قصة سهلة العناية؟",
     },
   ],
+
+  /* ═══════════ ESPAÑOL ═══════════ */
   es: [
     {
-      keys: "horario,abierto,hora,apertura,cierre",
-      text: "Abrimos de lunes a sábado de 10:00 a 18:00. Los domingos permanecemos cerrados. Puedes reservar cita online o llamarnos.",
+      keys: "horario,abierto,hora,apertura,cierre,cerrado,domingo",
+      build: () =>
+        "Abrimos de lunes a sábado de 10:00 a 18:00. Cerrados los domingos.\n\nPuedes reservar en nuestra web o llamarnos al +47 455 55 898.",
     },
     {
-      keys: "balayage",
-      text: "Por supuesto – el balayage es una de nuestras especialidades. Creamos resultados naturales, con efecto sol, que crecen de forma preciosa. Precio desde 1.800 NOK. Te recomendamos una consulta para encontrar el tono adecuado.",
+      keys: "balayage,mechas,diferencia,highlights",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("highlights") || t.includes("balayage"));
+        return `¡Sí, ofrecemos tanto balayage como mechas!\n\nEl balayage da un efecto natural y suave que crece sin marcas – perfecto para poco mantenimiento. Las mechas dan un brillo más uniforme y definido.\n\nNuestros servicios de mechas y balayage:\n${list}\n\n¿Buscas un resultado natural o algo más luminoso y definido?`;
+      },
     },
     {
-      keys: "hombre,hombres,caballero,chico",
-      text: "Sí, trabajamos tanto con mujeres como con hombres. Ofrecemos cortes masculinos, peinados modernos y cuidado de barba. Muchos de nuestros clientes masculinos son habituales – desde cortes clásicos a estilos actuales.",
+      keys: "hombre,hombres,caballero,barba,degradado",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("men"));
+        return `¡Sí, tenemos una amplia gama para hombres!\n\nNuestros servicios para caballero:\n${list}\n\n¿Qué tipo de corte buscas?`;
+      },
     },
     {
-      keys: "fino,delgado,poco pelo,cabello fino",
-      text: "Para el cabello fino recomendamos un corte en capas que crea ilusión de volumen, combinado con productos de peinado ligeros. Un tratamiento también puede fortalecer la estructura del cabello con el tiempo.",
+      keys: "mujer,mujeres,señora,chica",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("women") && !t.includes("colour") && !t.includes("highlights") && !t.includes("keratin"));
+        return `Nuestros cortes de mujer:\n${list}\n\n¿Solo necesitas un corte, o estás considerando también color o tratamiento?`;
+      },
+    },
+    {
+      keys: "fino,delgado,poco pelo,volumen",
+      build: () =>
+        "Para el cabello fino recomendamos un corte en capas que añade movimiento e ilusión de volumen. Productos ligeros como spray voluminizador ayudan mucho.\n\nTambién ofrecemos tratamiento de proteínas (desde 800 kr) que fortalece la estructura capilar.\n\n¿Tu cabello es naturalmente fino, o se ha vuelto más delgado con el tiempo?",
     },
     {
       keys: "dónde,dirección,ubicación,cómo llegar,donde",
-      text: "Nos encontramos en Fredensborgveien 22, Oslo, fácilmente accesible en transporte público. Llámanos al +47 455 55 898 o escríbenos a saxofon@hotmail.no.",
+      build: () =>
+        "Estamos en Fredensborgveien 22, en el centro de Oslo, cerca de Bislett. Fácil acceso en transporte público.\n\nLlámanos al +47 455 55 898 o escríbenos a saxofon@hotmail.no.",
+    },
+    {
+      keys: "precio,coste,corona,cuánto,cuanto,caro",
+      build: () =>
+        "Algunos de nuestros precios:\n\n• Corte de caballero – desde 399 kr\n• Corte de mujer con lavado – desde 649 kr\n• Color de raíz – 889 kr\n• Balayage (media cabeza) – 1.790 kr\n• Tratamiento de proteínas – desde 800 kr\n\nEl precio final depende del largo del cabello. ¿Qué tratamiento te interesa?",
+    },
+    {
+      keys: "dañado,seco,frágil,decoloración,reparar,después del tinte,tratamiento",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("keratin"));
+        return `Para cabello dañado tenemos dos tratamientos muy efectivos:\n\n${list}\n\nLas proteínas reconstruyen la estructura capilar – ideal después de tintes o decoloración. La keratina también alisa y reduce el encrespamiento.\n\nEntre visitas recomendamos champú sin sulfatos y mascarillas hidratantes.\n\n¿Tu cabello está dañado por decoloración, o es sequedad general?`;
+      },
+    },
+    {
+      keys: "keratina,proteína,alisar,encrespamiento,rizado",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("keratin"));
+        return `Ofrecemos dos tipos de tratamiento:\n\n${list}\n\nLa keratina alisa y reduce el encrespamiento. Las proteínas fortalecen y reparan el cabello dañado.\n\n¿Tu objetivo es reparar el cabello o conseguir un resultado más liso?`;
+      },
+    },
+    {
+      keys: "color,tinte,raíz,raíces",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("colour"));
+        return `Nuestros servicios de color:\n\n${list}\n\nNota: la decoloración se cobra aparte.\n\n¿Necesitas solo retocar las raíces, o estás pensando en un color completo?`;
+      },
+    },
+    {
+      keys: "niño,niña,infantil,hijo,hija",
+      build: (lang) => {
+        const list = listServices(lang, (t) => t.includes("children"));
+        return `¡Sí, cortamos el pelo a niños desde 6 años!\n\n${list}\n\nNos aseguramos de que sea una experiencia cómoda y segura. ¿Quieres reservar para niño o niña?`;
+      },
+    },
+    {
+      keys: "reservar,cita,disponible,calendario",
+      build: () =>
+        "Puedes reservar directamente en bestill.timma.no/saxofon – elige tu tratamiento y encuentra un horario disponible.\n\nTambién puedes llamarnos al +47 455 55 898.\n\n¿Sabes qué tratamiento quieres reservar?",
     },
     {
       keys: "mantenimiento,fácil,sencillo,poco mantenimiento",
-      text: "Recomendamos el balayage o un color 'lived-in' – crecen de forma natural sin una línea de raíz visible y requieren menos visitas. Un corte bien formado también necesita un mínimo de peinado diario.",
-    },
-    {
-      keys: "precio,coste,corona,cuánto,cuanto",
-      text: "Los precios varían según el servicio: corte de mujer desde 650 NOK, corte de hombre desde 450 NOK, color desde 950 NOK y balayage desde 1.800 NOK. Contáctanos para un presupuesto exacto.",
+      build: () =>
+        "El balayage (desde 1.790 kr) es la mejor opción para poco mantenimiento – crece naturalmente sin línea de raíz visible.\n\nUn buen corte con la forma adecuada también reduce la necesidad de peinado diario.\n\n¿Buscas una opción con color o principalmente un corte fácil de mantener?",
     },
   ],
 };
 
+/* ─── fallbacks (no "gratis konsultasjon") ─── */
+
 const fallbacks: Record<Lang, string> = {
-  no: "Godt spørsmål! For personlige råd tilpasset ditt hår anbefaler vi en gratis konsultasjon. Ta gjerne kontakt eller bestill time – vi hjelper deg gjerne.",
-  en: "Great question! For personalised advice tailored to your hair we recommend a free consultation. Feel free to get in touch or book an appointment – we're happy to help.",
-  ar: "سؤال رائع! للحصول على نصيحة شخصية مخصصة لشعرك نوصي باستشارة مجانية. لا تتردد في التواصل معنا أو حجز موعد – نحن سعداء بمساعدتك.",
-  es: "¡Buena pregunta! Para un asesoramiento personalizado adaptado a tu cabello te recomendamos una consulta gratuita. No dudes en contactarnos o reservar una cita – estaremos encantados de ayudarte.",
+  no: "Hmm, det har jeg ikke et ferdig svar på akkurat nå. Men du kan sjekke tjenestene våre lenger opp på siden, eller ring oss på 455 55 898 – vi svarer gjerne direkte.\n\nEr det noe annet jeg kan hjelpe med?",
+  en: "Hmm, I don't have a ready answer for that right now. But you can check our services further up on the page, or call us on +47 455 55 898 – we're happy to help.\n\nIs there anything else I can help with?",
+  ar: "لا أملك إجابة جاهزة لهذا حالياً. يمكنك الاطلاع على خدماتنا في الأعلى، أو الاتصال على 455 55 898.\n\nهل هناك شيء آخر يمكنني مساعدتك به؟",
+  es: "No tengo una respuesta preparada para eso ahora mismo. Pero puedes ver nuestros servicios más arriba en la página, o llamarnos al +47 455 55 898.\n\n¿Hay algo más en lo que pueda ayudarte?",
 };
+
+/* ─── main response function ─── */
 
 export function getResponse(query: string, lang: Lang = "no"): string {
   const q = query.toLowerCase();
-  for (const entry of responses[lang]) {
+
+  for (const entry of ENTRIES[lang]) {
     if (entry.keys.split(",").some((k) => q.includes(k.trim()))) {
-      return entry.text;
+      return entry.build(lang);
     }
   }
-  // Fallback: try Norwegian keywords for non-Norwegian input as a catch-all
+
   return fallbacks[lang];
 }

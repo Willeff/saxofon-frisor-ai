@@ -1,68 +1,87 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { LANGUAGES } from "../lib/translations";
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({
+  inline = false,
+  variant = "dark",
+}: {
+  inline?: boolean;
+  variant?: "dark" | "light";
+}) {
   const { lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const current = LANGUAGES.find((l) => l.code === lang);
-
-  const updatePosition = useCallback(() => {
-    if (!buttonRef.current) return;
-    const rect = buttonRef.current.getBoundingClientRect();
-    setPos({
-      top: rect.bottom + 8,
-      left: Math.max(8, rect.left),
-    });
-  }, []);
+  const isLight = variant === "light";
 
   // Close on outside click
   useEffect(() => {
     if (!open) return;
     function handleClick(e: MouseEvent) {
-      if (
-        buttonRef.current?.contains(e.target as Node) ||
-        dropdownRef.current?.contains(e.target as Node)
-      ) {
-        return;
-      }
+      if (containerRef.current?.contains(e.target as Node)) return;
       setOpen(false);
     }
-    // Use setTimeout to avoid catching the same click that opened the dropdown
-    const id = setTimeout(() => {
-      document.addEventListener("click", handleClick);
-    }, 0);
-    return () => {
-      clearTimeout(id);
-      document.removeEventListener("click", handleClick);
-    };
+    document.addEventListener("click", handleClick, true);
+    return () => document.removeEventListener("click", handleClick, true);
   }, [open]);
 
-  function toggle() {
-    if (!open) {
-      updatePosition();
-    }
-    setOpen((v) => !v);
-  }
+  const options = LANGUAGES.map((l) => {
+    const isActive = lang === l.code;
+    return (
+      <button
+        key={l.code}
+        role="option"
+        aria-selected={isActive}
+        type="button"
+        onClick={() => {
+          setLang(l.code);
+          setOpen(false);
+        }}
+        className={`w-full flex items-center justify-between px-4 py-2.5 text-[14px] font-normal transition-colors text-left ${
+          isLight
+            ? isActive
+              ? "text-[#1A1A1A] bg-[#F7F4EF]"
+              : "text-[#7A746E] hover:text-[#1A1A1A] hover:bg-[#F7F4EF]"
+            : isActive
+              ? "text-white bg-white/[0.06]"
+              : "text-white/55 hover:text-white hover:bg-white/[0.04]"
+        }`}
+      >
+        <span>{l.native}</span>
+        {isActive && (
+          <svg
+            className="w-3 h-3 text-[#C4A882] flex-none"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.5}
+            viewBox="0 0 24 24"
+            aria-hidden
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        )}
+      </button>
+    );
+  });
 
   return (
-    <>
+    <div ref={containerRef} className="relative">
       {/* Toggle button */}
       <button
-        ref={buttonRef}
         type="button"
-        onClick={toggle}
+        onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        className="relative flex items-center gap-1.5 text-[12px] tracking-[0.18em] uppercase text-white/60 hover:text-white transition-colors py-1 select-none"
+        className={`relative flex items-center gap-1.5 text-[12px] tracking-[0.18em] uppercase transition-colors py-1 select-none ${
+          isLight
+            ? "text-[#7A746E] hover:text-[#1A1A1A]"
+            : "text-white/60 hover:text-white"
+        }`}
       >
-        {/* Globe icon */}
         <svg
           className="w-3.5 h-3.5 flex-none"
           fill="none"
@@ -87,51 +106,20 @@ export default function LanguageSwitcher() {
         </svg>
       </button>
 
-      {/* Dropdown — fixed position to escape overflow:hidden on mobile drawer */}
-      {open && pos && (
+      {/* Dropdown */}
+      {open && (
         <div
-          ref={dropdownRef}
           role="listbox"
           aria-label="Select language"
-          className="fixed w-44 bg-[#161616] border border-white/[0.1] shadow-2xl z-[9999] py-1"
-          style={{ top: pos.top, left: pos.left }}
+          className={
+            inline
+              ? `mt-2 w-44 shadow-2xl py-1 ${isLight ? "bg-white border border-[#E0D9D0]" : "bg-[#161616] border border-white/[0.1]"}`
+              : `absolute top-full left-0 mt-2 w-44 shadow-2xl z-[9999] py-1 ${isLight ? "bg-white border border-[#E0D9D0]" : "bg-[#161616] border border-white/[0.1]"}`
+          }
         >
-          {LANGUAGES.map((l) => {
-            const isActive = lang === l.code;
-            return (
-              <button
-                key={l.code}
-                role="option"
-                aria-selected={isActive}
-                type="button"
-                onClick={() => {
-                  setLang(l.code);
-                  setOpen(false);
-                }}
-                className={`w-full flex items-center justify-between px-4 py-2.5 text-[14px] font-normal transition-colors text-left ${
-                  isActive
-                    ? "text-white bg-white/[0.06]"
-                    : "text-white/55 hover:text-white hover:bg-white/[0.04]"
-                }`}
-              >
-                <span>{l.native}</span>
-                {isActive && (
-                  <svg
-                    className="w-3 h-3 text-[#C4A882] flex-none"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                    viewBox="0 0 24 24"
-                    aria-hidden
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                )}
-              </button>
-            );
-          })}
+          {options}
         </div>
       )}
-    </>
+    </div>
   );
 }
