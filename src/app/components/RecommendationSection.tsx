@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { useInView } from "../hooks/useInView";
 
 type Treatment = { name: string; description: string };
 type Goal = { id: string; label: string; emoji: string; treatments: Treatment[]; note: string };
@@ -167,38 +168,40 @@ const GOALS_MAP = { no: GOALS_NO, en: GOALS_EN, ar: GOALS_AR, es: GOALS_ES };
 export default function RecommendationSection() {
   const { t, lang } = useLanguage();
   const [selected, setSelected] = useState<string | null>(null);
+  const { ref, inView } = useInView();
 
   const goals = GOALS_MAP[lang];
   const activeGoal = goals.find((g) => g.id === selected);
 
   return (
-    <section className="bg-[#F2EDE5] py-16 md:py-24 px-6">
+    <section ref={ref} className="bg-[#F2EDE5] py-16 md:py-24 px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
         <div className="mb-10 md:mb-14">
-          <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-3 md:mb-4">
+          <p className={`text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-3 md:mb-4 anim-fade-in-up ${inView ? "in-view" : ""}`}>
             {t.recommendation.eyebrow}
           </p>
-          <h2 className="text-[clamp(1.75rem,4vw,2.9rem)] font-extralight tracking-wide text-[#1A1A1A] mb-3 md:mb-4">
+          <h2 className={`text-[clamp(1.75rem,4vw,2.9rem)] font-extralight tracking-wide text-[#1A1A1A] mb-3 md:mb-4 anim-fade-in-up stagger-1 ${inView ? "in-view" : ""}`}>
             {t.recommendation.heading}
           </h2>
-          <p className="text-[15px] md:text-[16px] text-[#5C5650] font-normal max-w-md">
+          <p className={`text-[15px] md:text-[16px] text-[#5C5650] font-normal max-w-md anim-fade-in-up stagger-2 ${inView ? "in-view" : ""}`}>
             {t.recommendation.subtitle}
           </p>
         </div>
 
         {/* Goal selector */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 md:mb-12">
-          {goals.map((goal) => (
+          {goals.map((goal, i) => (
             <button
               key={goal.id}
               onClick={() => setSelected(selected === goal.id ? null : goal.id)}
-              className={`text-left px-5 py-4 md:px-6 md:py-5 border transition-all ${
+              className={`btn-press text-left px-5 py-4 md:px-6 md:py-5 border transition-all duration-250 anim-fade-in-up ${inView ? "in-view" : ""} ${
                 selected === goal.id
                   ? "border-[#1A1A1A] bg-[#1A1A1A] text-white"
                   : "border-[#D4C5B0] bg-white text-[#1A1A1A] hover:border-[#C4A882]"
               }`}
+              style={{ transitionDelay: `${160 + i * 60}ms` }}
             >
               <span className="text-lg mr-3 text-[#C4A882]">{goal.emoji}</span>
               <span className="text-[15px] font-normal tracking-wide">{goal.label}</span>
@@ -208,7 +211,12 @@ export default function RecommendationSection() {
 
         {/* Results */}
         {activeGoal && (
-          <div className="bg-white border border-[#E5DDD4] p-6 md:p-10">
+          <div
+            className="bg-white border border-[#E5DDD4] p-6 md:p-10"
+            style={{
+              animation: "slide-up-fade 0.35s cubic-bezier(0.16,1,0.3,1) both",
+            }}
+          >
             <p className="text-[12px] tracking-[0.25em] uppercase text-[#C4A882] mb-2">
               {t.recommendation.recommendationLabel}
             </p>
@@ -239,7 +247,7 @@ export default function RecommendationSection() {
                 href="https://bestill.timma.no/saxofon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block w-full sm:w-auto text-center px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
+                className="btn-press inline-block w-full sm:w-auto text-center px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
               >
                 {t.recommendation.book}
               </a>

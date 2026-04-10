@@ -1,21 +1,24 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
+import { useInView } from "../hooks/useInView";
 
 export default function ReviewsPreview() {
   const { t } = useLanguage();
   const reviews = t.reviews.items.slice(0, 3);
+  const { ref, inView } = useInView();
+  const v = inView ? "in-view" : "";
 
   return (
-    <section className="bg-[#F7F4EF] py-14 md:py-20 px-6">
+    <section ref={ref} className="bg-[#F7F4EF] py-14 md:py-20 px-6">
       <div className="max-w-5xl mx-auto">
 
         <div className="flex items-center justify-between gap-4 mb-8 md:mb-10">
           <div>
-            <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-3">
+            <p className={`text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-3 anim-fade-in-up ${v}`}>
               {t.reviews.eyebrow}
             </p>
-            <h2 className="text-[clamp(1.6rem,3.5vw,2.6rem)] font-light tracking-wide text-[#1A1A1A]">
+            <h2 className={`text-[clamp(1.6rem,3.5vw,2.6rem)] font-light tracking-wide text-[#1A1A1A] anim-fade-in-up stagger-1 ${v}`}>
               {t.reviews.heading}
             </h2>
           </div>
@@ -25,7 +28,7 @@ export default function ReviewsPreview() {
             href="https://g.page/saxofonfrisor"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 border border-[#E0D9D0] bg-white px-4 py-2.5 hover:border-[#C4A882] transition-colors flex-none"
+            className={`hidden sm:flex items-center gap-2 border border-[#E0D9D0] bg-white px-4 py-2.5 hover:border-[#C4A882] transition-all duration-300 hover:shadow-sm flex-none anim-fade-in-up stagger-2 ${v}`}
           >
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
@@ -44,13 +47,17 @@ export default function ReviewsPreview() {
           </a>
         </div>
 
-        {/* Review cards */}
+        {/* Review cards — individually staggered */}
         <div className="grid sm:grid-cols-3 gap-3">
-          {reviews.map((review) => (
-            <div key={review.name} className="bg-white border border-[#E0D9D0] p-5 md:p-6">
+          {reviews.map((review, i) => (
+            <div
+              key={review.name}
+              className={`card-hover bg-white border border-[#E0D9D0] p-5 md:p-6 anim-fade-in-up ${v}`}
+              style={{ transitionDelay: `${390 + i * 130}ms` }}
+            >
               <div className="flex gap-0.5 mb-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <svg key={i} className="w-3 h-3 text-[#C4A882]" fill="currentColor" viewBox="0 0 20 20">
+                {[1, 2, 3, 4, 5].map((j) => (
+                  <svg key={j} className="w-3 h-3 text-[#C4A882]" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
+import { useInView } from "../hooks/useInView";
 
 const GoogleG = ({ size = 14 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 18 18" aria-hidden className="flex-none">
@@ -14,6 +15,10 @@ const GoogleG = ({ size = 14 }: { size?: number }) => (
 export default function ContactSection() {
   const { t } = useLanguage();
   const c = t.contactSection;
+  const { ref: headerRef, inView: headerInView } = useInView();
+  const { ref: gridRef, inView: gridInView } = useInView({ threshold: 0.1 });
+  const { ref: trustRef, inView: trustInView } = useInView();
+  const hv = headerInView ? "in-view" : "";
 
   return (
     <section id="kontakt" className="relative bg-[#0F0F0F] text-white py-24 md:py-32 px-6 overflow-hidden">
@@ -43,23 +48,23 @@ export default function ContactSection() {
 
       <div className="relative max-w-5xl mx-auto">
         {/* Top: Heading + body + CTA */}
-        <div className="grid md:grid-cols-[1fr_1fr] gap-12 md:gap-x-20 mb-16 md:mb-20">
-          {/* Left column */}
+        <div ref={headerRef} className="grid md:grid-cols-[1fr_1fr] gap-12 md:gap-x-20 mb-16 md:mb-20">
+          {/* Left column — text animated individually */}
           <div>
-            <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-4">
+            <p className={`text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-4 anim-fade-in-up ${hv}`}>
               {c.eyebrow}
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.9rem)] font-light tracking-wide text-white leading-[1.2] mb-6 whitespace-pre-line">
+            <h2 className={`text-[clamp(1.75rem,4vw,2.9rem)] font-light tracking-wide text-white leading-[1.2] mb-6 whitespace-pre-line anim-fade-in-up stagger-1 ${hv}`}>
               {c.heading}
             </h2>
-            <p className="text-[16px] md:text-[17px] text-white/85 font-normal leading-[1.8] max-w-md">
+            <p className={`text-[16px] md:text-[17px] text-white/85 font-normal leading-[1.8] max-w-md anim-fade-in-up stagger-2 ${hv}`}>
               {c.body}
             </p>
           </div>
 
           {/* Right column — primary CTA */}
-          <div className="flex flex-col justify-end">
-            <div className="border border-white/[0.08] p-8 md:p-10">
+          <div className={`flex flex-col justify-end anim-fade-in-up stagger-3 ${hv}`}>
+            <div className="border border-white/[0.08] p-8 md:p-10 transition-colors duration-300 hover:border-white/[0.15]">
               <p className="text-[12px] tracking-[0.25em] uppercase text-[#C4A882] mb-3">
                 {c.book}
               </p>
@@ -70,7 +75,7 @@ export default function ContactSection() {
                 href="https://bestill.timma.no/saxofon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
+                className="btn-press inline-block w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
               >
                 {c.book}
               </a>
@@ -79,9 +84,9 @@ export default function ContactSection() {
         </div>
 
         {/* Contact grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06]">
+        <div ref={gridRef} className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] anim-fade-in-up ${gridInView ? "in-view" : ""}`}>
           {/* Phone */}
-          <div className="bg-[#0F0F0F] p-6 md:p-8 flex flex-col">
+          <div className="bg-[#0F0F0F] p-6 md:p-8 flex flex-col transition-colors duration-300 hover:bg-[#141414]">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 border border-white/[0.1] flex items-center justify-center flex-none">
                 <svg className="w-4 h-4 text-[#C4A882]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
@@ -101,7 +106,7 @@ export default function ContactSection() {
           </div>
 
           {/* Email */}
-          <div className="bg-[#0F0F0F] p-6 md:p-8 flex flex-col">
+          <div className="bg-[#0F0F0F] p-6 md:p-8 flex flex-col transition-colors duration-300 hover:bg-[#141414]">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 border border-white/[0.1] flex items-center justify-center flex-none">
                 <svg className="w-4 h-4 text-[#C4A882]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
@@ -121,7 +126,7 @@ export default function ContactSection() {
           </div>
 
           {/* Address */}
-          <div className="bg-[#0F0F0F] p-6 md:p-8 flex flex-col">
+          <div className="bg-[#0F0F0F] p-6 md:p-8 flex flex-col transition-colors duration-300 hover:bg-[#141414]">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 border border-white/[0.1] flex items-center justify-center flex-none">
                 <svg className="w-4 h-4 text-[#C4A882]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
@@ -144,7 +149,7 @@ export default function ContactSection() {
           </div>
 
           {/* Hours */}
-          <div className="bg-[#0F0F0F] p-6 md:p-8 flex flex-col">
+          <div className="bg-[#0F0F0F] p-6 md:p-8 flex flex-col transition-colors duration-300 hover:bg-[#141414]">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 border border-white/[0.1] flex items-center justify-center flex-none">
                 <svg className="w-4 h-4 text-[#C4A882]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
@@ -167,7 +172,7 @@ export default function ContactSection() {
         </div>
 
         {/* Trust bar */}
-        <div className="mt-10 md:mt-12 flex items-center justify-center gap-3">
+        <div ref={trustRef} className={`mt-10 md:mt-12 flex items-center justify-center gap-3 anim-fade-in ${trustInView ? "in-view" : ""}`}>
           <div className="flex gap-0.5">
             {[1, 2, 3, 4, 5].map((i) => (
               <svg key={i} className="w-3.5 h-3.5 text-[#C4A882]" fill="currentColor" viewBox="0 0 20 20">

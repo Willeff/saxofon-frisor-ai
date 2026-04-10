@@ -2,30 +2,32 @@
 
 import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { useInView } from "../hooks/useInView";
 
 export default function FAQSection() {
   const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { ref, inView } = useInView();
 
   return (
-    <section className="bg-[#F7F4EF] py-16 md:py-24 px-6">
+    <section ref={ref} className="bg-[#F7F4EF] py-16 md:py-24 px-6">
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
         <div className="mb-10 md:mb-14">
-          <div className="flex items-center gap-4 mb-5">
+          <div className={`flex items-center gap-4 mb-5 anim-fade-in-up ${inView ? "in-view" : ""}`}>
             <span className="block w-10 h-px bg-[#C4A882]/50" />
             <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] font-light">
               {t.faq.eyebrow}
             </p>
           </div>
-          <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-light tracking-[0.02em] leading-[1.18] text-[#1A1A1A]">
+          <h2 className={`text-[clamp(2rem,4vw,3.2rem)] font-light tracking-[0.02em] leading-[1.18] text-[#1A1A1A] anim-fade-in-up stagger-1 ${inView ? "in-view" : ""}`}>
             {t.faq.heading}
           </h2>
         </div>
 
         {/* Accordion */}
-        <div className="divide-y divide-[#E0D9D0]">
+        <div className={`divide-y divide-[#E0D9D0] anim-fade-in-up stagger-2 ${inView ? "in-view" : ""}`}>
           {t.faq.items.map((item, i) => {
             const isOpen = openIndex === i;
             return (
@@ -34,11 +36,11 @@ export default function FAQSection() {
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="w-full flex items-center justify-between gap-4 py-5 md:py-6 text-left group"
                 >
-                  <span className="text-[15px] md:text-[16px] font-normal text-[#1A1A1A] group-hover:text-[#C4A882] transition-colors leading-snug">
+                  <span className="text-[15px] md:text-[16px] font-normal text-[#1A1A1A] group-hover:text-[#C4A882] transition-colors duration-250 leading-snug">
                     {item.q}
                   </span>
                   <span
-                    className={`flex-none w-6 h-6 flex items-center justify-center text-[#C4A882] transition-transform duration-200 ${
+                    className={`flex-none w-6 h-6 flex items-center justify-center text-[#C4A882] transition-transform duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                       isOpen ? "rotate-45" : ""
                     }`}
                   >
@@ -47,14 +49,12 @@ export default function FAQSection() {
                     </svg>
                   </span>
                 </button>
-                <div
-                  className={`overflow-hidden transition-all duration-200 ${
-                    isOpen ? "max-h-60 pb-5 md:pb-6" : "max-h-0"
-                  }`}
-                >
-                  <p className="text-[14px] md:text-[15px] text-[#4A4540] font-normal leading-relaxed pr-10">
-                    {item.a}
-                  </p>
+                <div className={`faq-body ${isOpen ? "open" : ""}`}>
+                  <div>
+                    <p className="text-[14px] md:text-[15px] text-[#4A4540] font-normal leading-relaxed pr-10 pb-5 md:pb-6">
+                      {item.a}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
@@ -62,7 +62,7 @@ export default function FAQSection() {
         </div>
 
         {/* CTA */}
-        <div className="mt-10 md:mt-14 text-center">
+        <div className={`mt-10 md:mt-14 text-center anim-fade-in-up stagger-3 ${inView ? "in-view" : ""}`}>
           <p className="text-[15px] text-[#4A4540] font-normal mb-4">
             {t.faq.cta}
           </p>
@@ -70,7 +70,7 @@ export default function FAQSection() {
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
+            className="btn-press inline-block px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
           >
             {t.faq.book}
           </a>

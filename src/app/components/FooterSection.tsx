@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { useInView } from "../hooks/useInView";
 
 const GoogleG = ({ size = 14 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 18 18" aria-hidden className="flex-none">
@@ -14,9 +15,10 @@ const GoogleG = ({ size = 14 }: { size?: number }) => (
 
 export default function FooterSection() {
   const { t } = useLanguage();
+  const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <footer className="bg-[#0F0F0F] border-t border-white/[0.08] text-white px-6 py-20 md:py-28">
+    <footer ref={ref} className="bg-[#0F0F0F] border-t border-white/[0.08] text-white px-6 py-20 md:py-28">
       <div className="max-w-5xl mx-auto">
 
         {/* Main grid — brand column is 2× wider */}
@@ -25,7 +27,7 @@ export default function FooterSection() {
           {/* Brand column */}
           <div>
             {/* Logo */}
-            <div className="mb-7 md:mb-8">
+            <div className={`mb-7 md:mb-8 anim-fade-in-up ${inView ? "in-view" : ""}`}>
               <Image
                 src="/saxofon-logo-transparent.svg"
                 alt="Saxoføn Frisør"
@@ -36,12 +38,12 @@ export default function FooterSection() {
             </div>
 
             {/* SEO / descriptor text */}
-            <p className="text-[15px] md:text-[16px] text-white/75 font-normal leading-[1.85] mb-7 md:mb-8 max-w-xs">
+            <p className={`text-[15px] md:text-[16px] text-white/75 font-normal leading-[1.85] mb-7 md:mb-8 max-w-xs anim-fade-in-up stagger-1 ${inView ? "in-view" : ""}`}>
               {t.footer.seoText}
             </p>
 
             {/* Google rating */}
-            <div className="flex items-center gap-3 mb-8 md:mb-9">
+            <div className={`flex items-center gap-3 mb-8 md:mb-9 anim-fade-in-up stagger-2 ${inView ? "in-view" : ""}`}>
               <div className="flex gap-0.5">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <svg key={i} className="w-3.5 h-3.5 text-[#C4A882]" fill="currentColor" viewBox="0 0 20 20">
@@ -58,17 +60,17 @@ export default function FooterSection() {
             </div>
 
             {/* Social icons */}
-            <div className="flex items-center gap-5">
-              <a href="https://www.facebook.com/saxofonfrisor" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="transition-transform hover:scale-110">
+            <div className={`flex items-center gap-5 anim-fade-in-up stagger-3 ${inView ? "in-view" : ""}`}>
+              <a href="https://www.facebook.com/saxofonfrisor" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-hover">
                 <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#1877F2" /><path d="M16.5 12.75h-2.25V18h-3v-5.25H9.75v-2.5h1.5V8.5c0-1.66 1-3 3.25-3H16v2.5h-1.25c-.55 0-.75.28-.75.7v1.55h2.25l-.75 2.5z" fill="#fff" /></svg>
               </a>
-              <a href="https://www.instagram.com/saxofonfrisoer?igsh=eG1uNndzazUydGF5" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-transform hover:scale-110">
+              <a href="https://www.instagram.com/saxofonfrisoer?igsh=eG1uNndzazUydGF5" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-hover">
                 <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none"><defs><radialGradient id="ig-grad-footer" cx="30%" cy="107%" r="150%"><stop offset="0%" stopColor="#fdf497" /><stop offset="5%" stopColor="#fdf497" /><stop offset="45%" stopColor="#fd5949" /><stop offset="60%" stopColor="#d6249f" /><stop offset="90%" stopColor="#285AEB" /></radialGradient></defs><rect width="24" height="24" rx="5" fill="url(#ig-grad-footer)" /><rect x="4.5" y="4.5" width="15" height="15" rx="4" stroke="#fff" strokeWidth="1.5" fill="none" /><circle cx="12" cy="12" r="3.5" stroke="#fff" strokeWidth="1.5" fill="none" /><circle cx="16.5" cy="7.5" r="1" fill="#fff" /></svg>
               </a>
-              <a href="https://www.tiktok.com/@saxfoon" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="transition-transform hover:scale-110">
+              <a href="https://www.tiktok.com/@saxfoon" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="social-hover">
                 <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#010101" stroke="white" strokeWidth="0.5" /><path d="M16.5 5.5h-1.2v8.2a2.8 2.8 0 11-2.8-2.8c.2 0 .4 0 .6.1v1.6c-.2-.1-.4-.1-.6-.1a1.2 1.2 0 100 2.4c.7 0 1.3-.5 1.3-1.3V5.5h1.3c.1 1.4 1.2 2.5 2.6 2.6v1.6c-1-.1-1.9-.5-2.6-1.1v5.1A4.4 4.4 0 0111 18a4.4 4.4 0 01-4.3-4.3A4.4 4.4 0 0111 9.4v1.7a2.8 2.8 0 00-2.7 2.7 2.8 2.8 0 002.8 2.8c1.5 0 2.8-1.2 2.8-2.8V5.5h2.6z" fill="#fff" /><path d="M16.5 5.5c.1 1.4 1.2 2.5 2.6 2.6v1.6c-1-.1-1.9-.5-2.6-1.1" stroke="#25F4EE" strokeWidth="0.3" fill="none" /><path d="M13.9 13.7a2.8 2.8 0 01-2.8 2.5 2.8 2.8 0 01-2.8-2.8" stroke="#FE2C55" strokeWidth="0.3" fill="none" /></svg>
               </a>
-              <a href="https://g.page/saxofonfrisor" target="_blank" rel="noopener noreferrer" aria-label="Google" className="transition-transform hover:scale-110">
+              <a href="https://g.page/saxofonfrisor" target="_blank" rel="noopener noreferrer" aria-label="Google" className="social-hover">
                 <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#222" stroke="white/20" strokeWidth="0.5" /><path d="M18.82 12.1c0-.46-.04-.9-.12-1.33H12v2.51h3.84a3.28 3.28 0 01-1.42 2.15v1.79h2.3c1.35-1.24 2.1-3.07 2.1-5.12z" fill="#4285F4" /><path d="M12 19.5c1.93 0 3.54-.64 4.72-1.73l-2.3-1.79c-.64.43-1.46.68-2.42.68-1.86 0-3.43-1.26-3.99-2.94H5.63v1.85A7.13 7.13 0 0012 19.5z" fill="#34A853" /><path d="M8.01 13.72A4.28 4.28 0 017.78 12c0-.6.1-.93.23-1.36V8.79H5.63A7.13 7.13 0 004.87 12c0 1.15.28 2.24.76 3.21l2.38-1.49z" fill="#FBBC05" /><path d="M12 7.7c1.05 0 1.99.36 2.73 1.07l2.05-2.05A7.06 7.06 0 0012 4.5a7.13 7.13 0 00-6.37 3.93l2.38 1.85C8.57 8.96 10.14 7.7 12 7.7z" fill="#EA4335" /></svg>
               </a>
             </div>
@@ -76,27 +78,27 @@ export default function FooterSection() {
 
           {/* Contact column */}
           <div>
-            <p className="text-[12px] tracking-[0.25em] uppercase text-[#C4A882] font-normal mb-6 md:mb-7">
+            <p className={`text-[12px] tracking-[0.25em] uppercase text-[#C4A882] font-normal mb-6 md:mb-7 anim-fade-in-up stagger-2 ${inView ? "in-view" : ""}`}>
               {t.footer.contact}
             </p>
-            <ul className="space-y-4 text-[15px] md:text-[16px] text-white/80 font-normal">
+            <ul className={`space-y-4 text-[15px] md:text-[16px] text-white/80 font-normal anim-fade-in-up stagger-3 ${inView ? "in-view" : ""}`}>
               <li>
                 <a
                   href="https://maps.google.com/?q=Fredensborgveien+22,+Oslo,+Norway"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors duration-250"
                 >
                   {t.footer.address}
                 </a>
               </li>
               <li>
-                <a href="mailto:saxofon@hotmail.no" className="hover:text-white transition-colors">
+                <a href="mailto:saxofon@hotmail.no" className="hover:text-white transition-colors duration-250">
                   saxofon@hotmail.no
                 </a>
               </li>
               <li>
-                <a href="tel:+4745555898" className="hover:text-white transition-colors">
+                <a href="tel:+4745555898" className="hover:text-white transition-colors duration-250">
                   +47 455 55 898
                 </a>
               </li>
@@ -105,10 +107,10 @@ export default function FooterSection() {
 
           {/* Hours column */}
           <div>
-            <p className="text-[12px] tracking-[0.25em] uppercase text-[#C4A882] font-normal mb-6 md:mb-7">
+            <p className={`text-[12px] tracking-[0.25em] uppercase text-[#C4A882] font-normal mb-6 md:mb-7 anim-fade-in-up stagger-4 ${inView ? "in-view" : ""}`}>
               {t.footer.hours}
             </p>
-            <ul className="space-y-4 text-[15px] md:text-[16px] text-white/80 font-normal">
+            <ul className={`space-y-4 text-[15px] md:text-[16px] text-white/80 font-normal anim-fade-in-up stagger-5 ${inView ? "in-view" : ""}`}>
               {t.footer.days.map(({ day, time }) => (
                 <li key={day} className="flex justify-between gap-6 max-w-[240px]">
                   <span>{day}</span>
@@ -121,7 +123,7 @@ export default function FooterSection() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.08] pt-8 md:pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+        <div className={`border-t border-white/[0.08] pt-8 md:pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 anim-fade-in stagger-6 ${inView ? "in-view" : ""}`}>
 
           {/* Left: copyright + Eleviad */}
           <div className="flex flex-col gap-2">
@@ -134,7 +136,7 @@ export default function FooterSection() {
                 href="https://eleviad.no"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-white/50 transition-colors"
+                className="underline underline-offset-2 hover:text-white/50 transition-colors duration-250"
               >
                 Eleviad
               </a>
@@ -146,7 +148,7 @@ export default function FooterSection() {
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-none px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
+            className="btn-press flex-none px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
           >
             {t.footer.book}
           </a>

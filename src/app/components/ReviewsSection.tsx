@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
+import { useInView } from "../hooks/useInView";
 
 const StarIcon = ({ className }: { className?: string }) => (
   <svg className={className ?? "w-3.5 h-3.5 text-[#C4A882]"} fill="currentColor" viewBox="0 0 20 20">
@@ -20,21 +21,23 @@ const GoogleG = ({ size = 14 }: { size?: number }) => (
 export default function ReviewsSection() {
   const { t } = useLanguage();
   const r = t.reviews;
+  const { ref: headerRef, inView: headerInView } = useInView();
+  const { ref: cardsRef, inView: cardsInView } = useInView({ threshold: 0.05 });
 
   return (
     <section className="bg-[#F7F4EF] border-t border-[#E5DDD4] py-16 md:py-24 px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-10 md:mb-14">
+        <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-10 md:mb-14">
           <div>
-            <div className="flex items-center gap-4 mb-4">
+            <div className={`flex items-center gap-4 mb-4 anim-fade-in-up ${headerInView ? "in-view" : ""}`}>
               <span className="block w-10 h-px bg-[#C4A882]/50" />
               <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] font-light">
                 {r.eyebrow}
               </p>
             </div>
-            <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-light tracking-[0.02em] leading-[1.18] text-[#1A1A1A]">
+            <h2 className={`text-[clamp(2rem,4vw,3.2rem)] font-light tracking-[0.02em] leading-[1.18] text-[#1A1A1A] anim-fade-in-up stagger-1 ${headerInView ? "in-view" : ""}`}>
               {r.heading}
             </h2>
           </div>
@@ -44,7 +47,7 @@ export default function ReviewsSection() {
             href="https://g.page/saxofonfrisor"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 self-start sm:self-auto border border-[#E5DDD4] bg-white px-4 py-3 hover:border-[#C4A882] transition-colors"
+            className={`flex items-center gap-3 self-start sm:self-auto border border-[#E5DDD4] bg-white px-4 py-3 hover:border-[#C4A882] transition-all duration-300 hover:shadow-sm anim-fade-in-up stagger-2 ${headerInView ? "in-view" : ""}`}
           >
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
@@ -60,16 +63,17 @@ export default function ReviewsSection() {
         </div>
 
         {/* Review cards */}
-        <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
-          {r.items.map((review) => (
+        <div ref={cardsRef} className="grid sm:grid-cols-2 gap-4 md:gap-5">
+          {r.items.map((review, i) => (
             <div
               key={review.name}
-              className="bg-white border border-[#E5DDD4] px-6 py-6 md:px-7 md:py-7 flex flex-col gap-4"
+              className={`card-hover bg-white border border-[#E5DDD4] px-6 py-6 md:px-7 md:py-7 flex flex-col gap-4 anim-fade-in-up ${cardsInView ? "in-view" : ""}`}
+              style={{ transitionDelay: `${i * 60}ms` }}
             >
               {/* Stars */}
               <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <StarIcon key={i} />
+                {[1, 2, 3, 4, 5].map((j) => (
+                  <StarIcon key={j} />
                 ))}
               </div>
 

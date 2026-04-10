@@ -45,7 +45,7 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
             <Link
               key={label}
               href={href}
-              className={`text-[12px] tracking-widest uppercase transition-colors ${
+              className={`nav-link-underline text-[12px] tracking-widest uppercase transition-colors ${
                 isLight
                   ? "text-[#4A4540] hover:text-[#1A1A1A]"
                   : "text-white/75 hover:text-white"
@@ -63,7 +63,7 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-[12px] tracking-widest uppercase px-5 py-2.5 transition-colors font-medium ${
+            className={`btn-press text-[12px] tracking-widest uppercase px-5 py-2.5 transition-colors font-medium ${
               isLight
                 ? "bg-[#C4A882] text-[#0F0F0F] hover:bg-[#1A1A1A] hover:text-white"
                 : "bg-[#E8D5B5] text-[#0F0F0F] hover:bg-[#F0E4CC]"
@@ -108,7 +108,7 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
             <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Saxoføn Frisør – hjem" className="flex-none">
               <Image src="/saxofon-logo-transparent.svg" alt="Saxoføn Frisør" width={206} height={135} className="h-[52px] w-auto" />
             </Link>
-            <button onClick={() => setMenuOpen(false)} aria-label="Lukk meny" className="p-2 -mr-2">
+            <button onClick={() => setMenuOpen(false)} aria-label="Lukk meny" className="p-2 -mr-2 transition-transform duration-200 active:scale-90">
               <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -124,6 +124,11 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
                   href={href}
                   onClick={() => setMenuOpen(false)}
                   className="group flex items-center py-4 border-b border-white/[0.06]"
+                  style={{
+                    opacity: menuOpen ? 1 : 0,
+                    transform: menuOpen ? "translateX(0)" : "translateX(20px)",
+                    transition: `opacity 0.4s cubic-bezier(0.16,1,0.3,1) ${150 + i * 60}ms, transform 0.4s cubic-bezier(0.16,1,0.3,1) ${150 + i * 60}ms`,
+                  }}
                 >
                   <span className="text-[13px] text-[#C4A882]/50 font-normal mr-5 tabular-nums">
                     {String(i + 1).padStart(2, "0")}
@@ -135,7 +140,14 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
               ))}
             </nav>
 
-            <div className="mt-12 flex flex-col gap-8">
+            <div
+              className="mt-12 flex flex-col gap-8"
+              style={{
+                opacity: menuOpen ? 1 : 0,
+                transform: menuOpen ? "translateY(0)" : "translateY(12px)",
+                transition: "opacity 0.5s cubic-bezier(0.16,1,0.3,1) 400ms, transform 0.5s cubic-bezier(0.16,1,0.3,1) 400ms",
+              }}
+            >
               <div>
                 <p className="text-[11px] tracking-[0.25em] uppercase text-[#C4A882]/60 mb-4">Language</p>
                 <LanguageSwitcher inline />
@@ -146,7 +158,7 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
-                className="w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
+                className="btn-press w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
               >
                 {t.nav.book}
               </a>

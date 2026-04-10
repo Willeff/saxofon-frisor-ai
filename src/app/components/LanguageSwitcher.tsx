@@ -41,7 +41,7 @@ export default function LanguageSwitcher({
           setLang(l.code);
           setOpen(false);
         }}
-        className={`w-full flex items-center justify-between px-4 py-2.5 text-[14px] font-normal transition-colors text-left ${
+        className={`w-full flex items-center justify-between px-4 py-2.5 text-[14px] font-normal transition-colors duration-200 text-left ${
           isLight
             ? isActive
               ? "text-[#1A1A1A] bg-[#F7F4EF]"
@@ -76,7 +76,7 @@ export default function LanguageSwitcher({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        className={`relative flex items-center gap-1.5 text-[12px] tracking-[0.18em] uppercase transition-colors py-1 select-none ${
+        className={`relative flex items-center gap-1.5 text-[12px] tracking-[0.18em] uppercase transition-colors duration-200 py-1 select-none ${
           isLight
             ? "text-[#7A746E] hover:text-[#1A1A1A]"
             : "text-white/60 hover:text-white"
@@ -95,7 +95,7 @@ export default function LanguageSwitcher({
         </svg>
         <span>{current?.label ?? "Language"}</span>
         <svg
-          className={`w-2.5 h-2.5 flex-none transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`w-2.5 h-2.5 flex-none transition-transform duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] ${open ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
@@ -111,11 +111,11 @@ export default function LanguageSwitcher({
         <div
           role="listbox"
           aria-label="Select language"
-          className={
+          className={`dropdown-enter ${
             inline
               ? `mt-2 w-44 shadow-2xl py-1 ${isLight ? "bg-white border border-[#E0D9D0]" : "bg-[#161616] border border-white/[0.1]"}`
               : `absolute top-full left-0 mt-2 w-44 shadow-2xl z-[9999] py-1 ${isLight ? "bg-white border border-[#E0D9D0]" : "bg-[#161616] border border-white/[0.1]"}`
-          }
+          }`}
         >
           {options}
         </div>

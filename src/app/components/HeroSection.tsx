@@ -8,6 +8,13 @@ import LanguageSwitcher from "./LanguageSwitcher";
 export default function HeroSection() {
   const { t, lang } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Trigger entrance animations after mount
+    const timer = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -59,7 +66,7 @@ export default function HeroSection() {
       </svg>
 
       {/* Navigation */}
-      <nav className="relative z-20 py-4">
+      <nav className={`relative z-20 py-4 anim-fade-in ${mounted ? "in-view" : ""}`}>
         <div className="max-w-5xl mx-auto px-6 flex items-center justify-between relative">
 
           {/* Logo */}
@@ -85,7 +92,7 @@ export default function HeroSection() {
               <a
                 key={label}
                 href={href}
-                className="text-[12px] tracking-widest uppercase text-white/75 hover:text-white transition-colors"
+                className="nav-link-underline text-[12px] tracking-widest uppercase text-white/75 hover:text-white transition-colors"
               >
                 {label}
               </a>
@@ -99,7 +106,7 @@ export default function HeroSection() {
               href="https://bestill.timma.no/saxofon"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] tracking-widest uppercase bg-[#E8D5B5] text-[#0F0F0F] px-5 py-2.5 hover:bg-[#F0E4CC] transition-colors font-medium"
+              className="btn-press text-[12px] tracking-widest uppercase bg-[#E8D5B5] text-[#0F0F0F] px-5 py-2.5 hover:bg-[#F0E4CC] transition-colors font-medium"
             >
               {t.nav.book}
             </a>
@@ -111,8 +118,8 @@ export default function HeroSection() {
             onClick={() => setMenuOpen(true)}
             aria-label="Åpne meny"
           >
-            <span className="block w-6 h-px bg-white" />
-            <span className="block w-6 h-px bg-white" />
+            <span className="block w-6 h-px bg-white transition-all duration-300" />
+            <span className="block w-6 h-px bg-white transition-all duration-300" />
           </button>
         </div>
       </nav>
@@ -178,7 +185,7 @@ export default function HeroSection() {
             <button
               onClick={() => setMenuOpen(false)}
               aria-label="Lukk meny"
-              className="p-2 -mr-2"
+              className="p-2 -mr-2 transition-transform duration-200 active:scale-90"
             >
               <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -202,6 +209,11 @@ export default function HeroSection() {
                   href={href}
                   onClick={() => setMenuOpen(false)}
                   className="group flex items-center py-4 border-b border-white/[0.06]"
+                  style={{
+                    opacity: menuOpen ? 1 : 0,
+                    transform: menuOpen ? "translateX(0)" : "translateX(20px)",
+                    transition: `opacity 0.4s cubic-bezier(0.16,1,0.3,1) ${150 + i * 60}ms, transform 0.4s cubic-bezier(0.16,1,0.3,1) ${150 + i * 60}ms`,
+                  }}
                 >
                   <span className="text-[13px] text-[#C4A882]/50 font-normal mr-5 tabular-nums">
                     {String(i + 1).padStart(2, "0")}
@@ -215,12 +227,19 @@ export default function HeroSection() {
             </nav>
 
             {/* Bottom section */}
-            <div className="mt-12 flex flex-col gap-8">
+            <div
+              className="mt-12 flex flex-col gap-8"
+              style={{
+                opacity: menuOpen ? 1 : 0,
+                transform: menuOpen ? "translateY(0)" : "translateY(12px)",
+                transition: "opacity 0.5s cubic-bezier(0.16,1,0.3,1) 400ms, transform 0.5s cubic-bezier(0.16,1,0.3,1) 400ms",
+              }}
+            >
 
               {/* Spør assistenten */}
               <button
                 onClick={() => { setMenuOpen(false); window.dispatchEvent(new CustomEvent("open-chat")); }}
-                className="flex items-center justify-center gap-2 w-full text-center px-8 py-4 border border-white/20 text-white/75 text-[12px] tracking-[0.18em] uppercase hover:border-white/40 hover:text-white transition-all"
+                className="btn-press flex items-center justify-center gap-2 w-full text-center px-8 py-4 border border-white/20 text-white/75 text-[12px] tracking-[0.18em] uppercase hover:border-white/40 hover:text-white transition-all"
               >
                 <svg className="w-3.5 h-3.5 flex-none" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -245,7 +264,7 @@ export default function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
-                className="w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
+                className="btn-press w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
               >
                 {t.nav.book}
               </a>
@@ -258,7 +277,7 @@ export default function HeroSection() {
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 py-12 md:py-16 overflow-hidden">
 
         {/* Eyebrow */}
-        <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-7">
+        <div className={`flex items-center gap-3 md:gap-4 mb-5 md:mb-7 anim-fade-in-up hero-stagger-1 ${mounted ? "in-view" : ""}`}>
           <span className="block w-8 md:w-10 h-px bg-[#C4A882]/40" />
           <p className="text-[11px] md:text-[12px] tracking-[0.32em] md:tracking-[0.35em] uppercase text-[#C4A882] font-light">
             {t.hero.eyebrow}
@@ -267,19 +286,19 @@ export default function HeroSection() {
         </div>
 
         {/* Headline */}
-        <h1 className="text-[clamp(2rem,5.5vw,3.8rem)] font-light tracking-[0.01em] leading-[1.18] mb-4 md:mb-5 text-white max-w-2xl">
+        <h1 className={`text-[clamp(2rem,5.5vw,3.8rem)] font-light tracking-[0.01em] leading-[1.18] mb-4 md:mb-5 text-white max-w-2xl anim-fade-in-up hero-stagger-2 ${mounted ? "in-view" : ""}`}>
           {t.hero.headlineL1}
           <br />
           {t.hero.headlineL2}
         </h1>
 
         {/* Subtitle */}
-        <p className="text-[16px] md:text-[17px] text-white/75 font-light max-w-sm md:max-w-md mx-auto mb-7 md:mb-9 leading-relaxed tracking-wide">
+        <p className={`text-[16px] md:text-[17px] text-white/75 font-light max-w-sm md:max-w-md mx-auto mb-7 md:mb-9 leading-relaxed tracking-wide anim-fade-in-up hero-stagger-3 ${mounted ? "in-view" : ""}`}>
           {t.hero.subtitle}
         </p>
 
         {/* Trust row */}
-        <div className="mb-9 md:mb-11 flex flex-col items-center gap-2">
+        <div className={`mb-9 md:mb-11 flex flex-col items-center gap-2 anim-fade-in-up hero-stagger-4 ${mounted ? "in-view" : ""}`}>
           {/* Stars */}
           <div className="flex items-center gap-1 md:gap-1.5">
             {[1, 2, 3, 4, 5].map((i) => (
@@ -303,18 +322,18 @@ export default function HeroSection() {
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm sm:max-w-none sm:w-auto mb-3 md:mb-4">
+        <div className={`flex flex-col sm:flex-row gap-3 w-full max-w-sm sm:max-w-none sm:w-auto mb-3 md:mb-4 anim-fade-in-up hero-stagger-5 ${mounted ? "in-view" : ""}`}>
           <a
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 md:px-10 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors text-center"
+            className="btn-press px-8 md:px-10 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors text-center"
           >
             {t.hero.book}
           </a>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-chat"))}
-            className="flex items-center justify-center gap-2 px-8 md:px-10 py-4 border border-white/20 text-white/75 text-[12px] tracking-[0.18em] uppercase hover:border-white/40 hover:text-white transition-all"
+            className="btn-press flex items-center justify-center gap-2 px-8 md:px-10 py-4 border border-white/20 text-white/75 text-[12px] tracking-[0.18em] uppercase hover:border-white/40 hover:text-white transition-all"
           >
             <svg className="w-3.5 h-3.5 flex-none" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -324,7 +343,7 @@ export default function HeroSection() {
         </div>
 
         {/* Microcopy */}
-        <p className="text-[12px] text-white/50 font-normal tracking-wide">
+        <p className={`text-[12px] text-white/50 font-normal tracking-wide anim-fade-in hero-stagger-5 ${mounted ? "in-view" : ""}`}>
           {t.hero.assistantHint}
         </p>
 

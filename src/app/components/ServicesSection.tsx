@@ -3,6 +3,7 @@
 import { useState, useMemo, useRef } from "react";
 import { getServices, DISPLAY_FILTERS, DISPLAY_FILTER_LABELS, CATEGORY_LABELS, filterServices, type DisplayFilter } from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
+import { useInView } from "../hooks/useInView";
 
 const CATEGORY_STYLE_MAP: Record<string, string> = {
   men: "bg-[#1A1A1A] text-white",
@@ -27,6 +28,8 @@ export default function ServicesSection() {
   const [activeFilter, setActiveFilter] = useState<DisplayFilter>("all");
   const [showAll, setShowAll] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
+  const { ref: headerRef, inView: headerInView } = useInView();
+  const { ref: cardsRef, inView: cardsInView } = useInView({ threshold: 0.05 });
 
   const services = useMemo(() => getServices(lang), [lang]);
   const filterLabels = DISPLAY_FILTER_LABELS[lang];
@@ -53,20 +56,20 @@ export default function ServicesSection() {
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
-        <div className="mb-6 md:mb-8">
-          <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-3 md:mb-4">
+        <div ref={headerRef} className="mb-6 md:mb-8">
+          <p className={`text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-3 md:mb-4 anim-fade-in-up ${headerInView ? "in-view" : ""}`}>
             {t.services.eyebrow}
           </p>
-          <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-light tracking-wide text-[#1A1A1A] mb-4 md:mb-5">
+          <h2 className={`text-[clamp(2rem,4vw,3.2rem)] font-light tracking-wide text-[#1A1A1A] mb-4 md:mb-5 anim-fade-in-up stagger-1 ${headerInView ? "in-view" : ""}`}>
             {t.services.heading}
           </h2>
-          <p className="text-[15px] text-[#4A4540] font-normal max-w-2xl leading-relaxed">
+          <p className={`text-[15px] text-[#4A4540] font-normal max-w-2xl leading-relaxed anim-fade-in-up stagger-2 ${headerInView ? "in-view" : ""}`}>
             {t.services.intro}
           </p>
         </div>
 
         {/* Filter chips */}
-        <div ref={filterRef} className="mb-8 md:mb-10 scroll-mt-24">
+        <div ref={filterRef} className={`mb-8 md:mb-10 scroll-mt-24 anim-fade-in-up stagger-3 ${headerInView ? "in-view" : ""}`}>
           <div className="flex flex-wrap gap-2">
             {DISPLAY_FILTERS.map((filter) => {
               const isActive = activeFilter === filter;
@@ -78,7 +81,7 @@ export default function ServicesSection() {
                 <button
                   key={filter}
                   onClick={() => handleFilterClick(filter)}
-                  className={`flex-none flex items-center gap-1.5 px-4 py-2.5 text-[13px] tracking-wide border transition-all whitespace-nowrap font-normal ${
+                  className={`btn-press flex-none flex items-center gap-1.5 px-4 py-2.5 text-[13px] tracking-wide border transition-all duration-250 whitespace-nowrap font-normal ${
                     isActive
                       ? "bg-[#1A1A1A] text-white border-[#1A1A1A]"
                       : "bg-white text-[#7A746E] border-[#E5DDD4] hover:border-[#C4A882] hover:text-[#1A1A1A]"
@@ -111,11 +114,12 @@ export default function ServicesSection() {
 
         {/* Service cards */}
         {displayedServices.length > 0 ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+          <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {displayedServices.map((service, i) => (
               <div
                 key={`${service.title}-${i}`}
-                className="bg-white border border-[#E5DDD4] flex flex-col hover:border-[#C4A882] hover:shadow-sm transition-all group"
+                className={`card-hover bg-white border border-[#E5DDD4] flex flex-col hover:border-[#C4A882] transition-all group anim-fade-in-up ${cardsInView ? "in-view" : ""}`}
+                style={{ transitionDelay: `${Math.min(i, 5) * 60}ms` }}
               >
                 <div className="px-5 pt-5 pb-4 md:px-6 md:pt-6 flex-1">
                   <span
@@ -138,7 +142,7 @@ export default function ServicesSection() {
                     href="https://bestill.timma.no/saxofon"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] tracking-[0.15em] uppercase text-white bg-[#1A1A1A] px-4 py-2.5 hover:bg-[#C4A882] transition-colors whitespace-nowrap font-medium"
+                    className="btn-press text-[11px] tracking-[0.15em] uppercase text-white bg-[#1A1A1A] px-4 py-2.5 hover:bg-[#C4A882] transition-colors whitespace-nowrap font-medium"
                   >
                     {t.services.bookCard}
                   </a>
@@ -157,7 +161,7 @@ export default function ServicesSection() {
           <div className="mt-6 text-center">
             <button
               onClick={() => setShowAll(true)}
-              className="px-8 py-3 text-[13px] tracking-[0.15em] uppercase border border-[#E5DDD4] text-[#5C5650] hover:border-[#C4A882] hover:text-[#1A1A1A] transition-all font-normal"
+              className="btn-press px-8 py-3 text-[13px] tracking-[0.15em] uppercase border border-[#E5DDD4] text-[#5C5650] hover:border-[#C4A882] hover:text-[#1A1A1A] transition-all font-normal"
             >
               {t.services.visAlle} ({filtered.length})
             </button>
@@ -194,7 +198,7 @@ export default function ServicesSection() {
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-none w-full sm:w-auto text-center px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
+            className="btn-press flex-none w-full sm:w-auto text-center px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
           >
             {t.services.book}
           </a>

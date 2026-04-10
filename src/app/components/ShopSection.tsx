@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
+import { useInView } from "../hooks/useInView";
 
 type Product = {
   name: string;
@@ -135,26 +136,28 @@ const PRODUCTS_MAP = { no: PRODUCTS_NO, en: PRODUCTS_EN, ar: PRODUCTS_AR, es: PR
 export default function ShopSection() {
   const { t, lang } = useLanguage();
   const products = PRODUCTS_MAP[lang];
+  const { ref: headerRef, inView: headerInView } = useInView();
+  const { ref: gridRef, inView: gridInView } = useInView({ threshold: 0.1 });
 
   return (
     <section className="bg-[#0F0F0F] py-24 px-6 text-white">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div ref={headerRef} className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
-            <p className="text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-4">
+            <p className={`text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-4 anim-fade-in-up ${headerInView ? "in-view" : ""}`}>
               {t.shop.eyebrow}
             </p>
-            <h2 className="text-3xl md:text-4xl font-extralight tracking-wide text-white mb-4">
+            <h2 className={`text-3xl md:text-4xl font-extralight tracking-wide text-white mb-4 anim-fade-in-up stagger-1 ${headerInView ? "in-view" : ""}`}>
               {t.shop.heading}
             </h2>
-            <p className="text-white/55 font-normal max-w-md text-[15px] leading-relaxed">
+            <p className={`text-white/55 font-normal max-w-md text-[15px] leading-relaxed anim-fade-in-up stagger-2 ${headerInView ? "in-view" : ""}`}>
               {t.shop.subtitle}
             </p>
           </div>
 
           {/* Shopify badge */}
-          <div className="self-start md:self-auto border border-white/10 px-5 py-4 text-center min-w-[180px]">
+          <div className={`self-start md:self-auto border border-white/10 px-5 py-4 text-center min-w-[180px] anim-fade-in-up stagger-3 ${headerInView ? "in-view" : ""}`}>
             <p className="text-[11px] tracking-[0.25em] uppercase text-white/35 mb-1">
               {t.shop.readyFor}
             </p>
@@ -165,11 +168,12 @@ export default function ShopSection() {
         </div>
 
         {/* Products grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
-          {products.map((product) => (
+        <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+          {products.map((product, i) => (
             <div
               key={product.name}
-              className="bg-[#0F0F0F] p-6 hover:bg-[#161616] transition-colors group flex flex-col"
+              className={`bg-[#0F0F0F] p-6 hover:bg-[#161616] transition-colors duration-300 group flex flex-col anim-fade-in-up ${gridInView ? "in-view" : ""}`}
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
               <div className="aspect-square bg-[#1A1A1A] mb-5 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#C4A882]/10 to-transparent" />
@@ -196,7 +200,7 @@ export default function ShopSection() {
                 <span className="text-[15px] font-normal text-white">
                   {product.price}
                 </span>
-                <button className="text-[11px] tracking-[0.15em] uppercase text-white/40 hover:text-white transition-colors font-medium">
+                <button className="text-[11px] tracking-[0.15em] uppercase text-white/40 hover:text-white transition-colors duration-200 font-medium">
                   {t.shop.buyLabel}
                 </button>
               </div>
@@ -205,7 +209,7 @@ export default function ShopSection() {
         </div>
 
         {/* Shopify integration note */}
-        <div className="mt-12 border border-white/8 p-8 flex flex-col md:flex-row items-start md:items-center gap-6">
+        <div className="mt-12 border border-white/8 p-8 flex flex-col md:flex-row items-start md:items-center gap-6 transition-colors duration-300 hover:border-white/[0.12]">
           <div className="flex-1">
             <p className="text-[12px] tracking-[0.25em] uppercase text-[#C4A882] mb-2">
               {t.shop.nextStep}
