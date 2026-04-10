@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { getResponse, type Message } from "../lib/chatResponses";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useLanguage } from "../context/LanguageContext";
+
+type Message = { role: "assistant" | "user"; content: string };
 
 export default function AssistantChat() {
   const { t, lang } = useLanguage();
@@ -26,21 +27,40 @@ export default function AssistantChat() {
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, isTyping]);
 
-  function sendMessage(text: string) {
+  const sendMessage = useCallback(async (text: string) => {
     const trimmed = text.trim();
     if (!trimmed || isTyping) return;
 
-    setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
+    const userMsg: Message = { role: "user", content: trimmed };
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setIsTyping(true);
 
-    const delay = 800 + Math.random() * 500;
-    setTimeout(() => {
-      const reply = getResponse(trimmed, lang);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...messages, userMsg].slice(1), // skip initial greeting
+        }),
+      });
+      const data = await res.json();
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: data.response },
+      ]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: "Beklager, noe gikk galt. Ring oss på 455 55 898 så hjelper vi deg direkte.",
+        },
+      ]);
+    } finally {
       setIsTyping(false);
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
-    }, delay);
-  }
+    }
+  }, [messages, isTyping]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

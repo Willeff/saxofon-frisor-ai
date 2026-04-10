@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { getResponse, type Message } from "../lib/chatResponses";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useLanguage } from "../context/LanguageContext";
+
+type Message = { role: "assistant" | "user"; content: string };
 
 export default function FloatingChat() {
   const { t, lang } = useLanguage();
@@ -39,19 +40,40 @@ export default function FloatingChat() {
     return () => window.removeEventListener("open-chat", handleOpenChat);
   }, []);
 
-  function sendMessage(text: string) {
-    if (!text.trim()) return;
-    setMessages((prev) => [...prev, { role: "user", content: text.trim() }]);
+  const sendMessage = useCallback(async (text: string) => {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+
+    const userMsg: Message = { role: "user", content: trimmed };
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setIsTyping(true);
-    setTimeout(() => {
-      setIsTyping(false);
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...messages, userMsg].slice(1), // skip initial greeting
+        }),
+      });
+      const data = await res.json();
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: getResponse(text, lang) },
+        { role: "assistant", content: data.response },
       ]);
-    }, 800 + Math.random() * 500);
-  }
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: "Beklager, noe gikk galt. Ring oss på 455 55 898 så hjelper vi deg direkte.",
+        },
+      ]);
+    } finally {
+      setIsTyping(false);
+    }
+  }, [messages]);
 
   /* Shared chat panel content */
   const chatHeader = (
