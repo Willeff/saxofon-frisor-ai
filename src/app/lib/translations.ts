@@ -53,7 +53,7 @@ export const translations = {
       eyebrow: "Om salongen",
       heading: "Over 17 år med erfaring\nog fornøyde kunder.",
       body1:
-        "Saxoføn Frisør er en etablert salong med høy faglig standard og personlig service. Vi er godkjent lærebedrift og holder oss oppdatert på teknikk og trender.",
+        "Saxoføn Frisør er en etablert frisørsalong i Fredensborgveien på St. Hanshaugen i sentrale Oslo. Vi har høy faglig standard, er godkjent lærebedrift, og holder oss oppdatert på teknikk og trender.",
       body2:
         "Resultatet tilpasses ditt hår, din livsstil og din stil – ikke omvendt.",
       stats: [
@@ -91,15 +91,41 @@ export const translations = {
       ],
     },
     services: {
-      eyebrow: "Tjenester",
+      eyebrow: "Tjenester og priser",
       heading: "Våre tjenester",
       intro:
-        "Fra klassiske klipp til balayage og keratin – velg kategori for å se priser og bestill direkte.",
+        "Fra klassiske klipp til balayage og keratinbehandling – velg kategori for å se priser og bestill direkte.",
+      categoryDescriptions: {
+        men: {
+          title: "Herreklipp i Oslo",
+          description: "Klassisk kort klipp, skinfade, klipp av langt hår eller maskinklipp – vi tilpasser frisyren etter din stil og ansiktsform. Skjeggtrim kan legges til de fleste klippene.",
+        },
+        women: {
+          title: "Dameklipp i Oslo",
+          description: "Fra stuss av lengder til helt ny frisyre. Alle klipp inkluderer rådgivning, og vi tilpasser teknikken etter hårtype og ønsket resultat. Vask og føning er inkludert i de fleste klippene.",
+        },
+        "highlights-balayage": {
+          title: "Striper og balayage",
+          description: "Striper gir jevn lyshet med tydelig kontrast. Balayage males fritt og gir en mykere, naturlig effekt som vokser ut uten markert ettervekst. Begge teknikkene inkluderer toner for et harmonisk resultat.",
+        },
+        colour: {
+          title: "Hårfarge",
+          description: "Helfarging, ettervekst eller farge kombinert med klipp. Vi bruker profesjonelle fargeprodukter og tilpasser tonen etter din hudtype og ønsker. Vask og føning er inkludert.",
+        },
+        keratin: {
+          title: "Keratinbehandling og proteinbehandling",
+          description: "Keratin glatter hårstrukturen og reduserer krøll – effekten varer i flere uker. Proteinbehandling styrker skadet hår innenfra og er spesielt nyttig etter farging eller bleking.",
+        },
+        children: {
+          title: "Barneklipp",
+          description: "Klipp for barn fra 6 år. Vi skaper en trygg og rolig opplevelse slik at de unge kundene våre trives i stolen.",
+        },
+      },
       viewPriceList: "Se full prisliste",
       visAlle: "Vis alle",
       unsureHeading: "Usikker på hva du trenger?",
       unsureSub:
-        "Bestill en gratis konsultasjon – vi hjelper deg å finne riktig behandling.",
+        "Ta kontakt eller bestill time – vi hjelper deg å finne riktig behandling.",
       book: "Bestill time",
       activeFilterText: (count: number, filter: string) =>
         `Viser ${count} ${count === 1 ? "tjeneste" : "tjenester"} for ${filter}`,
@@ -155,8 +181,9 @@ export const translations = {
     about: {
       eyebrow: "Om oss",
       heading: "Kvalitet og presisjon\nsiden 2009.",
-      body: "Saxoføn Frisør er en salong i sentrale Oslo bygget på godt håndverk og personlig service. Vi tilbyr dameklipp, herreklipp, balayage, hårfarge og styling – tilpasset ditt hår og din stil.",
-      body2: "Som godkjent lærebedrift investerer vi i faglig utvikling og nye teknikker, slik at du alltid møter frisører som holder høy standard.",
+      body: "Saxoføn Frisør holder til i Fredensborgveien 22 på St. Hanshaugen, like ved Bislett i sentrale Oslo. Salongen ble etablert i 2009 og bygger på godt håndverk, faglig standard og personlig service.",
+      body2: "Vi er godkjent lærebedrift i Oslo og Akershus, og investerer i faglig utvikling og nye teknikker. Hos oss møter du erfarne frisører som jobber med alt fra klassiske klipp og skjeggtrim til balayage, hårfarge og keratinbehandling.",
+      body3: "Vi bruker profesjonelle produkter og tar oss tid til å forstå hva som passer ditt hår og din stil. Resultatet skal fungere i din hverdag – ikke bare den dagen du er hos oss.",
       stats: [
         { value: "17+", label: "års erfaring" },
         { value: "4.9", label: "på Google" },
@@ -168,7 +195,7 @@ export const translations = {
     contactSection: {
       eyebrow: "Kontakt oss",
       heading: "Vi ser frem til\nå høre fra deg.",
-      body: "Bestill time online, ring oss direkte eller stikk innom salongen. Vi hjelper deg med å finne riktig behandling.",
+      body: "Bestill time online, ring oss direkte eller stikk innom salongen i Fredensborgveien 22 på St. Hanshaugen. Vi hjelper deg med å finne riktig behandling.",
       book: "Bestill time",
       bookSub: "Velg tid og behandling direkte i kalenderen vår.",
       phone: "Ring oss",
@@ -189,7 +216,7 @@ export const translations = {
     },
     footer: {
       tagline: "Moderne frisørsalong i hjertet av Oslo.\nFor kvinner og menn som verdsetter kvalitet.",
-      seoText: "Saxoføn Frisør er en frisørsalong i Oslo som tilbyr dameklipp, herreklipp, balayage, hårfarge og hårbehandlinger. Salongen ligger sentralt på Fredensborgveien 22 og bygger på over 17 års erfaring, med 4.9 i Google-rating og 681 anmeldelser.",
+      seoText: "Saxoføn Frisør er en frisørsalong på St. Hanshaugen i sentrale Oslo. Vi tilbyr dameklipp, herreklipp, balayage, hårfarge og keratinbehandling i Fredensborgveien 22, like ved Bislett. Over 17 års erfaring, 4.9 på Google og 681 anmeldelser.",
       contact: "Kontakt",
       hours: "Åpningstider",
       address: "Fredensborgveien 22, Oslo",
@@ -214,12 +241,18 @@ export const translations = {
       book: "Bestill time",
       cta: "Finner du ikke svar? Ta kontakt – vi hjelper gjerne.",
       items: [
-        { q: "Må jeg bestille time på forhånd?", a: "Vi anbefaler å bestille time for å sikre deg en plass, men drop-in er velkommen hvis vi har ledig kapasitet. Bestill enkelt via nettsiden vår." },
-        { q: "Hva er forskjellen på balayage og striper?", a: "Striper gir en jevn lyshet med kontrast, mens balayage gir en mykere, solkysst effekt som vokser naturlig ut. Balayage krever sjeldnere vedlikehold. Vi hjelper deg gjerne med å velge." },
-        { q: "Hvordan vet jeg hvilken behandling jeg skal velge?", a: "Vi tilbyr gratis konsultasjon der vi vurderer håret ditt og anbefaler behandling basert på dine ønsker, hårtype og livsstil." },
-        { q: "Tilbyr dere behandlinger for både kvinner og menn?", a: "Ja! Vi har et bredt utvalg for begge – fra klassiske klipp og styling til farge, balayage og keratin-behandling." },
-        { q: "Hva gjør jeg hvis håret er skadet etter bleking?", a: "Vi anbefaler en proteinbehandling eller keratin-behandling som gjenoppbygger hårstrukturen. Bestill en konsultasjon så vi kan vurdere tilstanden og anbefale riktig pleie." },
-        { q: "Kan jeg kontakte dere hvis jeg er usikker på hva jeg skal bestille?", a: "Absolutt! Ring oss på 455 55 898 eller bruk chat-assistenten her på siden. Vi hjelper deg med å finne riktig behandling." },
+        { q: "Må jeg bestille time på forhånd?", a: "Vi anbefaler å bestille time for å sikre deg en plass, men drop-in er velkommen hvis vi har ledig kapasitet. Du bestiller enkelt via nettsiden vår." },
+        { q: "Hvor ligger salongen?", a: "Vi holder til i Fredensborgveien 22 på St. Hanshaugen, like ved Bislett. Salongen er lett tilgjengelig med buss og trikk fra hele Oslo." },
+        { q: "Hva koster en klipp eller behandling?", a: "Herreklipp starter fra 399 kr og dameklipp fra 499 kr. Fargebehandlinger og balayage varierer etter hårlengde. Se full prisliste på tjenester-siden." },
+        { q: "Tilbyr dere behandlinger for både kvinner og menn?", a: "Ja. Vi har et bredt utvalg for begge – fra klassiske klipp og skjeggtrim til farge, balayage og keratinbehandling." },
+      ],
+      serviceItems: [
+        { q: "Hva er forskjellen på striper og balayage?", a: "Striper gir jevn lyshet med tydelig kontrast fra roten og ned. Balayage males fritt på håret og gir en mykere, mer naturlig effekt som vokser ut uten markert ettervekst. Balayage krever sjeldnere vedlikehold." },
+        { q: "Hva er keratinbehandling og proteinbehandling?", a: "Keratinbehandling glatter og gjenoppbygger hårstrukturen – reduserer krøll og gir et glattere resultat i flere uker. Proteinbehandling styrker skadet hår innenfra og er spesielt nyttig etter farging eller bleking." },
+        { q: "Hvordan vet jeg hvilken fargebehandling som passer meg?", a: "Det avhenger av ønsket resultat og utgangspunktet ditt. Helfarging dekker grått eller gir en helt ny tone. Striper og balayage gir lysere nyanser. Bestill time så rådgir vi deg basert på hårtype og ønsker." },
+        { q: "Hva slags herreklipp tilbyr dere?", a: "Vi tilbyr alt fra klassisk kort klipp og skinfade til klipp av langt hår. Skjeggtrim kan legges til de fleste klippene. Vi tilpasser frisyren etter din ansiktsform og stil." },
+        { q: "Hvor lang tid tar en behandling?", a: "En vanlig klipp tar ca. 30–45 minutter. Fargebehandlinger og balayage varierer fra 1,5 til 3 timer avhengig av hårlengde og kompleksitet. Vi gir alltid et tidsestimat ved bestilling." },
+        { q: "Hva gjør jeg hvis håret er skadet etter bleking?", a: "Vi anbefaler proteinbehandling eller keratinbehandling som gjenoppbygger hårstrukturen. Bestill time, så vurderer vi tilstanden og anbefaler riktig pleie." },
       ],
     },
     floating: {
@@ -315,15 +348,41 @@ export const translations = {
       ],
     },
     services: {
-      eyebrow: "Services",
+      eyebrow: "Services & prices",
       heading: "Our services",
       intro:
         "From classic cuts to balayage and keratin – choose a category to see prices and book directly.",
+      categoryDescriptions: {
+        men: {
+          title: "Men's cuts in Oslo",
+          description: "Classic short cuts, skin fades, long hair cuts or clipper cuts – we tailor the style to your face shape and preferences. Beard trim can be added to most cuts.",
+        },
+        women: {
+          title: "Women's cuts in Oslo",
+          description: "From a simple trim to a complete restyle. All cuts include consultation, and we adapt the technique to your hair type and desired result. Wash and blow-dry included in most cuts.",
+        },
+        "highlights-balayage": {
+          title: "Highlights & balayage",
+          description: "Highlights give even brightness with clear contrast. Balayage is painted freehand for a softer, natural effect that grows out without a harsh line. Both include toner for a harmonious result.",
+        },
+        colour: {
+          title: "Hair colour",
+          description: "Full colour, root touch-up or colour combined with a cut. We use professional colour products and adapt the shade to your skin tone and wishes. Wash and blow-dry included.",
+        },
+        keratin: {
+          title: "Keratin & protein treatment",
+          description: "Keratin smooths the hair structure and reduces frizz – the effect lasts for weeks. Protein treatment strengthens damaged hair from within and is especially useful after colouring or bleaching.",
+        },
+        children: {
+          title: "Children's cuts",
+          description: "Cuts for children from age 6. We create a calm, friendly experience so our youngest clients feel comfortable in the chair.",
+        },
+      },
       viewPriceList: "View full price list",
       visAlle: "Show all",
       unsureHeading: "Not sure what you need?",
       unsureSub:
-        "Book a free consultation – we'll help you find the right treatment.",
+        "Get in touch or book an appointment – we'll help you find the right treatment.",
       book: "Book now",
       activeFilterText: (count: number, filter: string) =>
         `Showing ${count} ${count === 1 ? "service" : "services"} for ${filter}`,
@@ -379,8 +438,9 @@ export const translations = {
     about: {
       eyebrow: "About us",
       heading: "Quality and precision\nsince 2009.",
-      body: "Saxoføn Frisør is a salon in central Oslo built on skilled craftsmanship and personal service. We offer women's cuts, men's cuts, balayage, hair colour and styling – tailored to your hair and your style.",
-      body2: "As an approved apprenticeship centre we invest in professional development and new techniques, so you always meet stylists who hold a high standard.",
+      body: "Saxoføn Frisør is located at Fredensborgveien 22 on St. Hanshaugen, near Bislett in central Oslo. The salon was established in 2009 and is built on skilled craftsmanship, professional standards and personal service.",
+      body2: "We are an approved apprenticeship centre in Oslo and Akershus, and invest in professional development and new techniques. With us you meet experienced stylists who work with everything from classic cuts and beard trims to balayage, hair colour and keratin treatments.",
+      body3: "We use professional products and take the time to understand what suits your hair and your style. The result should work in your everyday life – not just the day you visit us.",
       stats: [
         { value: "17+", label: "years of experience" },
         { value: "4.9", label: "on Google" },
@@ -392,7 +452,7 @@ export const translations = {
     contactSection: {
       eyebrow: "Contact us",
       heading: "We look forward to\nhearing from you.",
-      body: "Book an appointment online, call us directly or drop by the salon. We'll help you find the right treatment.",
+      body: "Book an appointment online, call us directly or drop by the salon at Fredensborgveien 22 on St. Hanshaugen. We'll help you find the right treatment.",
       book: "Book now",
       bookSub: "Choose a time and treatment directly in our calendar.",
       phone: "Call us",
@@ -438,12 +498,18 @@ export const translations = {
       book: "Book now",
       cta: "Can't find your answer? Get in touch – we're happy to help.",
       items: [
-        { q: "Do I need to book in advance?", a: "We recommend booking to secure your slot, but walk-ins are welcome if we have availability. Book easily via our website." },
-        { q: "What's the difference between balayage and highlights?", a: "Highlights give an even brightness with contrast, while balayage creates a softer, sun-kissed effect that grows out naturally. Balayage requires less frequent touch-ups." },
-        { q: "How do I know which treatment to choose?", a: "We offer free consultations where we assess your hair and recommend a treatment based on your wishes, hair type and lifestyle." },
-        { q: "Do you offer treatments for both women and men?", a: "Yes! We have a wide range for everyone – from classic cuts and styling to colour, balayage and keratin treatments." },
-        { q: "What should I do if my hair is damaged after bleaching?", a: "We recommend a protein or keratin treatment that rebuilds hair structure. Book a consultation so we can assess the condition and recommend the right care." },
-        { q: "Can I contact you if I'm unsure what to book?", a: "Absolutely! Call us on +47 455 55 898 or use the chat assistant on this page. We'll help you find the right treatment." },
+        { q: "Do I need to book in advance?", a: "We recommend booking to secure your slot, but walk-ins are welcome if we have availability. You can book easily via our website." },
+        { q: "Where is the salon located?", a: "We're at Fredensborgveien 22 on St. Hanshaugen, near Bislett in central Oslo. The salon is easy to reach by bus and tram from all over Oslo." },
+        { q: "How much does a cut or treatment cost?", a: "Men's cuts start from 399 kr and women's cuts from 499 kr. Colour and balayage vary by hair length. See our full price list on the services page." },
+        { q: "Do you offer treatments for both women and men?", a: "Yes. We have a wide range for everyone – from classic cuts and beard trims to colour, balayage and keratin treatments." },
+      ],
+      serviceItems: [
+        { q: "What's the difference between highlights and balayage?", a: "Highlights give even brightness with clear contrast from root to tip. Balayage is painted freehand, creating a softer, more natural effect that grows out without a harsh regrowth line. Balayage requires less frequent touch-ups." },
+        { q: "What is keratin treatment and protein treatment?", a: "Keratin treatment smooths and rebuilds the hair structure – reducing frizz and giving a sleeker result for several weeks. Protein treatment strengthens damaged hair from within and is especially useful after colouring or bleaching." },
+        { q: "How do I know which colour treatment suits me?", a: "It depends on your desired result and starting point. Full colour covers grey or gives a completely new tone. Highlights and balayage add lighter dimensions. Book an appointment and we'll advise you based on your hair type and wishes." },
+        { q: "What kind of men's cuts do you offer?", a: "Everything from classic short cuts and skin fades to long hair styling. Beard trim can be added to most cuts. We tailor the style to your face shape and preferences." },
+        { q: "How long does a treatment take?", a: "A standard cut takes about 30–45 minutes. Colour treatments and balayage take between 1.5 and 3 hours depending on hair length and complexity. We always give a time estimate when booking." },
+        { q: "What should I do if my hair is damaged after bleaching?", a: "We recommend a protein or keratin treatment to rebuild hair structure. Book an appointment and we'll assess the condition and recommend the right care." },
       ],
     },
     floating: {
@@ -539,14 +605,22 @@ export const translations = {
       ],
     },
     services: {
-      eyebrow: "الخدمات",
+      eyebrow: "الخدمات والأسعار",
       heading: "خدماتنا",
       intro:
         "من القصات الكلاسيكية إلى البالياج والكيراتين – اختر فئة لعرض الأسعار والحجز مباشرة.",
+      categoryDescriptions: {
+        men: { title: "قصات رجالية في أوسلو", description: "قصات قصيرة كلاسيكية، سكن فيد، قص شعر طويل أو قص بالماكينة. يمكن إضافة تشذيب اللحية لمعظم القصات." },
+        women: { title: "قصات نسائية في أوسلو", description: "من تقليم بسيط إلى تغيير كامل في التسريحة. جميع القصات تشمل استشارة ونكيّف التقنية حسب نوع شعرك." },
+        "highlights-balayage": { title: "خصلات وبالياج", description: "الخصلات تعطي إضاءة متساوية. البالياج يُرسم بحرية لتأثير أنعم وأكثر طبيعية. كلاهما يشمل التونر." },
+        colour: { title: "صبغة الشعر", description: "صبغة كاملة أو جذور أو صبغة مع قص. نستخدم منتجات صبغة احترافية. الغسل والتجفيف مشمولان." },
+        keratin: { title: "الكيراتين والبروتين", description: "الكيراتين ينعّم بنية الشعر ويقلل التجعد. البروتين يقوّي الشعر التالف من الداخل." },
+        children: { title: "قصات الأطفال", description: "قصات للأطفال من سن 6 سنوات في أجواء مريحة وهادئة." },
+      },
       viewPriceList: "عرض قائمة الأسعار",
       visAlle: "عرض الكل",
       unsureHeading: "لست متأكداً من احتياجاتك؟",
-      unsureSub: "احجز استشارة مجانية – سنساعدك في العثور على العلاج المناسب.",
+      unsureSub: "تواصل معنا أو احجز موعداً – سنساعدك في العثور على العلاج المناسب.",
       book: "احجز الآن",
       activeFilterText: (count: number, filter: string) =>
         `عرض ${count} ${count === 1 ? "خدمة" : "خدمات"} لـ ${filter}`,
@@ -662,11 +736,17 @@ export const translations = {
       cta: "لم تجد إجابتك؟ تواصل معنا – نحن سعداء بمساعدتك.",
       items: [
         { q: "هل أحتاج إلى حجز موعد مسبقاً؟", a: "ننصح بالحجز لضمان مكانك، لكن الزيارة بدون موعد مرحب بها إذا كانت لدينا أماكن متاحة." },
-        { q: "ما الفرق بين البالياج والخصلات؟", a: "الخصلات تعطي إضاءة متساوية بتباين واضح، بينما البالياج يعطي تأثيراً أنعم وأكثر طبيعية. البالياج يحتاج صيانة أقل." },
-        { q: "كيف أعرف أي علاج أختار؟", a: "نقدم استشارات مجانية نقيّم فيها شعرك ونوصي بالعلاج المناسب لرغباتك ونوع شعرك." },
-        { q: "هل تقدمون علاجات للنساء والرجال؟", a: "نعم! لدينا مجموعة واسعة للجميع – من القصات الكلاسيكية إلى الصبغة والبالياج والكيراتين." },
-        { q: "ماذا أفعل إذا تضرر شعري بعد التبييض؟", a: "نوصي بعلاج البروتين أو الكيراتين الذي يعيد بناء بنية الشعر. احجز استشارة لتقييم الحالة." },
-        { q: "هل يمكنني التواصل معكم إذا لم أكن متأكداً مما أحجز؟", a: "بالتأكيد! اتصل بنا على 455 55 898 أو استخدم مساعد الدردشة. سنساعدك في إيجاد العلاج المناسب." },
+        { q: "أين يقع الصالون؟", a: "نقع في Fredensborgveien 22 في St. Hanshaugen، بالقرب من Bislett في وسط أوسلو. يسهل الوصول إلينا بالحافلة والترام." },
+        { q: "كم تكلفة القص أو العلاج؟", a: "القصات الرجالية تبدأ من 399 كرونة والنسائية من 499 كرونة. الصبغة والبالياج تختلف حسب طول الشعر. اطلع على قائمة الأسعار الكاملة." },
+        { q: "هل تقدمون علاجات للنساء والرجال؟", a: "نعم. لدينا مجموعة واسعة للجميع – من القصات الكلاسيكية إلى الصبغة والبالياج والكيراتين." },
+      ],
+      serviceItems: [
+        { q: "ما الفرق بين الخصلات والبالياج؟", a: "الخصلات تعطي إضاءة متساوية بتباين واضح من الجذور. البالياج يُرسم بحرية ويعطي تأثيراً أنعم وأكثر طبيعية. البالياج يحتاج صيانة أقل." },
+        { q: "ما هو علاج الكيراتين والبروتين؟", a: "الكيراتين ينعّم ويعيد بناء بنية الشعر – يقلل التجعد ويعطي نتيجة أنعم لعدة أسابيع. البروتين يقوّي الشعر التالف من الداخل وهو مفيد بعد الصباغة أو التبييض." },
+        { q: "كيف أعرف أي صبغة تناسبني؟", a: "يعتمد ذلك على النتيجة المرجوة ونقطة البداية. احجز موعداً وسنقدم لك النصيحة المناسبة بناءً على نوع شعرك ورغباتك." },
+        { q: "ما أنواع القصات الرجالية المتاحة؟", a: "نقدم كل شيء من القصات القصيرة الكلاسيكية والسكن فيد إلى تصفيف الشعر الطويل. يمكن إضافة تشذيب اللحية لمعظم القصات." },
+        { q: "كم يستغرق العلاج؟", a: "القص العادي يستغرق حوالي 30-45 دقيقة. الصبغة والبالياج تستغرق من 1.5 إلى 3 ساعات حسب طول الشعر." },
+        { q: "ماذا أفعل إذا تضرر شعري بعد التبييض؟", a: "نوصي بعلاج البروتين أو الكيراتين لإعادة بناء بنية الشعر. احجز موعداً لتقييم الحالة والتوصية بالعلاج المناسب." },
       ],
     },
     floating: {
@@ -761,15 +841,23 @@ export const translations = {
       ],
     },
     services: {
-      eyebrow: "Servicios",
+      eyebrow: "Servicios y precios",
       heading: "Nuestros servicios",
       intro:
         "Desde cortes clásicos hasta balayage y keratina – elige una categoría para ver precios y reservar directamente.",
+      categoryDescriptions: {
+        men: { title: "Cortes de caballero en Oslo", description: "Cortes clásicos, degradados, pelo largo o corte a máquina. El recorte de barba se puede añadir a la mayoría de los cortes." },
+        women: { title: "Cortes de mujer en Oslo", description: "Desde un simple recorte hasta un cambio de look completo. Todos los cortes incluyen asesoramiento y adaptamos la técnica a tu tipo de cabello." },
+        "highlights-balayage": { title: "Mechas y balayage", description: "Las mechas dan brillo uniforme con contraste. El balayage se pinta a mano para un efecto más suave y natural. Ambos incluyen tóner." },
+        colour: { title: "Color de cabello", description: "Color completo, raíces o color con corte. Usamos productos profesionales. Lavado y secado incluidos." },
+        keratin: { title: "Keratina y proteínas", description: "La keratina alisa la estructura capilar y reduce el encrespamiento. La proteína fortalece el cabello dañado desde dentro." },
+        children: { title: "Cortes infantiles", description: "Cortes para niños desde 6 años en un ambiente tranquilo y agradable." },
+      },
       viewPriceList: "Ver lista de precios completa",
       visAlle: "Ver todos",
       unsureHeading: "¿No sabes qué necesitas?",
       unsureSub:
-        "Reserva una consulta gratuita – te ayudamos a encontrar el tratamiento adecuado.",
+        "Contáctanos o reserva una cita – te ayudamos a encontrar el tratamiento adecuado.",
       book: "Reservar cita",
       activeFilterText: (count: number, filter: string) =>
         `Mostrando ${count} ${count === 1 ? "servicio" : "servicios"} para ${filter}`,
@@ -885,11 +973,17 @@ export const translations = {
       cta: "¿No encuentras respuesta? Contáctanos – estaremos encantados de ayudarte.",
       items: [
         { q: "¿Necesito reservar con antelación?", a: "Recomendamos reservar para asegurar tu plaza, pero aceptamos visitas sin cita si hay disponibilidad." },
-        { q: "¿Cuál es la diferencia entre balayage y mechas?", a: "Las mechas dan un brillo uniforme con contraste, mientras el balayage crea un efecto más suave y natural. El balayage requiere menos retoques." },
-        { q: "¿Cómo sé qué tratamiento elegir?", a: "Ofrecemos consultas gratuitas donde evaluamos tu cabello y recomendamos un tratamiento según tus deseos y tipo de cabello." },
-        { q: "¿Ofrecéis tratamientos para mujeres y hombres?", a: "¡Sí! Tenemos una amplia gama para todos – desde cortes clásicos hasta color, balayage y keratina." },
-        { q: "¿Qué hago si mi cabello está dañado tras la decoloración?", a: "Recomendamos un tratamiento de proteínas o keratina que reconstruye la estructura capilar. Reserva una consulta para evaluar la condición." },
-        { q: "¿Puedo contactaros si no sé qué reservar?", a: "¡Por supuesto! Llámanos al +47 455 55 898 o usa el asistente del chat. Te ayudaremos a encontrar el tratamiento adecuado." },
+        { q: "¿Dónde está el salón?", a: "Estamos en Fredensborgveien 22 en St. Hanshaugen, cerca de Bislett en el centro de Oslo. Fácil de llegar en autobús y tranvía." },
+        { q: "¿Cuánto cuesta un corte o tratamiento?", a: "Los cortes de caballero empiezan desde 399 kr y los de mujer desde 499 kr. El color y balayage varían según el largo del cabello. Consulta nuestra lista de precios completa." },
+        { q: "¿Ofrecéis tratamientos para mujeres y hombres?", a: "Sí. Tenemos una amplia gama para todos – desde cortes clásicos y recorte de barba hasta color, balayage y keratina." },
+      ],
+      serviceItems: [
+        { q: "¿Cuál es la diferencia entre mechas y balayage?", a: "Las mechas dan un brillo uniforme con contraste claro desde la raíz. El balayage se pinta a mano libre, creando un efecto más suave y natural que crece sin una línea de raíz marcada. El balayage requiere menos retoques." },
+        { q: "¿Qué es el tratamiento de keratina y proteínas?", a: "La keratina alisa y reconstruye la estructura capilar – reduce el encrespamiento durante varias semanas. El tratamiento de proteínas fortalece el cabello dañado desde dentro, especialmente útil después de coloración o decoloración." },
+        { q: "¿Cómo sé qué color me conviene?", a: "Depende del resultado deseado y tu punto de partida. Reserva una cita y te asesoraremos según tu tipo de cabello y preferencias." },
+        { q: "¿Qué tipos de cortes de caballero ofrecéis?", a: "Desde cortes clásicos cortos y degradados hasta peinados de pelo largo. El recorte de barba se puede añadir a la mayoría de los cortes." },
+        { q: "¿Cuánto tiempo dura un tratamiento?", a: "Un corte estándar dura unos 30-45 minutos. Los tratamientos de color y balayage tardan entre 1,5 y 3 horas según el largo y la complejidad." },
+        { q: "¿Qué hago si mi cabello está dañado tras la decoloración?", a: "Recomendamos un tratamiento de proteínas o keratina para reconstruir la estructura capilar. Reserva una cita para evaluar la condición." },
       ],
     },
     floating: {

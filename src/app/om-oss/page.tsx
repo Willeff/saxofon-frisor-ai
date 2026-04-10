@@ -8,6 +8,7 @@ import FloatingChat from "../components/FloatingChat";
 
 export default function OmOssPage() {
   const { t } = useLanguage();
+  const body3 = (t.about as Record<string, unknown>).body3 as string | undefined;
 
   return (
     <main className="bg-[#F7F4EF]">
@@ -35,17 +36,9 @@ export default function OmOssPage() {
               <p className="text-[16px] text-[#4A4540] font-normal leading-[1.85] mb-5">
                 {t.trust.body1}
               </p>
-              <p className="text-[16px] text-[#4A4540] font-normal leading-[1.85] mb-8">
+              <p className="text-[16px] text-[#4A4540] font-normal leading-[1.85] mb-5">
                 {t.trust.body2}
               </p>
-              <a
-                href="https://bestill.timma.no/saxofon"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
-              >
-                {t.services.book}
-              </a>
             </div>
 
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
@@ -57,6 +50,34 @@ export default function OmOssPage() {
                 sizes="(max-width: 768px) 100vw, 480px"
               />
             </div>
+          </div>
+
+          {/* Extended about content */}
+          <div className="max-w-2xl mb-12 md:mb-16">
+            <h2 className="text-[clamp(1.4rem,3vw,2rem)] font-light tracking-[0.02em] leading-[1.25] text-[#1A1A1A] mb-5">
+              {t.about.heading.split("\n").map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
+            </h2>
+            <p className="text-[16px] text-[#4A4540] font-normal leading-[1.85] mb-5">
+              {t.about.body}
+            </p>
+            <p className="text-[16px] text-[#4A4540] font-normal leading-[1.85] mb-5">
+              {t.about.body2}
+            </p>
+            {body3 && (
+              <p className="text-[16px] text-[#4A4540] font-normal leading-[1.85] mb-5">
+                {body3}
+              </p>
+            )}
+            <a
+              href="https://bestill.timma.no/saxofon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
+            >
+              {t.services.book}
+            </a>
           </div>
 
           {/* Stat blocks */}

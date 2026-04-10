@@ -7,12 +7,30 @@ import { useInView } from "../hooks/useInView";
 export default function MiniFAQ() {
   const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const items = t.faq.items.slice(0, 3);
+  const items = t.faq.items;
   const { ref, inView } = useInView();
   const v = inView ? "in-view" : "";
 
+  // FAQPage structured data for home page FAQ
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+
   return (
     <section ref={ref} className="bg-[#FAFAF8] py-14 md:py-20 px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="max-w-3xl mx-auto">
 
         <p className={`text-[12px] tracking-[0.3em] uppercase text-[#C4A882] mb-3 anim-fade-in-up ${v}`}>
