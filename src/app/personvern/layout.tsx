@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   description:
     "Personvernerklæring for saxofonfrisor.no. Hvilke opplysninger vi behandler, bruk av analyseverktøy, samtykke og dine rettigheter.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/personvern" },
 };
 
 export default function PersonvernLayout({

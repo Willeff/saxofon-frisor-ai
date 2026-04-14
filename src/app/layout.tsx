@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     template: "%s – Saxoføn Frisør",
   },
   description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     siteName: "Saxoføn Frisør",
@@ -64,8 +67,8 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "HairSalon",
   name: "Saxoføn Frisør",
-  image: "https://saxofonfrisor.no/saxofon-hero.jpg",
-  url: "https://saxofonfrisor.no",
+  image: "https://www.saxofonfrisor.no/saxofon-hero.jpg",
+  url: "https://www.saxofonfrisor.no",
   telephone: "+4745555898",
   email: "saxofon@hotmail.no",
   address: {
