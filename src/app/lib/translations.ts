@@ -274,10 +274,12 @@ export const translations = {
     },
     cookie: {
       title: "Vi bruker informasjonskapsler",
-      body: "Denne nettsiden bruker nødvendige teknologier for at den skal fungere, og valgfrie analyseverktøy for å forstå hvordan den brukes. Du kan endre valget ditt når som helst.",
+      body: "Vi bruker cookies for å forbedre opplevelsen.",
+      bodyLong: "Denne nettsiden bruker nødvendige teknologier for at den skal fungere, og valgfrie analyseverktøy for å forstå hvordan den brukes. Du kan endre valget ditt når som helst.",
       accept: "Godta analyse",
       decline: "Bare nødvendige",
       privacyLink: "Les personvernerklæringen",
+      close: "Lukk",
     },
   },
 
@@ -547,10 +549,12 @@ export const translations = {
     },
     cookie: {
       title: "We use cookies",
-      body: "This website uses necessary technologies to function and optional analytics to understand how it is used. You can change your choice at any time.",
+      body: "We use cookies to improve your experience.",
+      bodyLong: "This website uses necessary technologies to function and optional analytics to understand how it is used. You can change your choice at any time.",
       accept: "Accept analytics",
       decline: "Only necessary",
       privacyLink: "Read the privacy policy",
+      close: "Close",
     },
   },
 
@@ -797,10 +801,12 @@ export const translations = {
     },
     cookie: {
       title: "نستخدم ملفات تعريف الارتباط",
-      body: "يستخدم هذا الموقع تقنيات ضرورية لعمله وأدوات تحليل اختيارية لفهم كيفية استخدامه. يمكنك تغيير اختيارك في أي وقت.",
+      body: "نستخدم ملفات تعريف الارتباط لتحسين تجربتك.",
+      bodyLong: "يستخدم هذا الموقع تقنيات ضرورية لعمله وأدوات تحليل اختيارية لفهم كيفية استخدامه. يمكنك تغيير اختيارك في أي وقت.",
       accept: "قبول التحليلات",
       decline: "الضرورية فقط",
       privacyLink: "اقرأ سياسة الخصوصية",
+      close: "إغلاق",
     },
   },
   es: {
@@ -1047,10 +1053,12 @@ export const translations = {
     },
     cookie: {
       title: "Usamos cookies",
-      body: "Este sitio web utiliza tecnologías necesarias para funcionar y herramientas analíticas opcionales para entender cómo se usa. Puedes cambiar tu elección en cualquier momento.",
+      body: "Usamos cookies para mejorar tu experiencia.",
+      bodyLong: "Este sitio web utiliza tecnologías necesarias para funcionar y herramientas analíticas opcionales para entender cómo se usa. Puedes cambiar tu elección en cualquier momento.",
       accept: "Aceptar analíticas",
       decline: "Solo necesarias",
       privacyLink: "Leer la política de privacidad",
+      close: "Cerrar",
     },
   },
 } as const;
