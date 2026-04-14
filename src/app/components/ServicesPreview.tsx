@@ -8,10 +8,10 @@ import { useInView } from "../hooks/useInView";
 const PREVIEW_CATEGORIES: Exclude<DisplayFilter, "all">[] = [
   "dameklipp",
   "herreklipp",
-  "barneklipp",
+  "herre-langt-farge-striper",
   "farge",
   "striper-balayage",
-  "keratin-protein",
+  "keratin",
   "behandling",
 ];
 

@@ -13,12 +13,12 @@ import { useLanguage } from "../context/LanguageContext";
 import { useInView } from "../hooks/useInView";
 
 const CATEGORY_STYLE_MAP: Record<CategoryId, string> = {
-  herreklipp: "bg-[#1A1A1A] text-white",
   dameklipp: "bg-[#F2EDE5] text-[#7A746E]",
-  barneklipp: "bg-amber-50 text-amber-800",
+  herreklipp: "bg-[#1A1A1A] text-white",
+  "herre-langt-farge-striper": "bg-[#1A1A1A]/85 text-white",
   farge: "bg-[#C4A882]/15 text-[#8B6B42]",
   "striper-balayage": "bg-[#C4A882]/15 text-[#8B6B42]",
-  "keratin-protein": "bg-emerald-50 text-emerald-700",
+  keratin: "bg-emerald-50 text-emerald-700",
   behandling: "bg-sky-50 text-sky-800",
 };
 
@@ -233,11 +233,6 @@ export default function ServicesSection({ isFullPage = false }: { isFullPage?: b
             </button>
           </div>
         )}
-
-        {/* Price note */}
-        <p className="mt-6 text-[13px] text-[#5C5650]/70 font-normal text-center">
-          {t.services.priceNote}
-        </p>
 
         {/* Bottom CTA */}
         <div className="mt-8 md:mt-10 pt-8 md:pt-10 border-t border-[#E5DDD4] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 md:gap-6">
