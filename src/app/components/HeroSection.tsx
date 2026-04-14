@@ -316,8 +316,6 @@ export default function HeroSection() {
               <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
             </svg>
             <span className="text-white font-medium text-[15px]">{t.hero.rating}</span>
-            <span className="hidden md:inline text-white/25">·</span>
-            <span className="hidden md:inline text-white/65 text-[15px] font-normal">{t.hero.reviews}</span>
           </div>
         </div>
 
@@ -341,11 +339,6 @@ export default function HeroSection() {
             {t.hero.findTreatment}
           </button>
         </div>
-
-        {/* Microcopy */}
-        <p className={`text-[12px] text-white/50 font-normal tracking-wide anim-fade-in hero-stagger-5 ${mounted ? "in-view" : ""}`}>
-          {t.hero.assistantHint}
-        </p>
 
       </div>
 

@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
+import { useConsent } from "../context/ConsentContext";
 import { useInView } from "../hooks/useInView";
 
 const GoogleG = ({ size = 14 }: { size?: number }) => (
@@ -15,6 +17,7 @@ const GoogleG = ({ size = 14 }: { size?: number }) => (
 
 export default function FooterSection() {
   const { t } = useLanguage();
+  const { reopen } = useConsent();
   const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
@@ -140,6 +143,21 @@ export default function FooterSection() {
               >
                 Eleviad
               </a>
+            </p>
+            <p className="text-[13px] text-white/50 font-normal flex flex-wrap gap-x-4 gap-y-1">
+              <Link
+                href="/personvern"
+                className="hover:text-white transition-colors duration-250"
+              >
+                {t.footer.privacy}
+              </Link>
+              <button
+                type="button"
+                onClick={reopen}
+                className="hover:text-white transition-colors duration-250 text-left"
+              >
+                {t.footer.cookieSettings}
+              </button>
             </p>
           </div>
 

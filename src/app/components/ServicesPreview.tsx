@@ -6,12 +6,13 @@ import { DISPLAY_FILTER_LABELS, type DisplayFilter } from "../data/services";
 import { useInView } from "../hooks/useInView";
 
 const PREVIEW_CATEGORIES: Exclude<DisplayFilter, "all">[] = [
-  "men",
-  "women",
-  "highlights-balayage",
-  "colour",
-  "keratin",
-  "children",
+  "dameklipp",
+  "herreklipp",
+  "barneklipp",
+  "farge",
+  "striper-balayage",
+  "keratin-protein",
+  "behandling",
 ];
 
 export default function ServicesPreview() {

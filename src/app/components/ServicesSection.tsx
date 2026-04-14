@@ -1,34 +1,25 @@
 "use client";
 
 import { useState, useMemo, useRef } from "react";
-import { getServices, DISPLAY_FILTERS, DISPLAY_FILTER_LABELS, CATEGORY_LABELS, filterServices, type DisplayFilter } from "../data/services";
+import {
+  getServices,
+  DISPLAY_FILTERS,
+  DISPLAY_FILTER_LABELS,
+  filterServices,
+  type CategoryId,
+  type DisplayFilter,
+} from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
 import { useInView } from "../hooks/useInView";
 
-const CATEGORY_STYLE_MAP: Record<string, string> = {
-  men: "bg-[#1A1A1A] text-white",
-  women: "bg-[#F2EDE5] text-[#7A746E]",
-  "colour-cut": "bg-[#C4A882]/15 text-[#8B6B42]",
-  "highlights-balayage": "bg-[#C4A882]/15 text-[#8B6B42]",
-  treatment: "bg-emerald-50 text-emerald-700",
-};
-
-function getCategoryStyle(categoryLabel: string, lang: Parameters<typeof getServices>[0]): string {
-  const labels = CATEGORY_LABELS[lang];
-  for (const [id, label] of Object.entries(labels)) {
-    if (label === categoryLabel) return CATEGORY_STYLE_MAP[id] ?? "bg-[#F2EDE5] text-[#7A746E]";
-  }
-  return "bg-[#F2EDE5] text-[#7A746E]";
-}
-
-// Map display filters to category description keys
-const FILTER_TO_CATEGORY_KEY: Partial<Record<DisplayFilter, string>> = {
-  men: "men",
-  women: "women",
-  "highlights-balayage": "highlights-balayage",
-  colour: "colour",
-  keratin: "keratin",
-  children: "children",
+const CATEGORY_STYLE_MAP: Record<CategoryId, string> = {
+  herreklipp: "bg-[#1A1A1A] text-white",
+  dameklipp: "bg-[#F2EDE5] text-[#7A746E]",
+  barneklipp: "bg-amber-50 text-amber-800",
+  farge: "bg-[#C4A882]/15 text-[#8B6B42]",
+  "striper-balayage": "bg-[#C4A882]/15 text-[#8B6B42]",
+  "keratin-protein": "bg-emerald-50 text-emerald-700",
+  behandling: "bg-sky-50 text-sky-800",
 };
 
 const DEFAULT_VISIBLE = 6;
@@ -37,6 +28,7 @@ export default function ServicesSection({ isFullPage = false }: { isFullPage?: b
   const { t, lang } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<DisplayFilter>("all");
   const [showAll, setShowAll] = useState(false);
+  const [expandedKey, setExpandedKey] = useState<string | null>(null);
   const filterRef = useRef<HTMLDivElement>(null);
   const { ref: headerRef, inView: headerInView } = useInView();
   const { ref: cardsRef, inView: cardsInView } = useInView({ threshold: 0.05 });
@@ -56,11 +48,6 @@ export default function ServicesSection({ isFullPage = false }: { isFullPage?: b
   function scrollToFilters() {
     filterRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-
-  // Get active category description
-  const catDescs = (t.services as Record<string, unknown>).categoryDescriptions as Record<string, { title: string; description: string }> | undefined;
-  const activeCatKey = FILTER_TO_CATEGORY_KEY[activeFilter];
-  const activeCatDesc = activeCatKey && catDescs ? catDescs[activeCatKey] : null;
 
   const HeadingTag = isFullPage ? "h1" : "h2";
 
@@ -125,32 +112,17 @@ export default function ServicesSection({ isFullPage = false }: { isFullPage?: b
           )}
         </div>
 
-        {/* Category descriptions — all shown when "all" filter for SEO, single when filtered */}
-        {activeFilter === "all" && catDescs && (
-          <div className="mb-8 md:mb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-            {Object.entries(catDescs).map(([key, desc]) => (
-              <div key={key} className="p-4 md:p-5 bg-white border border-[#E5DDD4]">
-                <h2 className="text-[15px] font-normal text-[#1A1A1A] mb-1.5">{desc.title}</h2>
-                <p className="text-[13px] text-[#4A4540] font-normal leading-relaxed">{desc.description}</p>
-              </div>
-            ))}
-          </div>
-        )}
-        {activeCatDesc && activeFilter !== "all" && (
-          <div className="mb-6 md:mb-8 p-5 md:p-6 bg-white border border-[#E5DDD4]">
-            <h2 className="text-[17px] md:text-[18px] font-normal text-[#1A1A1A] mb-2">{activeCatDesc.title}</h2>
-            <p className="text-[14px] md:text-[15px] text-[#4A4540] font-normal leading-relaxed">{activeCatDesc.description}</p>
-          </div>
-        )}
-
         {/* Service cards — all rendered in DOM for SEO, overflow visually hidden */}
         {filtered.length > 0 ? (
           <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {filtered.map((service, i) => {
               const isOverflow = activeFilter === "all" && !showAll && i >= DEFAULT_VISIBLE;
+              const cardKey = `${service.categoryId}-${service.title}`;
+              const hasAddons = !!service.addons && service.addons.length > 0;
+              const isExpanded = expandedKey === cardKey;
               return (
                 <div
-                  key={`${service.title}-${i}`}
+                  key={cardKey}
                   className={`card-hover bg-white border border-[#E5DDD4] flex flex-col hover:border-[#C4A882] transition-all group anim-fade-in-up ${cardsInView ? "in-view" : ""}`}
                   style={{
                     transitionDelay: `${Math.min(i, 5) * 60}ms`,
@@ -159,7 +131,7 @@ export default function ServicesSection({ isFullPage = false }: { isFullPage?: b
                 >
                   <div className="px-5 pt-5 pb-4 md:px-6 md:pt-6 flex-1">
                     <span
-                      className={`inline-block text-[11px] tracking-[0.15em] uppercase px-2 py-1 mb-3 font-normal ${getCategoryStyle(service.category, lang)}`}
+                      className={`inline-block text-[11px] tracking-[0.15em] uppercase px-2 py-1 mb-3 font-normal ${CATEGORY_STYLE_MAP[service.categoryId]}`}
                     >
                       {service.category}
                     </span>
@@ -183,6 +155,52 @@ export default function ServicesSection({ isFullPage = false }: { isFullPage?: b
                       {t.services.bookCard}
                     </a>
                   </div>
+                  {hasAddons && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setExpandedKey(isExpanded ? null : cardKey)}
+                        aria-expanded={isExpanded}
+                        className="px-5 md:px-6 py-3 border-t border-[#E5DDD4] text-left text-[12px] tracking-[0.12em] uppercase text-[#7A746E] hover:text-[#1A1A1A] hover:bg-[#FAFAF8] transition-colors flex items-center justify-between gap-3"
+                      >
+                        <span>{t.services.addonsToggle}</span>
+                        <span
+                          className={`text-[#C4A882] transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                          aria-hidden
+                        >
+                          ▾
+                        </span>
+                      </button>
+                      {isExpanded && (
+                        <div className="px-5 md:px-6 pb-5 md:pb-6 pt-1 bg-[#FAFAF8] border-t border-[#E5DDD4]">
+                          <p className="text-[11px] tracking-[0.15em] uppercase text-[#C4A882] mt-3 mb-3">
+                            {t.services.addonsLabel}
+                          </p>
+                          <ul className="space-y-2.5">
+                            {service.addons!.map((addon) => (
+                              <li
+                                key={addon.name}
+                                className="flex items-start justify-between gap-3 text-[13px] md:text-[14px]"
+                              >
+                                <span className="text-[#1A1A1A] font-normal flex-1">
+                                  {addon.name}
+                                </span>
+                                <span className="text-[#7A746E] tabular-nums font-normal flex-none">
+                                  {addon.duration}
+                                </span>
+                                <span className="text-[#1A1A1A] tabular-nums font-normal flex-none min-w-[64px] text-right">
+                                  {addon.price}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="mt-4 text-[12px] text-[#7A746E]/80 leading-relaxed">
+                            {t.services.addonsHint}
+                          </p>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
               );
             })}

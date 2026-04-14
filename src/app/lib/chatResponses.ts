@@ -43,14 +43,14 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "menn,herre,mann,gutt,herreklipp,skjegg,fade,skin",
       build: (lang) => {
-        const list = listServices(lang, (t) => t.includes("men"));
+        const list = listServices(lang, (t) => t.includes("men") && !t.includes("children"));
         return `Ja, vi har et bredt utvalg for menn!\n\nHer er våre herretjenester:\n${list}\n\nHva slags klipp er du ute etter?`;
       },
     },
     {
       keys: "dameklipp,dame,kvinne,kvinner,jente",
       build: (lang) => {
-        const list = listServices(lang, (t) => t.includes("women") && !t.includes("colour") && !t.includes("highlights") && !t.includes("balayage") && !t.includes("keratin"));
+        const list = listServices(lang, (t) => t.includes("women") && t.includes("cut") && !t.includes("children") && !t.includes("colour") && !t.includes("highlights"));
         return `Her er våre dameklipp-tjenester:\n${list}\n\nTrenger du bare et klipp, eller vurderer du farge eller behandling i tillegg?`;
       },
     },
@@ -62,9 +62,9 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "tynt,fint hår,lite hår,volum,tynnere,tynner",
       build: (lang) => {
-        const protein = getServices(lang).find((s) => s.tags.includes("keratin") && s.title.toLowerCase().includes("protein"));
-        const proteinInfo = protein ? `\n\nVi tilbyr også ${protein.title} (${protein.price}) som styrker hårstrukturen innenfra.` : "";
-        return `For tynt eller fint hår anbefaler vi et klipp med lag og bevegelse – det gir illusjon av fylde uten å tynge håret. Lette stylingprodukter som volumspray eller mousse hjelper også mye.${proteinInfo}\n\nEr håret ditt naturlig fint, eller har det blitt tynnere over tid?`;
+        const keratin = getServices(lang).find((s) => s.title === "Keratin- og proteinbehandling kort hår");
+        const keratinInfo = keratin ? `\n\nVi tilbyr også ${keratin.title} (fra ${keratin.price}) som styrker hårstrukturen innenfra.` : "";
+        return `For tynt eller fint hår anbefaler vi et klipp med lag og bevegelse – det gir illusjon av fylde uten å tynge håret. Lette stylingprodukter som volumspray eller mousse hjelper også mye.${keratinInfo}\n\nEr håret ditt naturlig fint, eller har det blitt tynnere over tid?`;
       },
     },
     {
@@ -75,7 +75,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "vedlikehold,lettstelt,enkel,lite stell,lav,grodd,vokse ut",
       build: (lang) => {
-        const balayageService = getServices(lang).find((s) => s.tags.includes("balayage") && s.title.toLowerCase().includes("halvt"));
+        const balayageService = getServices(lang).find((s) => s.title === "Striper eller balayage – halvt hode");
         const balayagePrice = balayageService ? ` (fra ${balayageService.price})` : "";
         return `Balayage${balayagePrice} er det beste valget for lite vedlikehold – fargen vokser naturlig ut uten synlig rotlinje, og du trenger sjeldnere oppfriskning.\n\nEt godt klipp med riktig form gjør også mye – da trenger du minimalt med styling i hverdagen.\n\nØnsker du noe med farge, eller er du mest ute etter et lettstelt klipp?`;
       },
@@ -84,13 +84,13 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
       keys: "pris,koster,kr,kroner,billig,dyr,hva koster",
       build: (lang) => {
         const services = getServices(lang);
-        const menCut = services.find((s) => s.tags.includes("men") && s.tags.includes("cut") && s.price === "399 kr");
-        const womenCut = services.find((s) => s.tags.includes("women") && s.tags.includes("cut") && s.price === "649 kr");
-        const colour = services.find((s) => s.title.toLowerCase().includes("ettervekst") && !s.title.toLowerCase().includes("klipp"));
-        const balayage = services.find((s) => s.tags.includes("balayage") && s.price.includes("1 790"));
-        const keratin = services.find((s) => s.tags.includes("keratin") && s.title.toLowerCase().includes("protein"));
+        const menCut = services.find((s) => s.title === "Klassisk herreklipp");
+        const damestuss = services.find((s) => s.title === "Damestuss");
+        const colour = services.find((s) => s.title === "Farge ettervekst");
+        const balayage = services.find((s) => s.title === "Striper eller balayage – halvt hode");
+        const keratin = services.find((s) => s.title === "Keratin- og proteinbehandling kort hår");
 
-        return `Her er et utvalg av prisene våre:\n\n• Herreklipp – fra ${menCut?.price ?? "399 kr"}\n• Dameklipp med vask – fra ${womenCut?.price ?? "649 kr"}\n• Farge ettervekst – ${colour?.price ?? "889 kr"}\n• Balayage (halvt hode) – ${balayage?.price ?? "1 790 kr"}\n• Proteinbehandling – ${keratin?.price ?? "fra 800 kr"}\n\nEndelig pris avhenger av hårlengde og behandling. Hvilken type behandling er du interessert i?`;
+        return `Her er et utvalg av prisene våre:\n\n• Klassisk herreklipp – ${menCut?.price ?? "399 kr"}\n• Damestuss – ${damestuss?.price ?? "499 kr"}\n• Farge ettervekst – ${colour?.price ?? "889 kr"}\n• Striper / balayage (halvt hode) – ${balayage?.price ?? "1889 kr"}\n• Keratin- og proteinbehandling (kort hår) – ${keratin?.price ?? "2499 kr"}\n\nEndelig pris avhenger av hårlengde og behandling. Hvilken type behandling er du interessert i?`;
       },
     },
     {
@@ -145,23 +145,23 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "men,male,guy,gentleman,beard,fade,skin",
       build: (lang) => {
-        const list = listServices(lang, (t) => t.includes("men"));
+        const list = listServices(lang, (t) => t.includes("men") && !t.includes("children"));
         return `Yes, we have a wide range for men!\n\nHere are our men's services:\n${list}\n\nWhat kind of cut are you looking for?`;
       },
     },
     {
       keys: "women,woman,ladies,lady,girl",
       build: (lang) => {
-        const list = listServices(lang, (t) => t.includes("women") && !t.includes("colour") && !t.includes("highlights") && !t.includes("balayage") && !t.includes("keratin"));
+        const list = listServices(lang, (t) => t.includes("women") && t.includes("cut") && !t.includes("children") && !t.includes("colour") && !t.includes("highlights"));
         return `Here are our women's cut services:\n${list}\n\nDo you just need a cut, or are you considering colour or a treatment as well?`;
       },
     },
     {
       keys: "thin,fine hair,little hair,volume,thinner",
       build: (lang) => {
-        const protein = getServices(lang).find((s) => s.tags.includes("keratin") && s.title.toLowerCase().includes("protein"));
-        const proteinInfo = protein ? `\n\nWe also offer ${protein.title} (${protein.price}) which strengthens hair structure from within.` : "";
-        return `For thin or fine hair, we recommend a layered cut that adds movement and the illusion of volume. Lightweight products like volumising spray or mousse also help a lot.${proteinInfo}\n\nIs your hair naturally fine, or has it become thinner over time?`;
+        const keratin = getServices(lang).find((s) => s.title === "Keratin- og proteinbehandling kort hår");
+        const keratinInfo = keratin ? `\n\nWe also offer ${keratin.title} (from ${keratin.price}) which strengthens the hair from within.` : "";
+        return `For thin or fine hair, we recommend a layered cut that adds movement and the illusion of volume. Lightweight products like volumising spray or mousse also help a lot.${keratinInfo}\n\nIs your hair naturally fine, or has it become thinner over time?`;
       },
     },
     {
@@ -172,7 +172,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "maintenance,low-maintenance,easy,simple,grow out",
       build: (lang) => {
-        const b = getServices(lang).find((s) => s.tags.includes("balayage") && s.title.toLowerCase().includes("half"));
+        const b = getServices(lang).find((s) => s.title === "Striper eller balayage – halvt hode");
         const price = b ? ` (from ${b.price})` : "";
         return `Balayage${price} is the best choice for low maintenance – the colour grows out naturally without a visible root line, so you need fewer touch-ups.\n\nA well-shaped cut also goes a long way – you'll need minimal styling day to day.\n\nAre you looking for a colour option, or mainly a low-maintenance cut?`;
       },
@@ -180,7 +180,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "price,cost,nok,fee,how much,expensive",
       build: () =>
-        "Here's a selection of our prices:\n\n• Men's cut – from 399 kr\n• Women's cut with wash – from 649 kr\n• Root colour – 889 kr\n• Balayage (half head) – 1 790 kr\n• Protein treatment – from 800 kr\n\nFinal price depends on hair length and treatment. Which type of treatment are you interested in?",
+        "Here's a selection of our prices:\n\n• Classic men's cut – 399 kr\n• Damestuss (women's trim) – 499 kr\n• Root colour – 889 kr\n• Highlights / balayage (half head) – 1889 kr\n• Keratin & protein treatment (short hair) – 2499 kr\n\nFinal price depends on hair length and treatment. Which type of treatment are you interested in?",
     },
     {
       keys: "damaged,dry,brittle,bleach,repair,after colour,healthier,after bleach",
@@ -239,14 +239,14 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "رجال,رجل,لحية,فيد",
       build: (lang) => {
-        const list = listServices(lang, (t) => t.includes("men"));
+        const list = listServices(lang, (t) => t.includes("men") && !t.includes("children"));
         return `نعم، لدينا مجموعة واسعة للرجال!\n\nخدماتنا للرجال:\n${list}\n\nما نوع القصة التي تبحث عنها؟`;
       },
     },
     {
       keys: "نساء,نسائ,سيدات",
       build: (lang) => {
-        const list = listServices(lang, (t) => t.includes("women") && !t.includes("colour") && !t.includes("highlights") && !t.includes("keratin"));
+        const list = listServices(lang, (t) => t.includes("women") && t.includes("cut") && !t.includes("children") && !t.includes("colour") && !t.includes("highlights"));
         return `قصاتنا النسائية:\n${list}\n\nهل تحتاجين قصة فقط، أم تفكرين في صبغة أو علاج أيضاً؟`;
       },
     },
@@ -263,7 +263,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "سعر,تكلفة,كرون,رسوم,كم",
       build: () =>
-        "مجموعة من أسعارنا:\n\n• قصة رجالية – من 399 كرونة\n• قصة نسائية مع غسل – من 649 كرونة\n• صبغة الجذور – 889 كرونة\n• بالياج (نصف الرأس) – 1790 كرونة\n• علاج البروتين – من 800 كرونة\n\nالسعر النهائي يعتمد على طول الشعر. ما العلاج الذي يهمك؟",
+        "مجموعة من أسعارنا:\n\n• قصة رجالية كلاسيكية – 399 كرونة\n• قصة نسائية (دامستوس) – 499 كرونة\n• صبغة الجذور – 889 كرونة\n• خصلات / بالياج (نصف الرأس) – 1889 كرونة\n• علاج الكيراتين والبروتين (شعر قصير) – 2499 كرونة\n\nالسعر النهائي يعتمد على طول الشعر. ما العلاج الذي يهمك؟",
     },
     {
       keys: "تالف,جاف,هش,تبييض,إصلاح,بعد الصبغة,علاج",
@@ -301,7 +301,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "صيانة,سهل,بسيط,عناية",
       build: () =>
-        "البالياج (من 1790 كرونة) هو الخيار الأفضل للعناية القليلة – ينمو بشكل طبيعي دون خط جذر واضح.\n\nقصة جيدة الشكل أيضاً تقلل الحاجة للتصفيف اليومي.\n\nهل تبحثين عن خيار لون أم قصة سهلة العناية؟",
+        "البالياج (من 1889 كرونة) هو الخيار الأفضل للعناية القليلة – ينمو بشكل طبيعي دون خط جذر واضح.\n\nقصة جيدة الشكل أيضاً تقلل الحاجة للتصفيف اليومي.\n\nهل تبحثين عن خيار لون أم قصة سهلة العناية؟",
     },
   ],
 
@@ -322,14 +322,14 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "hombre,hombres,caballero,barba,degradado",
       build: (lang) => {
-        const list = listServices(lang, (t) => t.includes("men"));
+        const list = listServices(lang, (t) => t.includes("men") && !t.includes("children"));
         return `¡Sí, tenemos una amplia gama para hombres!\n\nNuestros servicios para caballero:\n${list}\n\n¿Qué tipo de corte buscas?`;
       },
     },
     {
       keys: "mujer,mujeres,señora,chica",
       build: (lang) => {
-        const list = listServices(lang, (t) => t.includes("women") && !t.includes("colour") && !t.includes("highlights") && !t.includes("keratin"));
+        const list = listServices(lang, (t) => t.includes("women") && t.includes("cut") && !t.includes("children") && !t.includes("colour") && !t.includes("highlights"));
         return `Nuestros cortes de mujer:\n${list}\n\n¿Solo necesitas un corte, o estás considerando también color o tratamiento?`;
       },
     },
@@ -346,7 +346,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "precio,coste,corona,cuánto,cuanto,caro",
       build: () =>
-        "Algunos de nuestros precios:\n\n• Corte de caballero – desde 399 kr\n• Corte de mujer con lavado – desde 649 kr\n• Color de raíz – 889 kr\n• Balayage (media cabeza) – 1.790 kr\n• Tratamiento de proteínas – desde 800 kr\n\nEl precio final depende del largo del cabello. ¿Qué tratamiento te interesa?",
+        "Algunos de nuestros precios:\n\n• Corte clásico de caballero – 399 kr\n• Damestuss (recorte de mujer) – 499 kr\n• Color de raíz – 889 kr\n• Mechas / balayage (media cabeza) – 1.889 kr\n• Tratamiento de keratina y proteína (pelo corto) – 2.499 kr\n\nEl precio final depende del largo del cabello. ¿Qué tratamiento te interesa?",
     },
     {
       keys: "dañado,seco,frágil,decoloración,reparar,después del tinte,tratamiento",
@@ -384,7 +384,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "mantenimiento,fácil,sencillo,poco mantenimiento",
       build: () =>
-        "El balayage (desde 1.790 kr) es la mejor opción para poco mantenimiento – crece naturalmente sin línea de raíz visible.\n\nUn buen corte con la forma adecuada también reduce la necesidad de peinado diario.\n\n¿Buscas una opción con color o principalmente un corte fácil de mantener?",
+        "El balayage (desde 1.889 kr) es la mejor opción para poco mantenimiento – crece naturalmente sin línea de raíz visible.\n\nUn buen corte con la forma adecuada también reduce la necesidad de peinado diario.\n\n¿Buscas una opción con color o principalmente un corte fácil de mantener?",
     },
   ],
 };

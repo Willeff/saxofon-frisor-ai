@@ -96,29 +96,33 @@ export const translations = {
       intro:
         "Fra klassiske klipp til balayage og keratinbehandling – velg kategori for å se priser og bestill direkte.",
       categoryDescriptions: {
-        men: {
-          title: "Herreklipp i Oslo",
-          description: "Klassisk kort klipp, skinfade, klipp av langt hår eller maskinklipp – vi tilpasser frisyren etter din stil og ansiktsform. Skjeggtrim kan legges til de fleste klippene.",
+        dameklipp: {
+          title: "Dameklipp",
+          description: "Damestuss og dameklipp / ny form. Vask, føn og glossing kan velges som tillegg.",
         },
-        women: {
-          title: "Dameklipp i Oslo",
-          description: "Fra stuss av lengder til helt ny frisyre. Alle klipp inkluderer rådgivning, og vi tilpasser teknikken etter hårtype og ønsket resultat. Vask og føning er inkludert i de fleste klippene.",
+        herreklipp: {
+          title: "Herreklipp",
+          description: "Klassisk og moderne herreklipp, maskinklipp, skjeggtrim og kombinasjoner med farge eller striper.",
         },
-        "highlights-balayage": {
-          title: "Striper og balayage",
-          description: "Striper gir jevn lyshet med tydelig kontrast. Balayage males fritt og gir en mykere, naturlig effekt som vokser ut uten markert ettervekst. Begge teknikkene inkluderer toner for et harmonisk resultat.",
-        },
-        colour: {
-          title: "Hårfarge",
-          description: "Helfarging, ettervekst eller farge kombinert med klipp. Vi bruker profesjonelle fargeprodukter og tilpasser tonen etter din hudtype og ønsker. Vask og føning er inkludert.",
-        },
-        keratin: {
-          title: "Keratinbehandling og proteinbehandling",
-          description: "Keratin glatter hårstrukturen og reduserer krøll – effekten varer i flere uker. Proteinbehandling styrker skadet hår innenfra og er spesielt nyttig etter farging eller bleking.",
-        },
-        children: {
+        barneklipp: {
           title: "Barneklipp",
-          description: "Klipp for barn fra 6 år. Vi skaper en trygg og rolig opplevelse slik at de unge kundene våre trives i stolen.",
+          description: "Klipp av kort og langt hår for barn fra 6 år.",
+        },
+        farge: {
+          title: "Farge",
+          description: "Helfarge og farge ettervekst, prises etter hårlengde. Bleking finnes som egen behandling.",
+        },
+        "striper-balayage": {
+          title: "Striper / balayage",
+          description: "Striper og balayage med folie, halvt eller fullt hode, samt ettervekststriper.",
+        },
+        "keratin-protein": {
+          title: "Keratin- og proteinbehandling",
+          description: "For glattere, sterkere og mer glansfullt hår med mindre frizz. Prises etter hårlengde.",
+        },
+        behandling: {
+          title: "Behandling og tillegg",
+          description: "Bleking, vask, styling, hårkur og extensions som egne behandlinger.",
         },
       },
       viewPriceList: "Se full prisliste",
@@ -134,6 +138,9 @@ export const translations = {
       bookCard: "Bestill",
       priceNote: "Alle priser er veiledende. Endelig pris avklares under konsultasjon.",
       backToFilters: "Tilbake til filtre",
+      addonsToggle: "Se valgfrie tillegg",
+      addonsLabel: "Valgfrie tilleggstjenester",
+      addonsHint: "Tilleggene velges i Timma når du bestiller.",
     },
     recommendation: {
       eyebrow: "Finn din behandling",
@@ -228,6 +235,8 @@ export const translations = {
       developedBy: "Utviklet av",
       book: "Bestill time",
       reviews: "anmeldelser",
+      privacy: "Personvern",
+      cookieSettings: "Endre cookievalg",
     },
     preview: {
       readMore: "Les mer om oss",
@@ -262,6 +271,13 @@ export const translations = {
       online: "Online",
       placeholder: "Skriv et spørsmål…",
       greeting: "Hei! Spør meg om tjenester, priser eller åpningstider.",
+    },
+    cookie: {
+      title: "Vi bruker informasjonskapsler",
+      body: "Denne nettsiden bruker nødvendige teknologier for at den skal fungere, og valgfrie analyseverktøy for å forstå hvordan den brukes. Du kan endre valget ditt når som helst.",
+      accept: "Godta analyse",
+      decline: "Bare nødvendige",
+      privacyLink: "Les personvernerklæringen",
     },
   },
 
@@ -353,29 +369,33 @@ export const translations = {
       intro:
         "From classic cuts to balayage and keratin – choose a category to see prices and book directly.",
       categoryDescriptions: {
-        men: {
-          title: "Men's cuts in Oslo",
-          description: "Classic short cuts, skin fades, long hair cuts or clipper cuts – we tailor the style to your face shape and preferences. Beard trim can be added to most cuts.",
+        dameklipp: {
+          title: "Women's cuts",
+          description: "Trim and full restyle. Wash, blow-dry and gloss can be added as options.",
         },
-        women: {
-          title: "Women's cuts in Oslo",
-          description: "From a simple trim to a complete restyle. All cuts include consultation, and we adapt the technique to your hair type and desired result. Wash and blow-dry included in most cuts.",
+        herreklipp: {
+          title: "Men's cuts",
+          description: "Classic and modern men's cuts, clipper cut, beard trim and combinations with colour or highlights.",
         },
-        "highlights-balayage": {
-          title: "Highlights & balayage",
-          description: "Highlights give even brightness with clear contrast. Balayage is painted freehand for a softer, natural effect that grows out without a harsh line. Both include toner for a harmonious result.",
+        barneklipp: {
+          title: "Children",
+          description: "Cuts for short and long hair for children from age 6.",
         },
-        colour: {
-          title: "Hair colour",
-          description: "Full colour, root touch-up or colour combined with a cut. We use professional colour products and adapt the shade to your skin tone and wishes. Wash and blow-dry included.",
+        farge: {
+          title: "Colour",
+          description: "Full colour and root colour, priced by hair length. Bleaching is offered as a separate treatment.",
         },
-        keratin: {
-          title: "Keratin & protein treatment",
-          description: "Keratin smooths the hair structure and reduces frizz – the effect lasts for weeks. Protein treatment strengthens damaged hair from within and is especially useful after colouring or bleaching.",
+        "striper-balayage": {
+          title: "Highlights / balayage",
+          description: "Highlights and balayage with foils, half or full head, plus root highlights.",
         },
-        children: {
-          title: "Children's cuts",
-          description: "Cuts for children from age 6. We create a calm, friendly experience so our youngest clients feel comfortable in the chair.",
+        "keratin-protein": {
+          title: "Keratin & protein",
+          description: "For smoother, stronger and shinier hair with less frizz. Priced by hair length.",
+        },
+        behandling: {
+          title: "Treatments & add-ons",
+          description: "Bleaching, wash, styling, hair masks and extensions as standalone treatments.",
         },
       },
       viewPriceList: "View full price list",
@@ -391,6 +411,9 @@ export const translations = {
       bookCard: "Book",
       priceNote: "All prices are indicative. Final price confirmed during consultation.",
       backToFilters: "Back to filters",
+      addonsToggle: "See optional add-ons",
+      addonsLabel: "Optional add-on services",
+      addonsHint: "Add-ons are selected in Timma when you book.",
     },
     recommendation: {
       eyebrow: "Find your treatment",
@@ -485,6 +508,8 @@ export const translations = {
       developedBy: "Developed by",
       book: "Book now",
       reviews: "reviews",
+      privacy: "Privacy",
+      cookieSettings: "Change cookie choices",
     },
     preview: {
       readMore: "Read more about us",
@@ -519,6 +544,13 @@ export const translations = {
       online: "Online",
       placeholder: "Type a question…",
       greeting: "Hi! Ask me about services, prices or opening hours.",
+    },
+    cookie: {
+      title: "We use cookies",
+      body: "This website uses necessary technologies to function and optional analytics to understand how it is used. You can change your choice at any time.",
+      accept: "Accept analytics",
+      decline: "Only necessary",
+      privacyLink: "Read the privacy policy",
     },
   },
 
@@ -610,12 +642,13 @@ export const translations = {
       intro:
         "من القصات الكلاسيكية إلى البالياج والكيراتين – اختر فئة لعرض الأسعار والحجز مباشرة.",
       categoryDescriptions: {
-        men: { title: "قصات رجالية في أوسلو", description: "قصات قصيرة كلاسيكية، سكن فيد، قص شعر طويل أو قص بالماكينة. يمكن إضافة تشذيب اللحية لمعظم القصات." },
-        women: { title: "قصات نسائية في أوسلو", description: "من تقليم بسيط إلى تغيير كامل في التسريحة. جميع القصات تشمل استشارة ونكيّف التقنية حسب نوع شعرك." },
-        "highlights-balayage": { title: "خصلات وبالياج", description: "الخصلات تعطي إضاءة متساوية. البالياج يُرسم بحرية لتأثير أنعم وأكثر طبيعية. كلاهما يشمل التونر." },
-        colour: { title: "صبغة الشعر", description: "صبغة كاملة أو جذور أو صبغة مع قص. نستخدم منتجات صبغة احترافية. الغسل والتجفيف مشمولان." },
-        keratin: { title: "الكيراتين والبروتين", description: "الكيراتين ينعّم بنية الشعر ويقلل التجعد. البروتين يقوّي الشعر التالف من الداخل." },
-        children: { title: "قصات الأطفال", description: "قصات للأطفال من سن 6 سنوات في أجواء مريحة وهادئة." },
+        dameklipp: { title: "قصات نسائية", description: "تقليم وتغيير كامل في التسريحة. الغسل والتجفيف والتلميع متوفرة كإضافات." },
+        herreklipp: { title: "قصات رجالية", description: "قصات كلاسيكية وعصرية، قص بالماكينة، تشذيب اللحية وتركيبات مع الصبغة أو الخصلات." },
+        barneklipp: { title: "أطفال", description: "قصات للشعر القصير والطويل للأطفال من سن 6 سنوات." },
+        farge: { title: "صبغة", description: "صبغة كاملة وصبغة الجذور، السعر حسب طول الشعر. التبييض كعلاج منفصل." },
+        "striper-balayage": { title: "خصلات / بالياج", description: "خصلات وبالياج بالفويل، نصف أو كامل الرأس، بالإضافة إلى خصلات الجذور." },
+        "keratin-protein": { title: "كيراتين وبروتين", description: "لشعر أكثر نعومة وقوة ولمعاناً مع تجعد أقل. السعر حسب طول الشعر." },
+        behandling: { title: "علاجات وإضافات", description: "تبييض، غسل، تصفيف، حمامات شعر وإكستنشن كعلاجات منفصلة." },
       },
       viewPriceList: "عرض قائمة الأسعار",
       visAlle: "عرض الكل",
@@ -629,6 +662,9 @@ export const translations = {
       bookCard: "احجز",
       priceNote: "جميع الأسعار استرشادية. يتم تأكيد السعر النهائي خلال الاستشارة.",
       backToFilters: "العودة إلى الفلاتر",
+      addonsToggle: "اعرض الإضافات الاختيارية",
+      addonsLabel: "خدمات إضافية اختيارية",
+      addonsHint: "يتم اختيار الإضافات في Timma عند الحجز.",
     },
     recommendation: {
       eyebrow: "ابحث عن علاجك",
@@ -722,6 +758,8 @@ export const translations = {
       developedBy: "تم التطوير بواسطة",
       book: "احجز موعداً",
       reviews: "تقييم",
+      privacy: "الخصوصية",
+      cookieSettings: "تغيير خيارات الكوكيز",
     },
     preview: {
       readMore: "اقرأ المزيد عنا",
@@ -756,6 +794,13 @@ export const translations = {
       online: "متصل",
       placeholder: "اكتب سؤالاً…",
       greeting: "مرحباً! اسألني عن الخدمات أو الأسعار أو مواعيد العمل.",
+    },
+    cookie: {
+      title: "نستخدم ملفات تعريف الارتباط",
+      body: "يستخدم هذا الموقع تقنيات ضرورية لعمله وأدوات تحليل اختيارية لفهم كيفية استخدامه. يمكنك تغيير اختيارك في أي وقت.",
+      accept: "قبول التحليلات",
+      decline: "الضرورية فقط",
+      privacyLink: "اقرأ سياسة الخصوصية",
     },
   },
   es: {
@@ -846,12 +891,13 @@ export const translations = {
       intro:
         "Desde cortes clásicos hasta balayage y keratina – elige una categoría para ver precios y reservar directamente.",
       categoryDescriptions: {
-        men: { title: "Cortes de caballero en Oslo", description: "Cortes clásicos, degradados, pelo largo o corte a máquina. El recorte de barba se puede añadir a la mayoría de los cortes." },
-        women: { title: "Cortes de mujer en Oslo", description: "Desde un simple recorte hasta un cambio de look completo. Todos los cortes incluyen asesoramiento y adaptamos la técnica a tu tipo de cabello." },
-        "highlights-balayage": { title: "Mechas y balayage", description: "Las mechas dan brillo uniforme con contraste. El balayage se pinta a mano para un efecto más suave y natural. Ambos incluyen tóner." },
-        colour: { title: "Color de cabello", description: "Color completo, raíces o color con corte. Usamos productos profesionales. Lavado y secado incluidos." },
-        keratin: { title: "Keratina y proteínas", description: "La keratina alisa la estructura capilar y reduce el encrespamiento. La proteína fortalece el cabello dañado desde dentro." },
-        children: { title: "Cortes infantiles", description: "Cortes para niños desde 6 años en un ambiente tranquilo y agradable." },
+        dameklipp: { title: "Cortes de mujer", description: "Recorte y cambio de look completo. Lavado, secado y gloss disponibles como extras." },
+        herreklipp: { title: "Cortes de caballero", description: "Cortes clásicos y modernos, corte a máquina, recorte de barba y combinaciones con color o mechas." },
+        barneklipp: { title: "Niños", description: "Cortes de pelo corto y largo para niños desde 6 años." },
+        farge: { title: "Color", description: "Color completo y de raíz, según largo del cabello. La decoloración es un tratamiento aparte." },
+        "striper-balayage": { title: "Mechas / balayage", description: "Mechas y balayage con papel de aluminio, media o cabeza completa, además de mechas de raíz." },
+        "keratin-protein": { title: "Keratina y proteína", description: "Para un cabello más liso, fuerte y brillante con menos encrespamiento. Según largo del cabello." },
+        behandling: { title: "Tratamientos y extras", description: "Decoloración, lavado, peinado, mascarillas y extensiones como tratamientos independientes." },
       },
       viewPriceList: "Ver lista de precios completa",
       visAlle: "Ver todos",
@@ -866,6 +912,9 @@ export const translations = {
       bookCard: "Reservar",
       priceNote: "Todos los precios son orientativos. El precio final se confirma durante la consulta.",
       backToFilters: "Volver a los filtros",
+      addonsToggle: "Ver extras opcionales",
+      addonsLabel: "Servicios opcionales",
+      addonsHint: "Los extras se seleccionan en Timma al reservar.",
     },
     recommendation: {
       eyebrow: "Encuentra tu tratamiento",
@@ -959,6 +1008,8 @@ export const translations = {
       developedBy: "Desarrollado por",
       book: "Reservar cita",
       reviews: "reseñas",
+      privacy: "Privacidad",
+      cookieSettings: "Cambiar preferencias de cookies",
     },
     preview: {
       readMore: "Más sobre nosotros",
@@ -993,6 +1044,13 @@ export const translations = {
       online: "En línea",
       placeholder: "Escribe una pregunta…",
       greeting: "¡Hola! Pregúntame sobre servicios, precios u horarios.",
+    },
+    cookie: {
+      title: "Usamos cookies",
+      body: "Este sitio web utiliza tecnologías necesarias para funcionar y herramientas analíticas opcionales para entender cómo se usa. Puedes cambiar tu elección en cualquier momento.",
+      accept: "Aceptar analíticas",
+      decline: "Solo necesarias",
+      privacyLink: "Leer la política de privacidad",
     },
   },
 } as const;

@@ -2,19 +2,48 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./context/LanguageContext";
+import { ConsentProvider } from "./context/ConsentContext";
+import CookieBanner from "./components/CookieBanner";
+import Analytics from "./components/Analytics";
 
 const geist = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://www.saxofonfrisor.no";
+const SITE_TITLE = "Saxoføn Frisør – Frisør i Oslo | Klipp, farge og behandlinger";
+const SITE_DESCRIPTION =
+  "Frisørsalong på St. Hanshaugen i sentrale Oslo. Herreklipp, dameklipp, balayage, hårfarge og keratinbehandling. 4.9 på Google med over 680 anmeldelser. Bestill time i dag.";
+const OG_IMAGE = {
+  url: "/images/saxofon-OG.png",
+  width: 2048,
+  height: 1365,
+  alt: "Saxoføn Frisør – frisørsalong på St. Hanshaugen i Oslo",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Saxoføn Frisør – Frisør i Oslo | Klipp, farge og behandlinger",
+    default: SITE_TITLE,
     template: "%s – Saxoføn Frisør",
   },
-  description:
-    "Frisørsalong på St. Hanshaugen i sentrale Oslo. Herreklipp, dameklipp, balayage, hårfarge og keratinbehandling. 4.9 på Google med over 680 anmeldelser. Bestill time i dag.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Saxoføn Frisør",
+    url: SITE_URL,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "nb_NO",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE.url],
+  },
   icons: {
     icon: [
       { url: "/saxofon-icon/favicon-dark.ico", sizes: "any" },
@@ -88,7 +117,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <LanguageProvider>{children}</LanguageProvider>
+        <ConsentProvider>
+          <LanguageProvider>
+            {children}
+            <CookieBanner />
+            <Analytics />
+          </LanguageProvider>
+        </ConsentProvider>
       </body>
     </html>
   );

@@ -52,89 +52,94 @@ Hvis kunden ikke er fornøyd:
 Studentrabatt/pensjonistrabatt:
 - Nei, vi tilbyr ikke dette. Vi har allerede lave priser.
 
-TJENESTER OG PRISER:
-Alle priser er veiledende. Endelig pris avhenger av hårlengde, tykkelse og behandlingens omfang.
+TJENESTER OG PRISER (Timma er fasit):
+Alle priser er veiledende. Endelig pris avhenger av hårlengde, tykkelse og omfang.
 
-HERREKLIPP:
-- Klassisk herreklipp (standard): 399 kr, ca. 30 min
-- Moderne herreklipp (skinfade, mullet, texture, crop, design): 449 kr, ca. 30–40 min
-- Herreklipp + skjeggtrim: 499 kr, ca. 40 min
-- Herreklipp langt hår (under skuldrene): 599 kr, ca. 40 min
-- Maskinklipp: 199 kr, ca. 15 min
-- Herreklipp + farge (kort hår, ikke bleking): 989 kr
-- Herreklipp + striper (lysere nyanser i kort hår): 1 189 kr
-- Hårvask er IKKE inkludert i herreklipp — koster 100 kr ekstra
-- Prisforskjell herre/dame: Menn bruker ofte barbermaskin, noe som tar kortere tid. Kvinner med kort hår (herrefrisyre-lengde) betaler herreklipp-pris.
-- Retro/trend: Vi tilbyr midtskill, curtain hair, mullet, frosted tips, bowl cut, buzz cut, slikkehår m.m.
-
-SKJEGGTRIM:
-- Separat skjeggtrim: 200–249 kr (trimming og forming med maskin)
-- Med herreklipp: inkludert i 499 kr
-- Vi tilbyr IKKE barbering med blad — kun maskin
+KATEGORIER: Dameklipp, Herreklipp, Barneklipp, Farge, Striper / balayage, Keratin- og proteinbehandling, Behandling / tilleggstjenester.
 
 DAMEKLIPP:
-- Klassisk dameklipp (stuss, klipp av lengder 3–5 cm): 499 kr, ca. 30 min
-- Dameklipp med vask: 649 kr
-- Dameklipp kort hår (inkl. vask og føning): 689 kr
-- Dameklipp langt hår (inkl. vask og føning): 889 kr
-- Større forandring / designklipp (bob, layers, wolfcut): fra 599 kr
-- VIKTIG: Standardpriser er UTEN vask og styling. Vask og styling kommer i tillegg: 200–399 kr.
-- Etter klipp gjør vi en enkel/basic styling. Mer omfattende styling (bølger, krøller, spesiell finish): 300–400 kr ekstra.
+- Damestuss (3–5 cm stuss, beholder formen): 499 kr
+- Dameklipp / ny form (layers, bob, oppklipp eller ny form): 699 kr
+- Valgfrie tillegg i Timma: Hårvask +99 kr, Føn og styling +299 kr, Glossing/toner/minicolour +799 kr
+- Vask, føn og styling er IKKE inkludert i standardprisen — velges aktivt som tillegg ved booking
 
-BARNEKLIPP:
-- Gutt: 349 kr (fra 6 år, uten vask)
-- Jente: 399 kr (fra 6 år, uten vask)
+HERREKLIPP:
+- Klassisk herreklipp: 399 kr
+- Moderne herreklipp (skinfade, mullet, texture crop, andre tydelige former): 449 kr
+- Herreklipp langt hår (ned til nakken eller lengre): 499 kr
+- Maskinklipp: 199 kr
+- Herreklipp klassisk + skjeggtrim: 499 kr
+- Skjeggtrim alene: 199 kr (kun maskin, ikke høvel/blade)
+- Herreklipp + farge (ikke bleking): 999 kr
+- Herreklipp + striper (hettestriper for menn): 1199 kr
+- Herrestriper (uten klipp): 799 kr
+- Valgfrie tillegg i Timma: Toner/glossing/minicolour +499 kr, Vask +99 kr, Hårkur +249 kr
+- Hårvask er IKKE inkludert i standardprisen — velges som tillegg
 
-STRIPER OG BALAYAGE:
-- Halvt hode: 1 790 kr
-- Fullt hode: 2 390 kr
-- Langt hår, fullt hode: 3 199 kr
-- Striper ettervekst: fra 1 690 kr
-- Tidsestimat: Kort hår ca. 2 timer. Langt hår ca. 4 timer.
-- Minicolour/glossing er IKKE inkludert — koster 800–1 000 kr ekstra.
-VIKTIG REGEL: Ved ALLE spørsmål om striper, balayage, minicolour, glossing eller farge, si ALLTID:
-1. Pris varierer basert på hårlengde, tykkelse, fargehistorikk og omfang
-2. Vi anbefaler en gratis konsultasjon — ring 455 55 898 eller send e-post
-3. Drop-in er IKKE mulig for denne tjenesten — bestill time
+BARNEKLIPP (fra 6 år, ingen tilleggstjenester):
+- Barneklipp gutt (kort hår): 349 kr
+- Barneklipp jente (langt hår): 399 kr
 
-HÅRFARGE:
-- Farge ettervekst: 889 kr
-- Minicolour/glossing: 800–1 000 kr
-- Helfarge: varierer
-- Samme regel som for striper/balayage: anbefal konsultasjon, ikke drop-in, bestill time
+FARGE (helfarge, prises etter hårlengde — bleking er en EGEN behandling):
+- Farge ettervekst (3–5 cm): 889 kr
+- Farge kort hår (opp til ørene): 1299 kr
+- Farge mellomlangt hår (over skuldrene): 1589 kr
+- Farge langt hår (ned til skulderbladene): 1789 kr
+- Farge ekstra langt og tykt hår (under skulderbladene/ekstra tykt): 2989 kr
+- Valgfrie tillegg: Glossing/minicolour +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
 
-KERATINBEHANDLING OG PROTEINBEHANDLING:
-- Keratinbehandling: 1 500–3 900 kr (varierer fra kort til langt hår, veldig tykt/langt kan koste mer)
-- Proteinbehandling: fra 800 kr (styrker og reparerer skadet hår)
-- Vi bruker vegansk keratinprotein fra ProAddiction USA — 100% formaldehydfritt
-- Gir friskt og rett hår i opptil 6 måneder uten å skade håret
-- Produktene er skånsomme mot kroppen og skader ikke helsen
-- Alle ansatte har godkjent diplom fra Norge for å jobbe med dette produktet
-- Drop-in er IKKE mulig — bestill time
+STRIPER / BALAYAGE (folie):
+- Striper eller balayage – halvt hode: 1889 kr
+- Striper eller balayage – fullt hode (mellomlangt): 2489 kr
+- Striper eller balayage – langt hår, fullt hode: 3299 kr
+- Striper ettervekst – halvt hode: 1789 kr
+- Striper ettervekst – fullt hode: 2399 kr
+- Valgfrie tillegg: Glossing/minicolour/toner +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
 
-EXTENSIONS:
-- Vi jobber kun med ekte menneskehår med 1 års garanti (hvis kjøpt hos oss)
-- Kun tape extensions
-- Vi kan sette opp extensions som ikke er kjøpt hos oss, men uten garanti
-- Veiledende pris: 50 cm, 2 pakker inkl. oppsett: ca. 6 500 kr. Kortere hår kan bli billigere.
+KERATIN- OG PROTEINBEHANDLING (kombinert, prises etter hårlengde):
+- Kort hår (under ørene): 2499 kr
+- Mellomlangt hår (til skuldrene): 2999 kr
+- Langt hår (til skulderbladene): 3699 kr
+- Ekstra langt hår (under skulderbladene): 4499 kr
+- Valgfrie tillegg: Damestuss +499 kr, Dameklipp / ny form +699 kr
+- Vi bruker vegansk keratinprotein fra ProAddiction USA — 100 % formaldehydfritt. Effekt opptil 6 måneder. Alle ansatte har godkjent diplom for å jobbe med produktet.
+
+BEHANDLING / TILLEGGSTJENESTER (egne behandlinger, kan også bestilles alene):
+- Bleking ettervekst: 889 kr
+- Bleking kort hår: 1299 kr
+- Bleking mellomlangt hår: 1589 kr
+- Bleking langt hår: 1789 kr
+- Vask og føn: 399 kr
+- Vask og styling (bølgete): 599 kr
+- Hårkur: 599 kr
+- Extensions (tape extensions, ekte menneskehår): pris avtales individuelt etter ønsket lengde og mengde, ca. 3999–7999 kr. Kontakt salong på telefon eller e-post for vurdering. 1 års garanti hvis håret er kjøpt hos oss. Vi kan også sette opp extensions kunden tar med selv, da uten garanti.
+- Valgfrie tillegg på disse behandlingene: Glossing/minicolour +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
+
+BOOKINGLOGIKK OG TILLEGGSTJENESTER:
+- Hovedtjenestene har valgfrie tilleggstjenester som kunden velger AKTIVT i Timma ved booking
+- Tillegg er IKKE automatisk inkludert i hovedprisen
+- På nettsiden kan kunden trykke "Se valgfrie tillegg" på et tjenestekort for å se tilgjengelige tillegg før de booker
+- Når kunden vil booke: henvis til bestill.timma.no/saxofon
+- Hvis kunden spør "er vask inkludert?" / "får jeg styling med?" / "koster glossing ekstra?": svar nei, det er valgfrie tillegg som velges separat i Timma
+
+DROP-IN-REGEL:
+- Drop-in: dameklipp og herreklipp ja, ofte kort ventetid
+- Drop-in: NEI for farge, striper, balayage, bleking, keratin- og proteinbehandling og andre lengre behandlinger — disse må bestilles på forhånd
+- Usikker? Ring 455 55 898
+
+VIKTIG REGEL ved spørsmål om farge, striper, balayage, bleking eller minicolour/glossing:
+1. Forklar at pris varierer etter hårlengde, tykkelse, fargehistorikk og omfang — bruk prislistene over som veiledende
+2. Anbefal å bestille time i Timma (drop-in er ikke mulig)
+3. Ved tvilstilfeller: anbefal en konsultasjon — ring 455 55 898 eller send e-post
 
 BRUDEFRISERING:
-- Ja, vi har lang erfaring med dette
-- Pris: typisk 1 499–3 999 kr (varierer basert på stil og modell)
-- Vi gjør IKKE make-up — kun hår
-
-HÅRKUR:
-- Ja, vi tilbyr hårkur med produkter av høy kvalitet for friskere og sunnere hår
+- Ja, vi har lang erfaring (kun hår, ikke make-up)
+- Typisk 1 499–3 999 kr avhengig av stil og modell
+- Bestilles direkte med salongen — ring eller send e-post
 
 HÅRDONASJON:
-- Vi samarbeider med Apollo Hair (apollohair.no)
-- Minste lengde: 20–30 cm
-- Håret må være tørt, rent, sunt og minst mulig behandlet
-- Vi sender håret til Apollo Hair etter donasjon
-
-STYLING ETTER KLIPP:
-- Etter klipp gjør vi en enkel/basic styling
-- Ønsker du mer omfattende styling (bølger, krøller, spesiell finish): 300–400 kr ekstra
+- Samarbeid med Apollo Hair (apollohair.no)
+- Minste lengde 20–30 cm. Håret må være tørt, rent, sunt og minst mulig behandlet.
 
 TING VI IKKE TILBYR:
 - Barbering med blad (kun maskin)
