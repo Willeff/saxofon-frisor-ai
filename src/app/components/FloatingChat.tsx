@@ -8,6 +8,7 @@ type Message = { role: "assistant" | "user"; content: string };
 export default function FloatingChat() {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: t.floating.greeting },
   ]);
@@ -38,6 +39,17 @@ export default function FloatingChat() {
     }
     window.addEventListener("open-chat", handleOpenChat);
     return () => window.removeEventListener("open-chat", handleOpenChat);
+  }, []);
+
+  // Hide floating trigger while the mobile menu is open so it never overlaps
+  // the "Bestill time" CTA.
+  useEffect(() => {
+    function handleMenuState(e: Event) {
+      const detail = (e as CustomEvent<{ open: boolean }>).detail;
+      setMobileMenuOpen(!!detail?.open);
+    }
+    window.addEventListener("mobile-menu-state", handleMenuState);
+    return () => window.removeEventListener("mobile-menu-state", handleMenuState);
   }, []);
 
   const sendMessage = useCallback(async (text: string) => {
@@ -188,8 +200,9 @@ export default function FloatingChat() {
       <button
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? t.floating.close : t.floating.open}
-        className={`md:hidden fixed bottom-5 right-5 z-[65] flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 ${
-          isOpen
+        aria-hidden={mobileMenuOpen}
+        className={`md:hidden fixed bottom-5 right-5 z-[55] flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 ${
+          isOpen || mobileMenuOpen
             ? "bg-[#1A1A1A] border border-white/10 scale-90 opacity-0 pointer-events-none"
             : "bg-[#C4A882] text-[#0F0F0F] active:scale-95"
         }`}

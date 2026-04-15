@@ -16,13 +16,16 @@ export default function HeroSection() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll + notify floating chat when mobile menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
+    window.dispatchEvent(
+      new CustomEvent("mobile-menu-state", { detail: { open: menuOpen } })
+    );
     return () => {
       document.body.style.overflow = "";
     };
@@ -126,11 +129,12 @@ export default function HeroSection() {
 
       {/* Mobile fullscreen menu */}
       <div
-        className={`md:hidden fixed inset-0 z-[60] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`md:hidden fixed inset-x-0 top-0 h-screen z-[60] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           menuOpen
             ? "translate-x-0 opacity-100 pointer-events-auto"
             : "translate-x-full opacity-100 pointer-events-none"
         }`}
+        style={{ height: "100dvh" }}
       >
         {/* Backdrop */}
         <div
@@ -194,10 +198,10 @@ export default function HeroSection() {
           </div>
 
           {/* Menu content */}
-          <div className="relative flex-1 flex flex-col px-8 pt-6 pb-10">
+          <div className="relative flex-1 flex flex-col min-h-0 px-8 pt-4">
 
-            {/* Nav links */}
-            <nav className="flex flex-col gap-1 mb-auto">
+            {/* Nav links (scrollable if needed) */}
+            <nav className="flex-1 min-h-0 overflow-y-auto overscroll-contain flex flex-col gap-1">
               {[
                 { label: t.nav.home, href: "/" },
                 { label: t.nav.about, href: "/om-oss" },
@@ -226,13 +230,14 @@ export default function HeroSection() {
 
             </nav>
 
-            {/* Bottom section */}
+            {/* Bottom section — always visible, safe-area padded */}
             <div
-              className="mt-12 flex flex-col gap-8"
+              className="flex-none flex flex-col gap-5 pt-6"
               style={{
                 opacity: menuOpen ? 1 : 0,
                 transform: menuOpen ? "translateY(0)" : "translateY(12px)",
                 transition: "opacity 0.5s cubic-bezier(0.16,1,0.3,1) 400ms, transform 0.5s cubic-bezier(0.16,1,0.3,1) 400ms",
+                paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))",
               }}
             >
 
