@@ -10,6 +10,7 @@ import {
   type DisplayFilter,
 } from "../data/services";
 import { useLanguage } from "../context/LanguageContext";
+import { pushEvent } from "../lib/analytics";
 import { useInView } from "../hooks/useInView";
 
 const CATEGORY_STYLE_MAP: Record<CategoryId, string> = {
@@ -150,6 +151,7 @@ export default function ServicesSection({ isFullPage = false }: { isFullPage?: b
                       href="https://bestill.timma.no/saxofon"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => pushEvent("booking_click", { location: "service_card" })}
                       className="btn-press text-[11px] tracking-[0.15em] uppercase text-white bg-[#1A1A1A] px-4 py-2.5 hover:bg-[#C4A882] transition-colors whitespace-nowrap font-medium"
                     >
                       {t.services.bookCard}
@@ -248,6 +250,7 @@ export default function ServicesSection({ isFullPage = false }: { isFullPage?: b
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => pushEvent("booking_click", { location: "services_bottom" })}
             className="btn-press flex-none w-full sm:w-auto text-center px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
           >
             {t.services.book}

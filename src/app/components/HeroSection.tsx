@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { pushEvent } from "../lib/analytics";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function HeroSection() {
@@ -109,6 +110,7 @@ export default function HeroSection() {
               href="https://bestill.timma.no/saxofon"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => pushEvent("booking_click", { location: "nav_desktop" })}
               className="btn-press text-[12px] tracking-widest uppercase bg-[#E8D5B5] text-[#0F0F0F] px-5 py-2.5 hover:bg-[#F0E4CC] transition-colors font-medium"
             >
               {t.nav.book}
@@ -268,7 +270,10 @@ export default function HeroSection() {
                 href="https://bestill.timma.no/saxofon"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  pushEvent("booking_click", { location: "nav_mobile" });
+                }}
                 className="btn-press w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
               >
                 {t.nav.book}
@@ -330,6 +335,7 @@ export default function HeroSection() {
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => pushEvent("booking_click", { location: "hero" })}
             className="btn-press px-8 md:px-10 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors text-center"
           >
             {t.hero.book}

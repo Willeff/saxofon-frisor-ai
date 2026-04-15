@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
 import { useConsent } from "../context/ConsentContext";
+import { pushEvent } from "../lib/analytics";
 import { useInView } from "../hooks/useInView";
 
 const GoogleG = ({ size = 14 }: { size?: number }) => (
@@ -166,6 +167,7 @@ export default function FooterSection() {
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => pushEvent("booking_click", { location: "footer" })}
             className="btn-press flex-none px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
           >
             {t.footer.book}

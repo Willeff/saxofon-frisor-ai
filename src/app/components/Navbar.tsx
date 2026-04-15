@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
+import { pushEvent } from "../lib/analytics";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light" }) {
@@ -66,6 +67,7 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => pushEvent("booking_click", { location: "nav_desktop" })}
             className={`btn-press text-[12px] tracking-widest uppercase px-5 py-2.5 transition-colors font-medium ${
               isLight
                 ? "bg-[#C4A882] text-[#0F0F0F] hover:bg-[#1A1A1A] hover:text-white"
@@ -162,7 +164,10 @@ export default function Navbar({ variant = "dark" }: { variant?: "dark" | "light
                 href="https://bestill.timma.no/saxofon"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  pushEvent("booking_click", { location: "nav_mobile" });
+                }}
                 className="btn-press w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
               >
                 {t.nav.book}

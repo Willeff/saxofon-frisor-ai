@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
+import { pushEvent } from "../lib/analytics";
 import { useInView } from "../hooks/useInView";
 
 export default function ContactPreview() {
@@ -40,6 +41,7 @@ export default function ContactPreview() {
                 href="https://bestill.timma.no/saxofon"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => pushEvent("booking_click", { location: "contact_preview" })}
                 className="btn-press text-center px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
               >
                 {c.book}

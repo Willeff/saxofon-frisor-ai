@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { pushEvent } from "../lib/analytics";
 import { useInView } from "../hooks/useInView";
 
 type Treatment = { name: string; description: string };
@@ -247,6 +248,7 @@ export default function RecommendationSection() {
                 href="https://bestill.timma.no/saxofon"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => pushEvent("booking_click", { location: "recommendation" })}
                 className="btn-press inline-block w-full sm:w-auto text-center px-8 py-3.5 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-[#1A1A1A] hover:text-white transition-colors"
               >
                 {t.recommendation.book}

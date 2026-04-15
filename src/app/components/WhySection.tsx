@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
+import { pushEvent } from "../lib/analytics";
 import { useInView } from "../hooks/useInView";
 
 export default function WhySection() {
@@ -31,6 +32,7 @@ export default function WhySection() {
             href="https://bestill.timma.no/saxofon"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => pushEvent("booking_click", { location: "why" })}
             className={`btn-press self-start md:self-auto text-[12px] tracking-[0.18em] uppercase border border-white/15 px-6 py-3 text-white/70 font-medium hover:text-white hover:border-white/35 transition-all anim-fade-in-up stagger-2 ${headerInView ? "in-view" : ""}`}
           >
             {t.why.book}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
+import { pushEvent } from "../lib/analytics";
 import { useInView } from "../hooks/useInView";
 
 const GoogleG = ({ size = 14 }: { size?: number }) => (
@@ -75,6 +76,7 @@ export default function ContactSection() {
                 href="https://bestill.timma.no/saxofon"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => pushEvent("booking_click", { location: "contact_section" })}
                 className="btn-press inline-block w-full text-center px-8 py-4 bg-[#C4A882] text-[#0F0F0F] text-[12px] tracking-[0.18em] uppercase font-medium hover:bg-white transition-colors"
               >
                 {c.book}
