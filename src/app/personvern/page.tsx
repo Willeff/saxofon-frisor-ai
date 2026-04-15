@@ -3,12 +3,6 @@
 import Navbar from "../components/Navbar";
 import FooterSection from "../components/FooterSection";
 import FloatingChat from "../components/FloatingChat";
-import { useConsent } from "../context/ConsentContext";
-
-// MVP-personvernerklæring. Innholdet er bevisst forsiktig formulert og
-// inneholder TODO-markører der konkrete fakta må fylles inn manuelt før
-// produksjon. Teksten er foreløpig kun på norsk — flerspråklig versjon
-// kan legges i `lib/translations.ts` senere hvis ønskelig.
 
 function Section({
   title,
@@ -29,17 +23,7 @@ function Section({
   );
 }
 
-function Todo({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block bg-[#FFF3CD] text-[#7A5A00] px-2 py-0.5 text-[13px] font-medium border border-[#E8D58A]">
-      TODO: {children}
-    </span>
-  );
-}
-
 export default function PersonvernPage() {
-  const { reopen } = useConsent();
-
   return (
     <main className="bg-[#F7F4EF] min-h-screen flex flex-col">
       <Navbar variant="light" />
@@ -58,161 +42,230 @@ export default function PersonvernPage() {
             Personvernerklæring
           </h1>
           <p className="text-[14px] text-[#1A1A1A]/60 mb-12">
-            Sist oppdatert: <Todo>fyll inn dato før publisering</Todo>
+            Sist oppdatert: 15. april 2026
           </p>
 
-          <Section title="Behandlingsansvarlig">
+          <Section title="1. Behandlingsansvarlig">
             <p>
-              Saxoføn Frisør, Fredensborgveien 22, 0177 Oslo, er
-              behandlingsansvarlig for personopplysninger som samles inn
-              gjennom denne nettsiden.
+              Saxoføn Frisør AS er behandlingsansvarlig for personopplysninger
+              som behandles i forbindelse med bruk av nettsiden
+              saxofonfrisor.no.
             </p>
             <p>
-              Organisasjonsnummer: <Todo>fyll inn org.nr.</Todo>
+              Adresse: Fredensborgveien 22, 0177 Oslo
               <br />
-              Kontakt: saxofon@hotmail.no · +47 455 55 898
+              Organisasjonsnummer: 934 665 791
+              <br />
+              E-post:{" "}
+              <a
+                href="mailto:saxofon@hotmail.no"
+                className="underline underline-offset-2 hover:text-[#C4A882] transition-colors"
+              >
+                saxofon@hotmail.no
+              </a>
+              <br />
+              Telefon: +47 455 55 898
             </p>
           </Section>
 
-          <Section title="Hvilke opplysninger vi kan behandle">
+          <Section title="2. Hvilke opplysninger vi behandler">
             <p>
-              Når du besøker saxofonfrisor.no kan vi behandle følgende
-              kategorier av opplysninger:
+              Når du bruker nettsiden vår, kan vi behandle følgende typer
+              opplysninger:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
-                Tekniske opplysninger som er nødvendige for at nettsiden skal
-                fungere (f.eks. forespørsler til vår server).
+                tekniske opplysninger som er nødvendige for at nettsiden skal
+                fungere, for eksempel informasjon som sendes til serveren når
+                en side lastes
               </li>
               <li>
-                Opplysninger om bruk av nettsiden via valgfrie analyseverktøy,
-                kun dersom du har gitt samtykke (se neste avsnitt).
+                opplysninger om bruk av nettsiden gjennom analyseverktøy,
+                dersom du har samtykket til dette
               </li>
               <li>
-                Innhold du selv sender inn via AI-chatten eller
-                kontaktskjemaer.
+                opplysninger du selv oppgir dersom du kontakter oss eller
+                bruker AI-chatten
               </li>
             </ul>
             <p>
-              <Todo>
-                Bekreft eksakt liste over felter som logges på serveren
-                (IP-adresse, user agent, tidspunkt osv.) og oppbevaringstid.
-              </Todo>
+              Vi ber deg om å ikke sende inn sensitive personopplysninger i
+              chatten eller via nettsiden, for eksempel personnummer,
+              helseopplysninger, betalingsinformasjon eller andre fortrolige
+              opplysninger.
             </p>
           </Section>
 
-          <Section title="Bruk av analyseverktøy">
+          <Section title="3. Formål med behandlingen">
+            <p>Vi behandler personopplysninger for å:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>levere og sikre nettsiden</li>
+              <li>
+                forstå hvordan nettsiden brukes og forbedre innhold,
+                funksjonalitet og brukeropplevelse
+              </li>
+              <li>besvare henvendelser</li>
+              <li>gjøre AI-chatten tilgjengelig som informasjonstjeneste</li>
+              <li>
+                oppfylle rettslige forpliktelser dersom det er nødvendig
+              </li>
+            </ul>
+          </Section>
+
+          <Section title="4. Rettslig grunnlag">
             <p>
-              Nettsiden bruker per i dag ingen analyseverktøy som standard.
-              Dersom analyseverktøy (f.eks. Google Analytics) tas i bruk,
-              vil disse kun lastes etter at du har gitt et aktivt samtykke
-              via cookie-banneret.
+              Behandling av personopplysninger som er nødvendige for drift og
+              sikkerhet av nettsiden skjer på grunnlag av vår berettigede
+              interesse i å levere en trygg og velfungerende nettside.
             </p>
             <p>
-              <Todo>
-                Når GA4 eller andre verktøy kobles på: list opp leverandør,
-                hvilke data som samles inn, formål, lagringstid og eventuell
-                overføring utenfor EØS.
-              </Todo>
+              Bruk av analyseverktøy og andre valgfrie teknologier skjer på
+              grunnlag av samtykke, der dette kreves.
             </p>
           </Section>
 
-          <Section title="Samtykke og hvordan du trekker det tilbake">
+          <Section title="5. Cookies, samtykke og analyse">
             <p>
-              Første gang du besøker nettsiden får du opp et samtykkebanner
-              hvor du kan godta eller avslå valgfrie analyseverktøy. Valget
-              ditt lagres lokalt i nettleseren din.
+              Nettsiden bruker Google Tag Manager og Google Analytics 4 for å
+              forstå hvordan nettsiden brukes og for å forbedre innhold,
+              funksjonalitet og brukeropplevelse.
             </p>
             <p>
-              Du kan når som helst endre valget ditt ved å klikke på lenken{" "}
-              <button
-                type="button"
-                onClick={reopen}
-                className="underline underline-offset-2 text-[#1A1A1A] hover:text-[#C4A882] transition-colors"
-              >
-                «Endre cookievalg»
-              </button>{" "}
-              nederst på siden, eller ved å klikke knappen over.
+              Analyseverktøy lastes bare etter at du har gitt samtykke gjennom
+              cookie-banneret. Dersom du ikke samtykker, lastes ikke disse
+              verktøyene.
+            </p>
+            <p>
+              Vi bruker analyse for å måle generell bruk av nettsiden og for å
+              forstå handlinger som for eksempel klikk på bestillingslenker,
+              telefonlenker, e-postlenker og bruk av chatfunksjonen.
+            </p>
+            <p>
+              Valget ditt lagres lokalt i nettleseren din, slik at nettsiden
+              husker innstillingen din. Du kan når som helst endre eller
+              trekke tilbake samtykket ditt via lenken for cookievalg på
+              nettsiden.
             </p>
           </Section>
 
-          <Section title="AI-chat">
+          <Section title="6. AI-chat">
             <p>
               Nettsiden tilbyr en AI-basert chat som kan svare på generelle
-              spørsmål om tjenester, priser og åpningstider. Chatten er ment
-              som en informasjonstjeneste, og er ikke et sted for å dele
-              sensitive personopplysninger.
+              spørsmål om tjenester, priser og åpningstider.
             </p>
             <p>
-              <strong>Vennligst ikke skriv inn:</strong> personnummer,
-              helseopplysninger, betalingsinformasjon eller annen sensitiv
-              informasjon i chatten.
+              Opplysninger du skriver inn i chatten sendes til vår server og
+              videre til en ekstern AI-leverandør for å kunne generere svar.
+              Chatten er kun ment for generelle spørsmål, og skal ikke brukes
+              til å dele sensitive personopplysninger.
             </p>
             <p>
-              Meldingene du skriver inn sendes til vår tjener for å kunne
-              generere et svar via en ekstern språkmodell-leverandør.
+              For analyse og forbedring av tjenesten kan vi registrere at
+              chatten åpnes, at en melding sendes, hvilket språk som brukes,
+              samt meldingslengde og tekniske feilhendelser. Vi bruker ikke
+              rå meldingstekst som analysedata i Google Analytics.
             </p>
             <p>
-              <Todo>
-                Bekreft hvilken leverandør som brukes (f.eks. Anthropic),
-                om meldinger logges, hvor lenge de eventuelt lagres, hvem som
-                har tilgang, og om det skjer overføring utenfor EØS. Oppdater
-                denne seksjonen med presise opplysninger før produksjon.
-              </Todo>
+              Dersom du ønsker å bestille time eller dele informasjon som
+              ikke passer i chatten, ber vi deg bruke ordinære kontakt- eller
+              bookingkanaler.
             </p>
           </Section>
 
-          <Section title="Tredjeparter og leverandører">
+          <Section title="7. Tredjeparter og leverandører">
             <p>
-              Nettsiden lenker til eksterne tjenester som booking
-              (bestill.timma.no), Google Maps, Facebook, Instagram, TikTok og
-              Google. Vi setter ingen sporings-cookies fra disse på vår egen
-              side, men hvis du følger lenkene gjelder deres egne vilkår og
-              personvernerklæringer.
+              Vi kan bruke eksterne leverandører for drift av nettsiden og
+              tilknyttede tjenester. Dette kan omfatte:
             </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>leverandør av hosting og teknisk drift</li>
+              <li>
+                Google Tag Manager og Google Analytics som analyseverktøy
+              </li>
+              <li>
+                Anthropic som leverandør av AI-funksjonalitet i chatten
+              </li>
+              <li>
+                eksterne tjenester du selv velger å åpne via lenker på
+                nettsiden, som booking, Google Maps og sosiale medier
+              </li>
+            </ul>
             <p>
-              <Todo>
-                Lag en oversikt over alle databehandlere (hosting,
-                AI-leverandør, ev. analyseverktøy, e-postleverandør) og
-                bekreft at databehandleravtaler er på plass.
-              </Todo>
-            </p>
-          </Section>
-
-          <Section title="Dine rettigheter">
-            <p>
-              Du har rett til innsyn, retting, sletting og dataportabilitet
-              for personopplysninger vi behandler om deg, samt rett til å
-              klage til Datatilsynet. For å utøve rettighetene dine kan du
-              kontakte oss på saxofon@hotmail.no.
-            </p>
-            <p>
-              <Todo>
-                Bekreft formuleringen rundt rettigheter og at responsfristen
-                følger kravene i personvernforordningen (GDPR).
-              </Todo>
+              Når du klikker deg videre til eksterne tjenester, gjelder deres
+              egne vilkår og personvernerklæringer.
             </p>
           </Section>
 
-          <Section title="Endringer i denne erklæringen">
+          <Section title="8. Overføring utenfor EØS">
             <p>
-              Vi kan oppdatere denne personvernerklæringen ved endringer i
-              nettsiden eller regelverket. Sist oppdatert-dato vises øverst
-              på siden.
+              Noen av leverandørene vi bruker kan behandle personopplysninger
+              utenfor EØS. Dersom dette skjer, skal det være basert på gyldig
+              rettslig grunnlag etter personvernregelverket, for eksempel
+              EU-kommisjonens standard personvernbestemmelser eller annet
+              lovlig overføringsgrunnlag.
             </p>
           </Section>
 
-          <Section title="Kontakt">
+          <Section title="9. Lagringstid">
             <p>
-              Spørsmål om personvern kan rettes til:
-              <br />
-              Saxoføn Frisør
+              Vi lagrer personopplysninger så lenge det er nødvendig for
+              formålet de ble samlet inn for, eller så lenge vi er rettslig
+              forpliktet til det.
+            </p>
+            <p>
+              Opplysninger som ikke lenger er nødvendige, skal slettes eller
+              anonymiseres.
+            </p>
+          </Section>
+
+          <Section title="10. Dine rettigheter">
+            <p>Du kan ha rett til å:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>
+                be om innsyn i hvilke personopplysninger vi har om deg
+              </li>
+              <li>be om retting av uriktige opplysninger</li>
+              <li>be om sletting</li>
+              <li>be om begrensning av behandlingen</li>
+              <li>protestere mot behandlingen</li>
+              <li>
+                be om dataportabilitet der regelverket gir deg rett til det
+              </li>
+            </ul>
+            <p>
+              Du har også rett til å klage til Datatilsynet dersom du mener
+              at vår behandling av personopplysninger er i strid med
+              regelverket.
+            </p>
+          </Section>
+
+          <Section title="11. Kontakt">
+            <p>
+              Dersom du har spørsmål om personvern eller ønsker å bruke
+              rettighetene dine, kan du kontakte oss:
+            </p>
+            <p>
+              Saxoføn Frisør AS
               <br />
               Fredensborgveien 22, 0177 Oslo
               <br />
-              saxofon@hotmail.no
+              <a
+                href="mailto:saxofon@hotmail.no"
+                className="underline underline-offset-2 hover:text-[#C4A882] transition-colors"
+              >
+                saxofon@hotmail.no
+              </a>
               <br />
               +47 455 55 898
+            </p>
+          </Section>
+
+          <Section title="12. Endringer i erklæringen">
+            <p>
+              Vi kan oppdatere denne personvernerklæringen dersom det skjer
+              endringer i nettsiden, tjenestene våre eller gjeldende
+              regelverk. Oppdatert versjon vil alltid være tilgjengelig på
+              denne siden.
             </p>
           </Section>
 
