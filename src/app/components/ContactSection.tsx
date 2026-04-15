@@ -101,6 +101,7 @@ export default function ContactSection() {
             </div>
             <a
               href="tel:+4745555898"
+              onClick={() => pushEvent("phone_click", { location: "contact_section", number: "+4745555898" })}
               className="text-[17px] md:text-[18px] font-light text-white/90 hover:text-[#C4A882] transition-colors"
             >
               +47 455 55 898
@@ -121,6 +122,7 @@ export default function ContactSection() {
             </div>
             <a
               href="mailto:saxofon@hotmail.no"
+              onClick={() => pushEvent("email_click", { location: "contact_section", address: "saxofon@hotmail.no" })}
               className="text-[17px] md:text-[18px] font-light text-white/90 hover:text-[#C4A882] transition-colors"
             >
               saxofon@hotmail.no

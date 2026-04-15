@@ -97,12 +97,20 @@ export default function FooterSection() {
                 </a>
               </li>
               <li>
-                <a href="mailto:saxofon@hotmail.no" className="hover:text-white transition-colors duration-250">
+                <a
+                  href="mailto:saxofon@hotmail.no"
+                  onClick={() => pushEvent("email_click", { location: "footer", address: "saxofon@hotmail.no" })}
+                  className="hover:text-white transition-colors duration-250"
+                >
                   saxofon@hotmail.no
                 </a>
               </li>
               <li>
-                <a href="tel:+4745555898" className="hover:text-white transition-colors duration-250">
+                <a
+                  href="tel:+4745555898"
+                  onClick={() => pushEvent("phone_click", { location: "footer", number: "+4745555898" })}
+                  className="hover:text-white transition-colors duration-250"
+                >
                   +47 455 55 898
                 </a>
               </li>
