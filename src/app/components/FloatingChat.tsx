@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { pushEvent } from "../lib/analytics";
 
 type Message = { role: "assistant" | "user"; content: string };
 
@@ -56,6 +57,12 @@ export default function FloatingChat() {
     const trimmed = text.trim();
     if (!trimmed) return;
 
+    pushEvent("chat_message_sent", {
+      source: "floating_chat",
+      message_length: trimmed.length,
+      language: lang,
+    });
+
     const userMsg: Message = { role: "user", content: trimmed };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
@@ -75,6 +82,10 @@ export default function FloatingChat() {
         { role: "assistant", content: data.response },
       ]);
     } catch {
+      pushEvent("chat_error", {
+        source: "floating_chat",
+        language: lang,
+      });
       setMessages((prev) => [
         ...prev,
         {
@@ -85,7 +96,7 @@ export default function FloatingChat() {
     } finally {
       setIsTyping(false);
     }
-  }, [messages]);
+  }, [messages, lang]);
 
   /* Shared chat panel content */
   const chatHeader = (
@@ -198,7 +209,12 @@ export default function FloatingChat() {
 
       {/* ── Mobile: trigger button (fixed bottom) ── */}
       <button
-        onClick={() => setIsOpen((v) => !v)}
+        onClick={() => {
+          setIsOpen((v) => {
+            if (!v) pushEvent("chat_open", { source: "mobile_trigger" });
+            return !v;
+          });
+        }}
         aria-label={isOpen ? t.floating.close : t.floating.open}
         aria-hidden={mobileMenuOpen}
         className={`md:hidden fixed bottom-5 right-5 z-[55] flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 ${
@@ -231,7 +247,12 @@ export default function FloatingChat() {
 
         {/* Trigger pill */}
         <button
-          onClick={() => setIsOpen((v) => !v)}
+          onClick={() => {
+            setIsOpen((v) => {
+              if (!v) pushEvent("chat_open", { source: "desktop_trigger" });
+              return !v;
+            });
+          }}
           aria-label={isOpen ? t.floating.close : t.floating.open}
           className={`btn-press flex items-center gap-2.5 px-5 py-3 transition-all duration-250 shadow-lg ${
             isOpen

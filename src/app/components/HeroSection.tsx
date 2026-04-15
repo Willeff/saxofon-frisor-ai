@@ -245,7 +245,11 @@ export default function HeroSection() {
 
               {/* Spør assistenten */}
               <button
-                onClick={() => { setMenuOpen(false); window.dispatchEvent(new CustomEvent("open-chat")); }}
+                onClick={() => {
+                  setMenuOpen(false);
+                  pushEvent("chat_open", { source: "mobile_menu" });
+                  window.dispatchEvent(new CustomEvent("open-chat"));
+                }}
                 className="btn-press flex items-center justify-center gap-2 w-full text-center px-8 py-4 border border-white/20 text-white/75 text-[12px] tracking-[0.18em] uppercase hover:border-white/40 hover:text-white transition-all"
               >
                 <svg className="w-3.5 h-3.5 flex-none" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden>
@@ -341,7 +345,10 @@ export default function HeroSection() {
             {t.hero.book}
           </a>
           <button
-            onClick={() => window.dispatchEvent(new CustomEvent("open-chat"))}
+            onClick={() => {
+              pushEvent("chat_open", { source: "hero_cta" });
+              window.dispatchEvent(new CustomEvent("open-chat"));
+            }}
             className="btn-press flex items-center justify-center gap-2 px-8 md:px-10 py-4 border border-white/20 text-white/75 text-[12px] tracking-[0.18em] uppercase hover:border-white/40 hover:text-white transition-all"
           >
             <svg className="w-3.5 h-3.5 flex-none" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden>
