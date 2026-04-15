@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         destination: "/tjenester",
         permanent: true,
       },
+      {
+        source: "/om-saxofon-frisor",
+        destination: "/om-oss",
+        permanent: true,
+      },
     ];
   },
 };
