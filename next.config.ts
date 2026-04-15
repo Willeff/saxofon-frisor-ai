@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         destination: "/kontakt",
         permanent: true,
       },
+      {
+        source: "/frisor-tjenester-oslo",
+        destination: "/tjenester",
+        permanent: true,
+      },
     ];
   },
 };
