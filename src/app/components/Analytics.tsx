@@ -1,42 +1,35 @@
 "use client";
 
-// Analytics gate.
-//
-// Renders nothing today — Saxoføn has no analytics installed yet. When GA4
-// (or any other analytics) is added, drop the script tags inside the
-// `consent.analytics` branch below using `next/script` with
-// strategy="afterInteractive". The ConsentProvider guarantees this component
-// re-renders when the user grants/revokes consent, so scripts are only
-// injected into the DOM after explicit opt-in.
-//
-// Example (do NOT enable until a GA4 ID is provisioned):
-//
-//   import Script from "next/script";
-//   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-//   if (!GA_ID) return null;
-//   return (
-//     <>
-//       <Script
-//         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-//         strategy="afterInteractive"
-//       />
-//       <Script id="ga4-init" strategy="afterInteractive">
-//         {`window.dataLayer = window.dataLayer || [];
-//           function gtag(){dataLayer.push(arguments);}
-//           gtag('js', new Date());
-//           gtag('config', '${GA_ID}', { anonymize_ip: true });`}
-//       </Script>
-//     </>
-//   );
-
+import Script from "next/script";
 import { useConsent } from "../context/ConsentContext";
+
+// Global tracking gate.
+//
+// GTM is the single entry point for all tracking. GA4 (or any other tag)
+// lives inside the GTM container — never directly in this codebase. The tag
+// is only injected into the DOM after the user has granted analytics consent,
+// so nothing fires before opt-in.
 
 export default function Analytics() {
   const { consent, hydrated } = useConsent();
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
+  console.log("GTM ID DEBUG:", gtmId);
 
   if (!hydrated) return null;
   if (!consent.analytics) return null;
+  if (!gtmId) return null;
 
-  // TODO: render GA4 / analytics scripts here once provisioned.
-  return null;
+  return (
+    <Script
+      id="gtm-loader"
+      strategy="afterInteractive"
+    >
+      {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${gtmId}');`}
+    </Script>
+  );
 }
