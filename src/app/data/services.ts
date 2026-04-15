@@ -321,7 +321,7 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     categoryId: "herre-langt-farge-striper",
     title: "Herrestriper",
     description:
-      "For deg som ønsker lysere nyanser eller spill i håret uten klipp.",
+      "For deg som ønsker lysere nyanser eller spill i håret uten klipp. Gjelder hettestriper for menn.",
     price: "799 kr",
     tags: ["men", "highlights"],
     addons: HERRE_ADDONS,
