@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         destination: "/om-oss",
         permanent: true,
       },
+      {
+        source: "/kontakt-frisor-oslo",
+        destination: "/kontakt",
+        permanent: true,
+      },
     ];
   },
 };
