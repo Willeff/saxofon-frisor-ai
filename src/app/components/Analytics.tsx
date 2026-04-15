@@ -14,8 +14,6 @@ export default function Analytics() {
   const { consent, hydrated } = useConsent();
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
-  console.log("GTM ID DEBUG:", gtmId);
-
   if (!hydrated) return null;
   if (!consent.analytics) return null;
   if (!gtmId) return null;
