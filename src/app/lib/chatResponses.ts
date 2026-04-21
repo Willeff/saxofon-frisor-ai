@@ -90,7 +90,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
         const balayage = services.find((s) => s.title === "Striper eller balayage – halvt hode");
         const keratin = services.find((s) => s.title === "Keratin- og proteinbehandling kort hår");
 
-        return `Her er et utvalg av prisene våre:\n\n• Klassisk herreklipp – ${menCut?.price ?? "399 kr"}\n• Damestuss – ${damestuss?.price ?? "499 kr"}\n• Farge ettervekst – ${colour?.price ?? "889 kr"}\n• Striper / balayage (halvt hode) – ${balayage?.price ?? "1889 kr"}\n• Keratin- og proteinbehandling (kort hår) – ${keratin?.price ?? "2499 kr"}\n\nEndelig pris avhenger av hårlengde og behandling. Hvilken type behandling er du interessert i?`;
+        return `Her er et utvalg av prisene våre:\n\n• Klassisk herreklipp – ${menCut?.price ?? "399 kr"}\n• Damestuss – ${damestuss?.price ?? "499 kr"}\n• Farge ettervekst – ${colour?.price ?? "1199 kr"}\n• Striper / balayage (halvt hode) – ${balayage?.price ?? "1889 kr"}\n• Keratin- og proteinbehandling (kort hår) – ${keratin?.price ?? "2499 kr"}\n\nEndelig pris avhenger av hårlengde og behandling. Hvilken type behandling er du interessert i?`;
       },
     },
     {
@@ -180,7 +180,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "price,cost,nok,fee,how much,expensive",
       build: () =>
-        "Here's a selection of our prices:\n\n• Classic men's cut – 399 kr\n• Damestuss (women's trim) – 499 kr\n• Root colour – 889 kr\n• Highlights / balayage (half head) – 1889 kr\n• Keratin & protein treatment (short hair) – 2499 kr\n\nFinal price depends on hair length and treatment. Which type of treatment are you interested in?",
+        "Here's a selection of our prices:\n\n• Classic men's cut – 399 kr\n• Damestuss (women's trim) – 499 kr\n• Root colour – 1199 kr\n• Highlights / balayage (half head) – 1889 kr\n• Keratin & protein treatment (short hair) – 2499 kr\n\nFinal price depends on hair length and treatment. Which type of treatment are you interested in?",
     },
     {
       keys: "damaged,dry,brittle,bleach,repair,after colour,healthier,after bleach",
@@ -263,7 +263,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "سعر,تكلفة,كرون,رسوم,كم",
       build: () =>
-        "مجموعة من أسعارنا:\n\n• قصة رجالية كلاسيكية – 399 كرونة\n• قصة نسائية (دامستوس) – 499 كرونة\n• صبغة الجذور – 889 كرونة\n• خصلات / بالياج (نصف الرأس) – 1889 كرونة\n• علاج الكيراتين والبروتين (شعر قصير) – 2499 كرونة\n\nالسعر النهائي يعتمد على طول الشعر. ما العلاج الذي يهمك؟",
+        "مجموعة من أسعارنا:\n\n• قصة رجالية كلاسيكية – 399 كرونة\n• قصة نسائية (دامستوس) – 499 كرونة\n• صبغة الجذور – 1199 كرونة\n• خصلات / بالياج (نصف الرأس) – 1889 كرونة\n• علاج الكيراتين والبروتين (شعر قصير) – 2499 كرونة\n\nالسعر النهائي يعتمد على طول الشعر. ما العلاج الذي يهمك؟",
     },
     {
       keys: "تالف,جاف,هش,تبييض,إصلاح,بعد الصبغة,علاج",
@@ -346,7 +346,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "precio,coste,corona,cuánto,cuanto,caro",
       build: () =>
-        "Algunos de nuestros precios:\n\n• Corte clásico de caballero – 399 kr\n• Damestuss (recorte de mujer) – 499 kr\n• Color de raíz – 889 kr\n• Mechas / balayage (media cabeza) – 1.889 kr\n• Tratamiento de keratina y proteína (pelo corto) – 2.499 kr\n\nEl precio final depende del largo del cabello. ¿Qué tratamiento te interesa?",
+        "Algunos de nuestros precios:\n\n• Corte clásico de caballero – 399 kr\n• Damestuss (recorte de mujer) – 499 kr\n• Color de raíz – 1199 kr\n• Mechas / balayage (media cabeza) – 1.889 kr\n• Tratamiento de keratina y proteína (pelo corto) – 2.499 kr\n\nEl precio final depende del largo del cabello. ¿Qué tratamiento te interesa?",
     },
     {
       keys: "dañado,seco,frágil,decoloración,reparar,después del tinte,tratamiento",

@@ -95,7 +95,7 @@ HERREKLIPP:
 - Skjeggtrim alene: 199 kr (kun maskin, ikke høvel/blade)
 - Herreklipp + farge (ikke bleking): 999 kr
 - Herreklipp + striper (hettestriper for menn): 1199 kr
-- Herrestriper (uten klipp): 799 kr
+- Herrestriper (uten klipp): 999 kr
 - Valgfrie tillegg i Timma: Toner/glossing/minicolour +499 kr, Vask +99 kr, Hårkur +249 kr
 - Hårvask er IKKE inkludert i standardprisen — velges som tillegg
 
@@ -104,11 +104,11 @@ BARNEKLIPP (fra 6 år, ingen tilleggstjenester):
 - Barneklipp jente (langt hår): 399 kr
 
 FARGE (helfarge, prises etter hårlengde — bleking er en EGEN behandling):
-- Farge ettervekst (3–5 cm): 889 kr
-- Farge kort hår (opp til ørene): 1299 kr
-- Farge mellomlangt hår (over skuldrene): 1589 kr
-- Farge langt hår (ned til skulderbladene): 1789 kr
-- Farge ekstra langt og tykt hår (under skulderbladene/ekstra tykt): 2989 kr
+- Farge ettervekst (3–5 cm): 1199 kr
+- Farge kort hår (opp til ørene): 1499 kr
+- Farge mellomlangt hår (over skuldrene): 1699 kr
+- Farge langt hår (ned til skulderbladene): 1999 kr
+- Farge ekstra langt og tykt hår (under skulderbladene/ekstra tykt): 3199 kr
 - Valgfrie tillegg: Glossing/minicolour +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
 
 STRIPER / BALAYAGE (folie):
@@ -128,10 +128,10 @@ KERATIN- OG PROTEINBEHANDLING (kombinert, prises etter hårlengde):
 - Vi bruker vegansk keratinprotein fra ProAddiction USA — 100 % formaldehydfritt. Effekt opptil 6 måneder. Alle ansatte har godkjent diplom for å jobbe med produktet.
 
 BEHANDLING / TILLEGGSTJENESTER (egne behandlinger, kan også bestilles alene):
-- Bleking ettervekst: 889 kr
-- Bleking kort hår: 1299 kr
-- Bleking mellomlangt hår: 1589 kr
-- Bleking langt hår: 1789 kr
+- Bleking ettervekst: 1199 kr
+- Bleking kort hår: 1499 kr
+- Bleking mellomlangt hår: 1699 kr
+- Bleking langt hår: 1999 kr
 - Vask og føn: 399 kr
 - Vask og styling (bølgete): 599 kr
 - Hårkur: 599 kr
