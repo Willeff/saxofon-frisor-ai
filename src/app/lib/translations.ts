@@ -112,9 +112,13 @@ export const translations = {
           title: "Farge",
           description: "Helfarge og farge ettervekst, prises etter hårlengde. Bleking finnes som egen behandling.",
         },
-        "striper-balayage": {
-          title: "Striper / balayage",
-          description: "Striper og balayage med folie, halvt eller fullt hode, samt ettervekststriper.",
+        "striper-balayage-halvt": {
+          title: "Striper / balayage – halvt hode",
+          description: "Striper og balayage med folie på halve håret, inkludert ettervekst.",
+        },
+        "striper-balayage-fullt": {
+          title: "Striper / balayage – fullt hode",
+          description: "Striper og balayage med folie på fullt hode for mellomlangt og langt hår.",
         },
         "keratin-protein": {
           title: "Keratin- og proteinbehandling",
@@ -387,9 +391,13 @@ export const translations = {
           title: "Colour",
           description: "Full colour and root colour, priced by hair length. Bleaching is offered as a separate treatment.",
         },
-        "striper-balayage": {
-          title: "Highlights / balayage",
-          description: "Highlights and balayage with foils, half or full head, plus root highlights.",
+        "striper-balayage-halvt": {
+          title: "Highlights / balayage – half head",
+          description: "Highlights and balayage with foils on half the head, including regrowth.",
+        },
+        "striper-balayage-fullt": {
+          title: "Highlights / balayage – full head",
+          description: "Highlights and balayage with foils on full head for medium and long hair.",
         },
         "keratin-protein": {
           title: "Keratin & protein",
@@ -650,7 +658,8 @@ export const translations = {
         herreklipp: { title: "قصات رجالية", description: "قصات كلاسيكية وعصرية، قص بالماكينة، تشذيب اللحية وتركيبات مع الصبغة أو الخصلات." },
         barneklipp: { title: "أطفال", description: "قصات للشعر القصير والطويل للأطفال من سن 6 سنوات." },
         farge: { title: "صبغة", description: "صبغة كاملة وصبغة الجذور، السعر حسب طول الشعر. التبييض كعلاج منفصل." },
-        "striper-balayage": { title: "خصلات / بالياج", description: "خصلات وبالياج بالفويل، نصف أو كامل الرأس، بالإضافة إلى خصلات الجذور." },
+        "striper-balayage-halvt": { title: "خصلات / بالياج – نصف الرأس", description: "خصلات وبالياج بالفويل على نصف الرأس، بما في ذلك الجذور." },
+        "striper-balayage-fullt": { title: "خصلات / بالياج – كامل الرأس", description: "خصلات وبالياج بالفويل على كامل الرأس للشعر المتوسط والطويل." },
         "keratin-protein": { title: "كيراتين وبروتين", description: "لشعر أكثر نعومة وقوة ولمعاناً مع تجعد أقل. السعر حسب طول الشعر." },
         behandling: { title: "علاجات وإضافات", description: "تبييض، غسل، تصفيف، حمامات شعر وإكستنشن كعلاجات منفصلة." },
       },
@@ -901,7 +910,8 @@ export const translations = {
         herreklipp: { title: "Cortes de caballero", description: "Cortes clásicos y modernos, corte a máquina, recorte de barba y combinaciones con color o mechas." },
         barneklipp: { title: "Niños", description: "Cortes de pelo corto y largo para niños desde 6 años." },
         farge: { title: "Color", description: "Color completo y de raíz, según largo del cabello. La decoloración es un tratamiento aparte." },
-        "striper-balayage": { title: "Mechas / balayage", description: "Mechas y balayage con papel de aluminio, media o cabeza completa, además de mechas de raíz." },
+        "striper-balayage-halvt": { title: "Mechas / balayage – media cabeza", description: "Mechas y balayage con papel de aluminio en media cabeza, incluyendo raíces." },
+        "striper-balayage-fullt": { title: "Mechas / balayage – cabeza completa", description: "Mechas y balayage con papel de aluminio en cabeza completa para cabello medio y largo." },
         "keratin-protein": { title: "Keratina y proteína", description: "Para un cabello más liso, fuerte y brillante con menos encrespamiento. Según largo del cabello." },
         behandling: { title: "Tratamientos y extras", description: "Decoloración, lavado, peinado, mascarillas y extensiones como tratamientos independientes." },
       },

@@ -75,7 +75,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "vedlikehold,lettstelt,enkel,lite stell,lav,grodd,vokse ut",
       build: (lang) => {
-        const balayageService = getServices(lang).find((s) => s.title === "Striper eller balayage – halvt hode");
+        const balayageService = getServices(lang).find((s) => s.title === "Striper eller balayage – halvt hode, mellomlangt hår");
         const balayagePrice = balayageService ? ` (fra ${balayageService.price})` : "";
         return `Balayage${balayagePrice} er det beste valget for lite vedlikehold – fargen vokser naturlig ut uten synlig rotlinje, og du trenger sjeldnere oppfriskning.\n\nEt godt klipp med riktig form gjør også mye – da trenger du minimalt med styling i hverdagen.\n\nØnsker du noe med farge, eller er du mest ute etter et lettstelt klipp?`;
       },
@@ -87,7 +87,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
         const menCut = services.find((s) => s.title === "Klassisk herreklipp");
         const damestuss = services.find((s) => s.title === "Damestuss");
         const colour = services.find((s) => s.title === "Farge ettervekst");
-        const balayage = services.find((s) => s.title === "Striper eller balayage – halvt hode");
+        const balayage = services.find((s) => s.title === "Striper eller balayage – halvt hode, mellomlangt hår");
         const keratin = services.find((s) => s.title === "Keratin- og proteinbehandling kort hår");
 
         return `Her er et utvalg av prisene våre:\n\n• Klassisk herreklipp – ${menCut?.price ?? "399 kr"}\n• Damestuss – ${damestuss?.price ?? "499 kr"}\n• Farge ettervekst – ${colour?.price ?? "1199 kr"}\n• Striper / balayage (halvt hode) – ${balayage?.price ?? "1889 kr"}\n• Keratin- og proteinbehandling (kort hår) – ${keratin?.price ?? "2499 kr"}\n\nEndelig pris avhenger av hårlengde og behandling. Hvilken type behandling er du interessert i?`;
@@ -172,7 +172,7 @@ const ENTRIES: Record<Lang, ResponseEntry[]> = {
     {
       keys: "maintenance,low-maintenance,easy,simple,grow out",
       build: (lang) => {
-        const b = getServices(lang).find((s) => s.title === "Striper eller balayage – halvt hode");
+        const b = getServices(lang).find((s) => s.title === "Striper eller balayage – halvt hode, mellomlangt hår");
         const price = b ? ` (from ${b.price})` : "";
         return `Balayage${price} is the best choice for low maintenance – the colour grows out naturally without a visible root line, so you need fewer touch-ups.\n\nA well-shaped cut also goes a long way – you'll need minimal styling day to day.\n\nAre you looking for a colour option, or mainly a low-maintenance cut?`;
       },

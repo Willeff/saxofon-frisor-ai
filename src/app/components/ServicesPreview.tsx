@@ -10,7 +10,8 @@ const PREVIEW_CATEGORIES: Exclude<DisplayFilter, "all">[] = [
   "herreklipp",
   "herre-langt-farge-striper",
   "farge",
-  "striper-balayage",
+  "striper-balayage-halvt",
+  "striper-balayage-fullt",
   "keratin",
   "behandling",
 ];

@@ -25,7 +25,8 @@ export type CategoryId =
   | "herreklipp"
   | "herre-langt-farge-striper"
   | "farge"
-  | "striper-balayage"
+  | "striper-balayage-halvt"
+  | "striper-balayage-fullt"
   | "keratin"
   | "behandling";
 
@@ -37,7 +38,8 @@ export const CATEGORY_LABELS: Record<Lang, Record<CategoryId, string>> = {
     herreklipp: "Herreklipp",
     "herre-langt-farge-striper": "Herreklipp - langt / striper",
     farge: "Farge",
-    "striper-balayage": "Striper / balayage",
+    "striper-balayage-halvt": "Striper / balayage – halvt hode",
+    "striper-balayage-fullt": "Striper / balayage – fullt hode",
     keratin: "Keratin - proteinbehandling",
     behandling: "Behandling / tilleggstjenester",
   },
@@ -46,7 +48,8 @@ export const CATEGORY_LABELS: Record<Lang, Record<CategoryId, string>> = {
     herreklipp: "Herreklipp",
     "herre-langt-farge-striper": "Herreklipp - langt / striper",
     farge: "Farge",
-    "striper-balayage": "Striper / balayage",
+    "striper-balayage-halvt": "Striper / balayage – halvt hode",
+    "striper-balayage-fullt": "Striper / balayage – fullt hode",
     keratin: "Keratin - proteinbehandling",
     behandling: "Behandling / tilleggstjenester",
   },
@@ -55,7 +58,8 @@ export const CATEGORY_LABELS: Record<Lang, Record<CategoryId, string>> = {
     herreklipp: "Herreklipp",
     "herre-langt-farge-striper": "Herreklipp - langt / striper",
     farge: "Farge",
-    "striper-balayage": "Striper / balayage",
+    "striper-balayage-halvt": "Striper / balayage – halvt hode",
+    "striper-balayage-fullt": "Striper / balayage – fullt hode",
     keratin: "Keratin - proteinbehandling",
     behandling: "Behandling / tilleggstjenester",
   },
@@ -64,7 +68,8 @@ export const CATEGORY_LABELS: Record<Lang, Record<CategoryId, string>> = {
     herreklipp: "Herreklipp",
     "herre-langt-farge-striper": "Herreklipp - langt / striper",
     farge: "Farge",
-    "striper-balayage": "Striper / balayage",
+    "striper-balayage-halvt": "Striper / balayage – halvt hode",
+    "striper-balayage-fullt": "Striper / balayage – fullt hode",
     keratin: "Keratin - proteinbehandling",
     behandling: "Behandling / tilleggstjenester",
   },
@@ -78,7 +83,8 @@ export const DISPLAY_FILTERS = [
   "herreklipp",
   "herre-langt-farge-striper",
   "farge",
-  "striper-balayage",
+  "striper-balayage-halvt",
+  "striper-balayage-fullt",
   "keratin",
   "behandling",
 ] as const;
@@ -93,7 +99,8 @@ const FILTER_CATEGORY_MAP: Record<Exclude<DisplayFilter, "all">, CategoryId[]> =
   herreklipp: ["herreklipp"],
   "herre-langt-farge-striper": ["herre-langt-farge-striper"],
   farge: ["farge"],
-  "striper-balayage": ["striper-balayage"],
+  "striper-balayage-halvt": ["striper-balayage-halvt"],
+  "striper-balayage-fullt": ["striper-balayage-fullt"],
   keratin: ["keratin"],
   behandling: ["behandling"],
 };
@@ -112,7 +119,8 @@ export const DISPLAY_FILTER_LABELS: Record<Lang, Record<DisplayFilter, string>> 
     herreklipp: "Herreklipp",
     "herre-langt-farge-striper": "Herreklipp - langt / striper",
     farge: "Farge",
-    "striper-balayage": "Striper / balayage",
+    "striper-balayage-halvt": "Striper / balayage – halvt hode",
+    "striper-balayage-fullt": "Striper / balayage – fullt hode",
     keratin: "Keratin - proteinbehandling",
     behandling: "Behandling / tilleggstjenester",
   },
@@ -122,7 +130,8 @@ export const DISPLAY_FILTER_LABELS: Record<Lang, Record<DisplayFilter, string>> 
     herreklipp: "Herreklipp",
     "herre-langt-farge-striper": "Herreklipp - langt / striper",
     farge: "Farge",
-    "striper-balayage": "Striper / balayage",
+    "striper-balayage-halvt": "Striper / balayage – halvt hode",
+    "striper-balayage-fullt": "Striper / balayage – fullt hode",
     keratin: "Keratin - proteinbehandling",
     behandling: "Behandling / tilleggstjenester",
   },
@@ -132,7 +141,8 @@ export const DISPLAY_FILTER_LABELS: Record<Lang, Record<DisplayFilter, string>> 
     herreklipp: "Herreklipp",
     "herre-langt-farge-striper": "Herreklipp - langt / striper",
     farge: "Farge",
-    "striper-balayage": "Striper / balayage",
+    "striper-balayage-halvt": "Striper / balayage – halvt hode",
+    "striper-balayage-fullt": "Striper / balayage – fullt hode",
     keratin: "Keratin - proteinbehandling",
     behandling: "Behandling / tilleggstjenester",
   },
@@ -142,7 +152,8 @@ export const DISPLAY_FILTER_LABELS: Record<Lang, Record<DisplayFilter, string>> 
     herreklipp: "Herreklipp",
     "herre-langt-farge-striper": "Herreklipp - langt / striper",
     farge: "Farge",
-    "striper-balayage": "Striper / balayage",
+    "striper-balayage-halvt": "Striper / balayage – halvt hode",
+    "striper-balayage-fullt": "Striper / balayage – fullt hode",
     keratin: "Keratin - proteinbehandling",
     behandling: "Behandling / tilleggstjenester",
   },
@@ -151,9 +162,9 @@ export const DISPLAY_FILTER_LABELS: Record<Lang, Record<DisplayFilter, string>> 
 // ─── Addon presets (match fasit exactly) ────────────────────────────────────
 
 const DAME_ADDONS: Addon[] = [
-  { name: "Hårvask", duration: "+0 min", price: "99 kr" },
-  { name: "Føn og styling", duration: "+15 min", price: "299 kr" },
-  { name: "Glossing/toner/minicolour", duration: "+15 min", price: "799 kr" },
+  { name: "Hårvask", duration: "+15 min", price: "199 kr" },
+  { name: "Vask og styling", duration: "+45 min", price: "699 kr" },
+  { name: "Hårkur", duration: "+30 min", price: "499 kr" },
 ];
 
 const HERRE_ADDONS: Addon[] = [
@@ -370,47 +381,61 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     addons: FARGE_ADDONS,
   },
 
-  // ═══ Striper / balayage ═══
+  // ═══ Striper / balayage – halvt hode ═══
   {
-    categoryId: "striper-balayage",
-    title: "Striper eller balayage – halvt hode",
-    description: "Striper eller balayage med folie på halve håret.",
+    categoryId: "striper-balayage-halvt",
+    title: "Striper eller balayage – ettervekst, halvt hode",
+    description:
+      "Ettervekst / oppfriskning, ca. 2–8 cm. Trykk for å se valgfrie tilleggstjenester.",
+    price: "1789 kr",
+    tags: ["women", "highlights", "balayage"],
+    addons: BALAYAGE_ADDONS,
+  },
+  {
+    categoryId: "striper-balayage-halvt",
+    title: "Striper eller balayage – halvt hode, mellomlangt hår",
+    description:
+      "For hår ovenfor / til skuldrene. Trykk for å se valgfrie tilleggstjenester.",
     price: "1889 kr",
     tags: ["women", "highlights", "balayage"],
     addons: BALAYAGE_ADDONS,
   },
   {
-    categoryId: "striper-balayage",
-    title: "Striper eller balayage – fullt hode",
+    categoryId: "striper-balayage-halvt",
+    title: "Striper eller balayage – halvt hode, langt hår",
     description:
-      "Striper eller balayage med folie på fullt hode for mellomlangt hår.",
+      "For hår nedenfor skuldrene. Trykk for å se valgfrie tilleggstjenester.",
+    price: "1999 kr",
+    tags: ["women", "highlights", "balayage"],
+    addons: BALAYAGE_ADDONS,
+  },
+
+  // ═══ Striper / balayage – fullt hode ═══
+  {
+    categoryId: "striper-balayage-fullt",
+    title: "Striper eller balayage – ettervekst, fullt hode",
+    description:
+      "Ettervekst / oppfriskning, ca. 2–8 cm. Trykk for å se valgfrie tilleggstjenester.",
+    price: "2399 kr",
+    tags: ["women", "highlights", "balayage"],
+    addons: BALAYAGE_ADDONS,
+  },
+  {
+    categoryId: "striper-balayage-fullt",
+    title: "Striper eller balayage – mellomlangt hår, fullt hode",
+    description:
+      "Striper eller balayage med folie på fullt hode for mellomlangt hår. Trykk for å se valgfrie tilleggstjenester.",
     price: "2489 kr",
     tags: ["women", "highlights", "balayage"],
     addons: BALAYAGE_ADDONS,
   },
   {
-    categoryId: "striper-balayage",
+    categoryId: "striper-balayage-fullt",
     title: "Striper eller balayage – langt hår, fullt hode",
     description:
-      "Striper eller balayage med folie på fullt hode for langt hår.",
+      "Striper eller balayage med folie på fullt hode for langt hår. Trykk for å se valgfrie tilleggstjenester.",
     price: "3299 kr",
     tags: ["women", "highlights", "balayage"],
-    addons: BALAYAGE_ADDONS,
-  },
-  {
-    categoryId: "striper-balayage",
-    title: "Striper ettervekst – halvt hode",
-    description: "Ettervekststriper med folie på halve håret.",
-    price: "1789 kr",
-    tags: ["women", "highlights"],
-    addons: BALAYAGE_ADDONS,
-  },
-  {
-    categoryId: "striper-balayage",
-    title: "Striper ettervekst – fullt hode",
-    description: "Ettervekststriper med folie på fullt hode.",
-    price: "2399 kr",
-    tags: ["women", "highlights"],
     addons: BALAYAGE_ADDONS,
   },
 
@@ -489,14 +514,6 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
   // ═══ Styling / pleie / annet ═══
   {
     categoryId: "behandling",
-    title: "Vask og føn",
-    description: "Legg til hårvask og føn for et rent og enkelt resultat.",
-    price: "399 kr",
-    tags: ["women", "treatment"],
-    addons: STYLING_ADDONS,
-  },
-  {
-    categoryId: "behandling",
     title: "Vask og styling (bølgete)",
     description:
       "Legg til hårvask og styling med bølger for et mer formet resultat.",
@@ -511,6 +528,32 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     price: "599 kr",
     tags: ["women", "treatment"],
     addons: STYLING_ADDONS,
+  },
+
+  // ═══ Glossing / toner / minicolour ═══
+  {
+    categoryId: "behandling",
+    title: "Glossing / toner / minicolour – kort hår",
+    description: "Glossing, toner eller minicolour for kort hår.",
+    price: "899 kr",
+    tags: ["women", "colour", "treatment"],
+    addons: FARGE_ADDONS,
+  },
+  {
+    categoryId: "behandling",
+    title: "Glossing / toner / minicolour – mellomlangt hår",
+    description: "Glossing, toner eller minicolour for mellomlangt hår.",
+    price: "1499 kr",
+    tags: ["women", "colour", "treatment"],
+    addons: FARGE_ADDONS,
+  },
+  {
+    categoryId: "behandling",
+    title: "Glossing / toner / minicolour – langt hår",
+    description: "Glossing, toner eller minicolour for langt hår.",
+    price: "1899 kr",
+    tags: ["women", "colour", "treatment"],
+    addons: FARGE_ADDONS,
   },
   {
     categoryId: "behandling",

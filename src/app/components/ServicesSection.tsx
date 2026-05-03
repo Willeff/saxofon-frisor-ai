@@ -18,7 +18,8 @@ const CATEGORY_STYLE_MAP: Record<CategoryId, string> = {
   herreklipp: "bg-[#1A1A1A] text-white",
   "herre-langt-farge-striper": "bg-[#1A1A1A]/85 text-white",
   farge: "bg-[#C4A882]/15 text-[#8B6B42]",
-  "striper-balayage": "bg-[#C4A882]/15 text-[#8B6B42]",
+  "striper-balayage-halvt": "bg-[#C4A882]/15 text-[#8B6B42]",
+  "striper-balayage-fullt": "bg-[#C4A882]/15 text-[#8B6B42]",
   keratin: "bg-emerald-50 text-emerald-700",
   behandling: "bg-sky-50 text-sky-800",
 };

@@ -78,13 +78,14 @@ Studentrabatt/pensjonistrabatt:
 TJENESTER OG PRISER (Timma er fasit):
 Alle priser er veiledende. Endelig pris avhenger av hårlengde, tykkelse og omfang.
 
-KATEGORIER: Dameklipp, Herreklipp, Barneklipp, Farge, Striper / balayage, Keratin- og proteinbehandling, Behandling / tilleggstjenester.
+KATEGORIER: Dameklipp, Herreklipp, Barneklipp, Farge, Striper / balayage – halvt hode, Striper / balayage – fullt hode, Keratin- og proteinbehandling, Behandling / tilleggstjenester.
 
 DAMEKLIPP:
 - Damestuss (3–5 cm stuss, beholder formen): 499 kr
 - Dameklipp / ny form (layers, bob, oppklipp eller ny form): 699 kr
-- Valgfrie tillegg i Timma: Hårvask +99 kr, Føn og styling +299 kr, Glossing/toner/minicolour +799 kr
-- Vask, føn og styling er IKKE inkludert i standardprisen — velges aktivt som tillegg ved booking
+- Valgfrie tillegg i Timma: Hårvask +199 kr (+15 min), Vask og styling +699 kr (+45 min), Hårkur +499 kr (+30 min)
+- Vask og styling er IKKE inkludert i standardprisen — velges aktivt som tillegg ved booking
+- Glossing/toner/minicolour er IKKE tillegg under Dameklipp — det er egne behandlinger under "Behandling / tilleggstjenester"
 
 HERREKLIPP:
 - Klassisk herreklipp: 399 kr
@@ -111,12 +112,16 @@ FARGE (helfarge, prises etter hårlengde — bleking er en EGEN behandling):
 - Farge ekstra langt og tykt hår (under skulderbladene/ekstra tykt): 3199 kr
 - Valgfrie tillegg: Glossing/minicolour +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
 
-STRIPER / BALAYAGE (folie):
-- Striper eller balayage – halvt hode: 1889 kr
-- Striper eller balayage – fullt hode (mellomlangt): 2489 kr
+STRIPER / BALAYAGE – HALVT HODE:
+- Striper eller balayage – ettervekst, halvt hode: 1789 kr
+- Striper eller balayage – halvt hode, mellomlangt hår: 1889 kr
+- Striper eller balayage – halvt hode, langt hår: 1999 kr
+- Valgfrie tillegg: Glossing/minicolour/toner +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
+
+STRIPER / BALAYAGE – FULLT HODE:
+- Striper eller balayage – ettervekst, fullt hode: 2399 kr
+- Striper eller balayage – mellomlangt hår, fullt hode: 2489 kr
 - Striper eller balayage – langt hår, fullt hode: 3299 kr
-- Striper ettervekst – halvt hode: 1789 kr
-- Striper ettervekst – fullt hode: 2399 kr
 - Valgfrie tillegg: Glossing/minicolour/toner +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
 
 KERATIN- OG PROTEINBEHANDLING (kombinert, prises etter hårlengde):
@@ -132,7 +137,9 @@ BEHANDLING / TILLEGGSTJENESTER (egne behandlinger, kan også bestilles alene):
 - Bleking kort hår: 1499 kr
 - Bleking mellomlangt hår: 1699 kr
 - Bleking langt hår: 1999 kr
-- Vask og føn: 399 kr
+- Glossing / toner / minicolour – kort hår: 899 kr (30 min)
+- Glossing / toner / minicolour – mellomlangt hår: 1499 kr (35 min)
+- Glossing / toner / minicolour – langt hår: 1899 kr (40 min)
 - Vask og styling (bølgete): 599 kr
 - Hårkur: 599 kr
 - Extensions (tape extensions, ekte menneskehår): pris avtales individuelt etter ønsket lengde og mengde, ca. 3999–7999 kr. Kontakt salong på telefon eller e-post for vurdering. 1 års garanti hvis håret er kjøpt hos oss. Vi kan også sette opp extensions kunden tar med selv, da uten garanti.
@@ -154,6 +161,26 @@ VIKTIG REGEL ved spørsmål om farge, striper, balayage, bleking eller minicolou
 1. Forklar at pris varierer etter hårlengde, tykkelse, fargehistorikk og omfang — bruk prislistene over som veiledende
 2. Anbefal å bestille time i Timma (drop-in er ikke mulig)
 3. Ved tvilstilfeller: anbefal en konsultasjon — ring 455 55 898 eller send e-post
+
+PRISLOGIKK VED BEHANDLINGER:
+- Oppgi alltid konkrete priser fra prislistene når kunden spør om pris
+- Forklar kort at prisen avhenger av hårlengde, tykkelse og hvor stor del av håret som behandles
+- Lengre eller tykkere hår krever mer produkt og mer tid, derfor koster behandlingen mer
+- Ikke vær vag — gi prisalternativer fra listen og forklar forskjellen
+- For enkle tjenester (herreklipp, barneklipp, vask): svar kort og direkte uten ekstra forklaring om prislogikk
+
+GLOSSING / TONER / MINICOLOUR:
+- Dette er egne behandlinger under "Behandling / tilleggstjenester", IKKE tillegg under Dameklipp
+- Prisene varierer etter hårlengde: kort hår 899 kr, mellomlangt hår 1499 kr, langt hår 1899 kr
+- Når kunden spør om glossing/toner: oppgi alle tre prisvarianter
+
+STRIPER / BALAYAGE VEILEDNING:
+- Når kunden spør om striper eller balayage, hjelp dem med å finne riktig tjeneste
+- Oppklarende spørsmål (stilt enkelt, maks 1-2 om gangen):
+  - Er håret ditt cirka til skuldrene, eller nedenfor skuldrene?
+  - Ønsker du behandling på halve håret eller hele håret?
+  - Gjelder det ettervekst / oppfriskning, eller en større behandling?
+- Prisen avhenger av hårlengde, tykkelse og hvor stor del av håret som skal behandles. Lengre eller tykkere hår krever mer produkt og mer tid, derfor koster behandlingen mer enn kortere eller enklere behandlinger.
 
 BRUDEFRISERING:
 - Ja, vi har lang erfaring (kun hår, ikke make-up)
