@@ -296,8 +296,8 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     categoryId: "herre-langt-farge-striper",
     title: "Herreklipp og farge",
     description:
-      "For deg som ønsker klassisk herreklipp kombinert med farge. Gjelder ikke bleking.",
-    price: "999 kr",
+      "For deg som ønsker klassisk herreklipp kombinert med farge. For kort hår, til ørene. Gjelder ikke bleking.",
+    price: "1499 kr",
     tags: ["men", "cut", "colour"],
     addons: HERRE_ADDONS,
   },
@@ -305,8 +305,8 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     categoryId: "herre-langt-farge-striper",
     title: "Herreklipp og striper",
     description:
-      "For deg som ønsker herreklipp kombinert med lysere nyanser eller spill i håret. Gjelder hettestriper for menn.",
-    price: "1199 kr",
+      "For deg som ønsker herreklipp kombinert med lysere nyanser eller spill i håret. Gjelder hettestriper for menn. Vi anbefaler sterkt toner for et jevnere og mer naturlig resultat.",
+    price: "1299 kr",
     tags: ["men", "cut", "highlights"],
     addons: HERRE_ADDONS,
   },
@@ -314,8 +314,8 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     categoryId: "herre-langt-farge-striper",
     title: "Herrebleking – hår under ørene",
     description:
-      "For deg som ønsker å lysne håret. Gjelder bleking av hår under ørene.",
-    price: "589 kr",
+      "For deg som ønsker å lysne håret. For hår under ørene. Vi anbefaler sterkt toner for et jevnere og mer naturlig resultat.",
+    price: "699 kr",
     tags: ["men", "colour"],
     addons: HERRE_ADDONS,
   },
@@ -323,8 +323,8 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     categoryId: "herre-langt-farge-striper",
     title: "Herrefarge – hår under ørene",
     description:
-      "For deg som ønsker å friske opp eller endre hårfargen. Gjelder farge av hår under ørene.",
-    price: "589 kr",
+      "For deg som ønsker å friske opp eller endre hårfargen. For hår under ørene.",
+    price: "699 kr",
     tags: ["men", "colour"],
     addons: HERRE_ADDONS,
   },
@@ -332,8 +332,8 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     categoryId: "herre-langt-farge-striper",
     title: "Herrestriper",
     description:
-      "For deg som ønsker lysere nyanser eller spill i håret uten klipp. Gjelder hettestriper for menn.",
-    price: "999 kr",
+      "For deg som ønsker lysere nyanser eller spill i håret uten klipp. Gjelder hettestriper for menn. Vi anbefaler sterkt toner for et jevnere og mer naturlig resultat.",
+    price: "899 kr",
     tags: ["men", "highlights"],
     addons: HERRE_ADDONS,
   },
@@ -350,7 +350,7 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
   {
     categoryId: "farge",
     title: "Farge kort hår",
-    description: "Helfarge for hår opp til ørene.",
+    description: "Helfarge for kort hår, til nakken.",
     price: "1499 kr",
     tags: ["women", "colour"],
     addons: FARGE_ADDONS,
@@ -416,7 +416,7 @@ const SERVICE_ENTRIES: ServiceEntry[] = [
     title: "Striper eller balayage – ettervekst, fullt hode",
     description:
       "Ettervekst / oppfriskning, ca. 2–8 cm. Trykk for å se valgfrie tilleggstjenester.",
-    price: "2399 kr",
+    price: "2299 kr",
     tags: ["women", "highlights", "balayage"],
     addons: BALAYAGE_ADDONS,
   },

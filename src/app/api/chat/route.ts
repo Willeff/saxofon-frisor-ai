@@ -94,9 +94,11 @@ HERREKLIPP:
 - Maskinklipp: 199 kr
 - Herreklipp klassisk + skjeggtrim: 499 kr
 - Skjeggtrim alene: 199 kr (kun maskin, ikke høvel/blade)
-- Herreklipp + farge (ikke bleking): 999 kr
-- Herreklipp + striper (hettestriper for menn): 1199 kr
-- Herrestriper (uten klipp): 999 kr
+- Herreklipp + farge (kort hår, til ørene, ikke bleking): 1499 kr
+- Herreklipp + striper (hettestriper for menn, vi anbefaler sterkt toner): 1299 kr
+- Herrebleking – hår under ørene (vi anbefaler sterkt toner): 699 kr
+- Herrefarge – hår under ørene: 699 kr
+- Herrestriper (uten klipp, vi anbefaler sterkt toner): 899 kr
 - Valgfrie tillegg i Timma: Toner/glossing/minicolour +499 kr, Vask +99 kr, Hårkur +249 kr
 - Hårvask er IKKE inkludert i standardprisen — velges som tillegg
 
@@ -106,7 +108,7 @@ BARNEKLIPP (fra 6 år, ingen tilleggstjenester):
 
 FARGE (helfarge, prises etter hårlengde — bleking er en EGEN behandling):
 - Farge ettervekst (3–5 cm): 1199 kr
-- Farge kort hår (opp til ørene): 1499 kr
+- Farge kort hår (til nakken): 1499 kr
 - Farge mellomlangt hår (over skuldrene): 1699 kr
 - Farge langt hår (ned til skulderbladene): 1999 kr
 - Farge ekstra langt og tykt hår (under skulderbladene/ekstra tykt): 3199 kr
@@ -119,7 +121,7 @@ STRIPER / BALAYAGE – HALVT HODE:
 - Valgfrie tillegg: Glossing/minicolour/toner +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
 
 STRIPER / BALAYAGE – FULLT HODE:
-- Striper eller balayage – ettervekst, fullt hode: 2399 kr
+- Striper eller balayage – ettervekst, fullt hode: 2299 kr
 - Striper eller balayage – mellomlangt hår, fullt hode: 2489 kr
 - Striper eller balayage – langt hår, fullt hode: 3299 kr
 - Valgfrie tillegg: Glossing/minicolour/toner +799 kr, Damestuss +499 kr, Dameklipp / ny form +699 kr
